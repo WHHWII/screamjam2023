@@ -9,6 +9,7 @@
 
 [node name="QodotMap" type="Node3D" parent="."]
 script = ExtResource("1_6bdet")
+map_file = "D:/Game Development/Projects/Godot/ScreamJam2023/maps/default.map"
 entity_fgd = ExtResource("2_qoua4")
 texture_file_extensions = PackedStringArray("png", "jpg", "jpeg", "bmp")
 default_material = SubResource("StandardMaterial3D_2aqev")
