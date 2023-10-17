@@ -18,6 +18,7 @@ mesh = SubResource("CapsuleMesh_f7oui")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.727702, 0)
+fov = 90.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
 transform = Transform3D(0.999934, 0.0109254, -0.00358361, -0.0108814, 0.999868, 0.012086, 0.00371518, -0.0120462, 0.999921, 0.00151968, 0.00867188, 0.403237)

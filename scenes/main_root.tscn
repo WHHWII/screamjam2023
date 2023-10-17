@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bvjlsytxo0nw0"]
 
-[ext_resource type="PackedScene" uid="uid://dc4e01g85463n" path="res://scenes/whit_scene.tscn" id="1_biy24"]
+[ext_resource type="PackedScene" uid="uid://caucq173niltg" path="res://scenes/character.tscn" id="1_d8ews"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0egt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -12,15 +12,19 @@ sky_material = SubResource("ProceduralSkyMaterial_j0egt")
 [sub_resource type="Environment" id="Environment_ybakg"]
 background_mode = 2
 sky = SubResource("Sky_7j884")
+ambient_light_color = Color(1, 0.94902, 0.8, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.02
 tonemap_mode = 2
 glow_enabled = true
+fog_enabled = true
 fog_light_color = Color(1, 0.94902, 0.8, 1)
-fog_light_energy = 0.1
-fog_density = 0.03
+fog_light_energy = 0.02
+fog_density = 0.1
 
 [node name="MainRoot" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ybakg")
 
-[node name="WhitScene" parent="." instance=ExtResource("1_biy24")]
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_d8ews")]
