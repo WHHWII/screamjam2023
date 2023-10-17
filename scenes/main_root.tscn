@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvjlsytxo0nw0"]
+[gd_scene load_steps=6 format=3 uid="uid://bvjlsytxo0nw0"]
 
 [ext_resource type="PackedScene" uid="uid://caucq173niltg" path="res://scenes/character.tscn" id="1_d8ews"]
+[ext_resource type="PackedScene" uid="uid://bp4d7vaauvlql" path="res://scenes/Map.tscn" id="2_31a4d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0egt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -14,13 +15,12 @@ background_mode = 2
 sky = SubResource("Sky_7j884")
 ambient_light_color = Color(1, 0.94902, 0.8, 1)
 ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.02
+ambient_light_energy = 0.04
 tonemap_mode = 2
 glow_enabled = true
 fog_enabled = true
 fog_light_color = Color(1, 0.94902, 0.8, 1)
 fog_light_energy = 0.02
-fog_density = 0.1
 
 [node name="MainRoot" type="Node3D"]
 
@@ -28,3 +28,6 @@ fog_density = 0.1
 environment = SubResource("Environment_ybakg")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_d8ews")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890612, 0)
+
+[node name="Map" parent="." instance=ExtResource("2_31a4d")]
