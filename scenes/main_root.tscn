@@ -1,7 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvjlsytxo0nw0"]
+[gd_scene load_steps=5 format=3 uid="uid://bvjlsytxo0nw0"]
 
-[ext_resource type="PackedScene" uid="uid://7tf828m8ypin" path="res://scenes/whit_scene.tscn" id="1_biy24"]
+[ext_resource type="PackedScene" uid="uid://dc4e01g85463n" path="res://scenes/whit_scene.tscn" id="1_biy24"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0egt"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_7j884"]
+sky_material = SubResource("ProceduralSkyMaterial_j0egt")
+
+[sub_resource type="Environment" id="Environment_ybakg"]
+background_mode = 2
+sky = SubResource("Sky_7j884")
+tonemap_mode = 2
+glow_enabled = true
+fog_light_color = Color(1, 0.94902, 0.8, 1)
+fog_light_energy = 0.1
+fog_density = 0.03
 
 [node name="MainRoot" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ybakg")
 
 [node name="WhitScene" parent="." instance=ExtResource("1_biy24")]

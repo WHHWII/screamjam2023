@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://7tf828m8ypin"]
+[gd_scene load_steps=4 format=3 uid="uid://dc4e01g85463n"]
 
-[ext_resource type="PackedScene" uid="uid://b16kygp66s67b" path="res://scenes/character.tscn" id="1_qshiq"]
+[ext_resource type="PackedScene" uid="uid://caucq173niltg" path="res://scenes/character.tscn" id="1_qshiq"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qkici"]
 
@@ -10,9 +10,10 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 [node name="WhitScene" type="Node3D"]
 
 [node name="Character" parent="." instance=ExtResource("1_qshiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00676203, 2.38419e-07, -0.0179887)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -1.74344, 0)
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -0.114902, -1.0424, -0.154207)
 mesh = SubResource("PlaneMesh_qkici")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
