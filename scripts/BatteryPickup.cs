@@ -8,5 +8,8 @@ public partial class BatteryPickup : Node, iInteractable
 	public void Interact(PlayerInfo player)
 	{
 		player.flashLightEnergy += energy;
+		player.RestoreLightLevels();
+		GD.Print(player.flashLightEnergy);
+		GetParent().QueueFree();
 	}
 }

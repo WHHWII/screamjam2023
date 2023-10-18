@@ -10,7 +10,8 @@ public partial class CharacterController : CharacterBody3D
 	[Export] public PlayerInfo playerInfo; // TODO change to singleton or smth
 	[Export] private RayCast3D interactRay;
 
-	[Export] public SpotLight3D flashLight; 
+	[Export] public SpotLight3D flashLight;
+	
 
 	public const float Speed = 5.0f;
 
