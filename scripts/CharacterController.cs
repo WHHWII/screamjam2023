@@ -1,13 +1,16 @@
 using Godot;
+using Microsoft.VisualBasic;
 using System;
 
 public partial class CharacterController : CharacterBody3D
 {
+	//TODO clamp camera
 	[Export] public Camera3D camera;
 	float lookSensitivity = (float)ProjectSettings.GetSetting("player/look_sensitivity");
+	[Export] public PlayerInfo playerInfo; // TODO change to singleton or smth
+	[Export] private RayCast3D interactRay;
 
 	public const float Speed = 5.0f;
-	public const float JumpVelocity = 4.5f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
@@ -22,10 +25,6 @@ public partial class CharacterController : CharacterBody3D
 		// Add the gravity.
 		if (!IsOnFloor())
 			velocity.Y -= gravity * (float)delta;
-
-		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-			velocity.Y = JumpVelocity;
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
@@ -44,7 +43,38 @@ public partial class CharacterController : CharacterBody3D
 
 		Velocity = velocity;
 		MoveAndSlide();
+
+
+		var targetCol = interactRay.GetCollider();
+		bool targetIsInteractable = false;
+
+		if (targetCol != null)
+		{
+			//GD.Print(targetCol);
+			targetIsInteractable = targetCol.HasMethod("Interact");
+			//GD.Print(targetIsInteractable);
+		}
+
+		if (targetIsInteractable)
+		{
+			//display prompt
+		}
+
+
+		if (Input.IsActionJustPressed("interact")){
+			GD.Print("Interect pressed");
+			if(targetIsInteractable)
+			{
+				GD.Print("Interacted with interatable.");
+				targetCol.Call("Interact", playerInfo);
+
+
+
+			}
+
+		}
 	}
+
 
 	public override void _Input(InputEvent @event)
 	{
@@ -57,8 +87,6 @@ public partial class CharacterController : CharacterBody3D
 			//camera.Rotation = Mathf.Clamp(camera.Rotation.X, -Math.PI / 2, Math.PI / 2);
 
 		}
-
-
-
 	}
+
 }

@@ -1,14 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://caucq173niltg"]
+[gd_scene load_steps=5 format=3 uid="uid://b16kygp66s67b"]
 
 [ext_resource type="Script" path="res://scripts/CharacterController.cs" id="1_gf5vr"]
+[ext_resource type="Script" path="res://scripts/PlayerInfo.cs" id="2_cjbdk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ck5hk"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_f7oui"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("camera", "playerInfo", "interactRay")]
 script = ExtResource("1_gf5vr")
 camera = NodePath("Camera3D")
+playerInfo = NodePath("PlayerInfoContainer")
+interactRay = NodePath("Camera3D/InteractRay")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_ck5hk")
@@ -18,6 +21,7 @@ mesh = SubResource("CapsuleMesh_f7oui")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.727702, 0)
+current = true
 fov = 90.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
@@ -26,3 +30,12 @@ light_color = Color(1, 0.94902, 0.8, 1)
 light_energy = 3.263
 spot_range = 11.884
 spot_angle = 49.43
+
+[node name="InteractRay" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0612822, -0.216702, -0.540815)
+target_position = Vector3(0, 0, -2)
+collide_with_areas = true
+
+[node name="PlayerInfoContainer" type="Node" parent="." node_paths=PackedStringArray("controller")]
+script = ExtResource("2_cjbdk")
+controller = NodePath("..")

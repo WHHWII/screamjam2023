@@ -14,9 +14,10 @@ public partial class key : Node3D, iInteractable
 
 	}
 
-	public void Interact(CharacterController player)
+	public void Interact(PlayerInfo player)
 	{
-
-		QueueFree();
+		++player.keys;
+		GD.Print(player.keys);
+		GetParent().QueueFree();
 	}
 }

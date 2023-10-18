@@ -3,5 +3,5 @@ using System;
 
 public interface iInteractable 
 {
-    public void Interact(CharacterController player);
+    public void Interact(PlayerInfo player);
 }
