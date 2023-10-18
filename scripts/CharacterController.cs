@@ -67,7 +67,7 @@ public partial class CharacterController : CharacterBody3D
 			{
 				GD.Print("Interacted with interatable.");
 				targetCol.Call("Interact", playerInfo);
-
+				
 
 
 			}

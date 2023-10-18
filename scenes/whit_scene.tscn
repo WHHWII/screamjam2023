@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dc4e01g85463n"]
+[gd_scene load_steps=5 format=3 uid="uid://dc4e01g85463n"]
 
-[ext_resource type="PackedScene" uid="uid://caucq173niltg" path="res://scenes/character.tscn" id="1_qshiq"]
+[ext_resource type="PackedScene" uid="uid://b16kygp66s67b" path="res://scenes/character.tscn" id="1_qshiq"]
+[ext_resource type="PackedScene" uid="uid://dle6g0sagpqru" path="res://scenes/door.tscn" id="2_gmlk5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qkici"]
 
@@ -20,3 +21,5 @@ mesh = SubResource("PlaneMesh_qkici")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3775e")
+
+[node name="Door" parent="." instance=ExtResource("2_gmlk5")]

@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvjlsytxo0nw0"]
+[gd_scene load_steps=9 format=3 uid="uid://bvjlsytxo0nw0"]
 
+[ext_resource type="Script" path="res://scripts/Door.cs" id="1_1imdn"]
 [ext_resource type="PackedScene" uid="uid://b16kygp66s67b" path="res://scenes/character.tscn" id="1_d8ews"]
 [ext_resource type="PackedScene" uid="uid://v1a62jl4wiqy" path="res://scenes/Map.tscn" id="2_31a4d"]
 [ext_resource type="PackedScene" uid="uid://dhco5wbwfv47e" path="res://scenes/key.tscn" id="3_cgugd"]
+[ext_resource type="PackedScene" uid="uid://dle6g0sagpqru" path="res://scenes/door.tscn" id="5_1tcwo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0egt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -24,6 +26,7 @@ fog_light_color = Color(1, 0.94902, 0.8, 1)
 fog_light_energy = 0.02
 
 [node name="MainRoot" type="Node3D"]
+script = ExtResource("1_1imdn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ybakg")
@@ -35,3 +38,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890612, 0)
 
 [node name="key" parent="." instance=ExtResource("3_cgugd")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.83982, 0.765412, 0)
+
+[node name="Door" parent="." instance=ExtResource("5_1tcwo")]
+transform = Transform3D(3.95887, 0, 0, 0, 4.89041, 0, 0, 0, 1, -0.143475, 0.108898, 1.97808)
