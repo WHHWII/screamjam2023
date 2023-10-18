@@ -24,6 +24,7 @@ glow_enabled = true
 fog_enabled = true
 fog_light_color = Color(1, 0.94902, 0.8, 1)
 fog_light_energy = 0.02
+fog_density = 0.1
 
 [node name="MainRoot" type="Node3D"]
 

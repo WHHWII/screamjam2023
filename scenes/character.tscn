@@ -44,9 +44,15 @@ collide_with_areas = true
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.447561, -0.429094, -0.299592)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D/flashlight"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -1.0376)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.237198, -0.115092, -1.05956)
 light_color = Color(1, 0.94902, 0.8, 1)
-light_energy = 3.263
+light_energy = 3.3
+shadow_enabled = true
+shadow_opacity = 0.0
+shadow_blur = 0.0
+distance_fade_enabled = true
+spot_range = 65.7514
+spot_angle = 22.3445
 
 [node name="PlayerInfoContainer" type="Node" parent="." node_paths=PackedStringArray("controller")]
 script = ExtResource("2_cjbdk")
