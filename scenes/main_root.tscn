@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://v1a62jl4wiqy" path="res://scenes/Map.tscn" id="2_31a4d"]
 [ext_resource type="PackedScene" uid="uid://dhco5wbwfv47e" path="res://scenes/key.tscn" id="3_cgugd"]
 [ext_resource type="PackedScene" uid="uid://dle6g0sagpqru" path="res://scenes/door.tscn" id="5_1tcwo"]
-[ext_resource type="PackedScene" uid="uid://cp0o5mg7spivh" path="res://models/batteries.glb" id="5_uw4sy"]
+[ext_resource type="PackedScene" uid="uid://blrcyniicqvmm" path="res://scenes/battery_pickup.tscn" id="5_fvx33"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0egt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -28,6 +28,12 @@ fog_density = 0.1
 
 [node name="MainRoot" type="Node3D"]
 
+[node name="Battery Pickup" parent="." instance=ExtResource("5_fvx33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7697, 0.220502, -2.90936)
+
+[node name="Battery Pickup2" parent="." instance=ExtResource("5_fvx33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2756, 0.217446, -3.81323)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ybakg")
 
@@ -41,12 +47,3 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.83982, 0.60072, 0)
 
 [node name="Door" parent="." instance=ExtResource("5_1tcwo")]
 transform = Transform3D(3.95887, 0, 0, 0, 4.89041, 0, 0, 0, 1, -0.143475, 0.108898, 1.97808)
-
-[node name="batteries" parent="." instance=ExtResource("5_uw4sy")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.17265, -3.69906)
-
-[node name="batteries2" parent="." instance=ExtResource("5_uw4sy")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.835511, 1.17265, -3.69906)
-
-[node name="batteries3" parent="." instance=ExtResource("5_uw4sy")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.770301, 0.182611, -3.69906)

@@ -62,7 +62,7 @@ light_energy = 9.0
 light_cull_mask = 4294967291
 shadow_enabled = true
 shadow_normal_bias = 6.764
-spot_range = 84.5434
+spot_range = 220.444
 spot_angle = 21.1079
 
 [node name="MidLight" type="SpotLight3D" parent="Camera3D/flashlight/LongLight"]
