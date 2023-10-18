@@ -24,5 +24,7 @@ mesh = SubResource("PlaneMesh_qkici")
 shape = SubResource("ConcavePolygonShape3D_3775e")
 
 [node name="Door" parent="." instance=ExtResource("2_gmlk5")]
+transform = Transform3D(3.95887, 0, 0, 0, 4.89041, 0, 0, 0, 1, 0, 0, -3.75099)
 
 [node name="BatteryPickup" parent="." instance=ExtResource("3_kvdum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.916137, 0.896547, 1.97767)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b16kygp66s67b"]
+[gd_scene load_steps=8 format=3 uid="uid://b16kygp66s67b"]
 
 [ext_resource type="Script" path="res://scripts/CharacterController.cs" id="1_gf5vr"]
 [ext_resource type="PackedScene" uid="uid://cdy6l2dqh34l7" path="res://models/flashlight.glb" id="2_08q8a"]
@@ -7,6 +7,16 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ck5hk"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_f7oui"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0rbh"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(1, 1, 1, 0.0588235)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xnbti"]
+material = SubResource("StandardMaterial3D_u0rbh")
+bottom_radius = 100.0
+height = 42.09
 
 [node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("camera", "playerInfo", "interactRay", "flashLight")]
 script = ExtResource("1_gf5vr")
@@ -44,15 +54,19 @@ collide_with_areas = true
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.447561, -0.429094, -0.299592)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D/flashlight"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.237198, -0.115092, -1.05956)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.00220776, 1.19209e-06, -11.9921)
 light_color = Color(1, 0.94902, 0.8, 1)
-light_energy = 3.3
+light_energy = 3.263
+light_cull_mask = 4294967293
 shadow_enabled = true
-shadow_opacity = 0.0
-shadow_blur = 0.0
-distance_fade_enabled = true
-spot_range = 65.7514
-spot_angle = 22.3445
+distance_fade_shadow = 1.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/flashlight/SpotLight3D"]
+transform = Transform3D(0.141643, 0, 0, 0, -1.16716e-08, -0.12862, 0, 0.267014, -5.62218e-09, -0.000220776, -1.19209e-07, -5.81721)
+layers = 2
+visibility_range_fade_mode = 2
+mesh = SubResource("CylinderMesh_xnbti")
+skeleton = NodePath("../..")
 
 [node name="PlayerInfoContainer" type="Node" parent="." node_paths=PackedStringArray("controller")]
 script = ExtResource("2_cjbdk")

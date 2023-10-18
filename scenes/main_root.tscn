@@ -37,7 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890612, 0)
 [node name="Map" parent="." instance=ExtResource("2_31a4d")]
 
 [node name="key" parent="." instance=ExtResource("3_cgugd")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.83982, 0.765412, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.83982, 0.60072, 0)
 
 [node name="Door" parent="." instance=ExtResource("5_1tcwo")]
 transform = Transform3D(3.95887, 0, 0, 0, 4.89041, 0, 0, 0, 1, -0.143475, 0.108898, 1.97808)

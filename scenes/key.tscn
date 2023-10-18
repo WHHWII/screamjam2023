@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dasodj44bac6s" path="res://models/key.glb" id="1_c530t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5dytm"]
-radius = 1.66873
-height = 9.75781
+radius = 3.04201
+height = 17.3148
 
 [node name="Key Body" type="MeshInstance3D"]
 
