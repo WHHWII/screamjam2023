@@ -1,17 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://b16kygp66s67b"]
+[gd_scene load_steps=6 format=3 uid="uid://b16kygp66s67b"]
 
 [ext_resource type="Script" path="res://scripts/CharacterController.cs" id="1_gf5vr"]
+[ext_resource type="PackedScene" uid="uid://cdy6l2dqh34l7" path="res://models/flashlight.glb" id="2_08q8a"]
 [ext_resource type="Script" path="res://scripts/PlayerInfo.cs" id="2_cjbdk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ck5hk"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_f7oui"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("camera", "playerInfo", "interactRay")]
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("camera", "playerInfo", "interactRay", "flashLight")]
 script = ExtResource("1_gf5vr")
 camera = NodePath("Camera3D")
 playerInfo = NodePath("PlayerInfoContainer")
 interactRay = NodePath("Camera3D/InteractRay")
+flashLight = NodePath("Camera3D/flashlight/SpotLight3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_ck5hk")
@@ -25,9 +27,10 @@ current = true
 fov = 90.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
-transform = Transform3D(0.999934, 0.0109254, -0.00358361, -0.0108814, 0.999868, 0.012086, 0.00371518, -0.0120462, 0.999921, 0.00151968, 0.00867188, 0.403237)
+transform = Transform3D(0.999934, 0.0109254, -0.00358361, -0.0108814, 0.999868, 0.012086, 0.00371518, -0.0120462, 0.999921, 0.00151965, 0.00867188, 0.403237)
+visible = false
 light_color = Color(1, 0.94902, 0.8, 1)
-light_energy = 3.263
+light_energy = 0.0
 spot_range = 11.884
 spot_angle = 49.43
 
@@ -35,6 +38,14 @@ spot_angle = 49.43
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0612822, -0.216702, -0.540815)
 target_position = Vector3(0, 0, -2)
 collide_with_areas = true
+
+[node name="flashlight" parent="Camera3D" instance=ExtResource("2_08q8a")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.447561, -0.429094, -0.299592)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D/flashlight"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -1.0376)
+light_color = Color(1, 0.94902, 0.8, 1)
+light_energy = 3.263
 
 [node name="PlayerInfoContainer" type="Node" parent="." node_paths=PackedStringArray("controller")]
 script = ExtResource("2_cjbdk")

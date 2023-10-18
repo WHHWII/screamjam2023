@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvjlsytxo0nw0"]
+[gd_scene load_steps=8 format=3 uid="uid://bvjlsytxo0nw0"]
 
-[ext_resource type="Script" path="res://scripts/Door.cs" id="1_1imdn"]
 [ext_resource type="PackedScene" uid="uid://b16kygp66s67b" path="res://scenes/character.tscn" id="1_d8ews"]
 [ext_resource type="PackedScene" uid="uid://v1a62jl4wiqy" path="res://scenes/Map.tscn" id="2_31a4d"]
 [ext_resource type="PackedScene" uid="uid://dhco5wbwfv47e" path="res://scenes/key.tscn" id="3_cgugd"]
@@ -26,7 +25,6 @@ fog_light_color = Color(1, 0.94902, 0.8, 1)
 fog_light_energy = 0.02
 
 [node name="MainRoot" type="Node3D"]
-script = ExtResource("1_1imdn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ybakg")

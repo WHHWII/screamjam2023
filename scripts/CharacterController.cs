@@ -10,6 +10,8 @@ public partial class CharacterController : CharacterBody3D
 	[Export] public PlayerInfo playerInfo; // TODO change to singleton or smth
 	[Export] private RayCast3D interactRay;
 
+	[Export] public SpotLight3D flashLight; 
+
 	public const float Speed = 5.0f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -61,17 +63,23 @@ public partial class CharacterController : CharacterBody3D
 		}
 
 
-		if (Input.IsActionJustPressed("interact")){
+		if (Input.IsActionJustPressed("interact"))
+		{
 			GD.Print("Interect pressed");
-			if(targetIsInteractable)
+			if (targetIsInteractable)
 			{
 				GD.Print("Interacted with interatable.");
 				targetCol.Call("Interact", playerInfo);
-				
+
 
 
 			}
 
+		}
+
+		if (Input.IsActionJustPressed("toggle_flashlight") && playerInfo.flashLightEnergy > 0)
+		{
+			flashLight.Visible = !flashLight.Visible;
 		}
 	}
 
