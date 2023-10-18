@@ -92,7 +92,8 @@ public partial class CharacterController : CharacterBody3D
 			var inputMotion = (@event as InputEventMouseMotion);
 			RotateY(-inputMotion.Relative.X * lookSensitivity);
 			camera.RotateX(-inputMotion.Relative.Y * lookSensitivity);
-			//camera.Rotation = Mathf.Clamp(camera.Rotation.X, -Math.PI / 2, Math.PI / 2);
+			camera.Rotation = new Vector3(  Mathf.Clamp(camera.Rotation.X, -1.5f, 1.5f), camera.Rotation.Y,camera.Rotation.Z );
+
 
 		}
 	}
