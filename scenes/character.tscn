@@ -37,6 +37,7 @@ spot_angle = 49.43
 [node name="InteractRay" type="RayCast3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0612822, -0.216702, -0.540815)
 target_position = Vector3(0, 0, -2)
+collision_mask = 2
 collide_with_areas = true
 
 [node name="flashlight" parent="Camera3D" instance=ExtResource("2_08q8a")]

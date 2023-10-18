@@ -5,7 +5,7 @@ public partial class PlayerInfo : Node
 {
 	public int keys = 0;
 	[Export] public float flashLightEnergy = 100;
-	[Export] private float flashlightDrainRate = 1;
+	[Export] private float flashlightDrainRate = 3;
 	[Export] private float flashLightDimThreshold = 33.33f;
 	private float flashLightDimRate = 0;
 	
