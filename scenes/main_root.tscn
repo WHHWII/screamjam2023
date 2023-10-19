@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvjlsytxo0nw0"]
+[gd_scene load_steps=12 format=3 uid="uid://bvjlsytxo0nw0"]
 
 [ext_resource type="PackedScene" uid="uid://b16kygp66s67b" path="res://scenes/character.tscn" id="1_d8ews"]
 [ext_resource type="PackedScene" uid="uid://v1a62jl4wiqy" path="res://scenes/Map.tscn" id="2_31a4d"]
 [ext_resource type="PackedScene" uid="uid://dhco5wbwfv47e" path="res://scenes/key.tscn" id="3_cgugd"]
 [ext_resource type="PackedScene" uid="uid://dle6g0sagpqru" path="res://scenes/door.tscn" id="5_1tcwo"]
 [ext_resource type="PackedScene" uid="uid://blrcyniicqvmm" path="res://scenes/battery_pickup.tscn" id="5_fvx33"]
+[ext_resource type="PackedScene" uid="uid://dpj6xqq3a4pq0" path="res://models/rat.glb" id="6_lndk2"]
+[ext_resource type="PackedScene" uid="uid://bfducwd40tcqn" path="res://models/bottle.glb" id="7_wkwaj"]
+[ext_resource type="PackedScene" uid="uid://dpnpkswhje025" path="res://scenes/crate.tscn" id="8_daaoj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0egt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -21,7 +24,6 @@ ambient_light_sky_contribution = 0.0
 ambient_light_energy = 0.04
 tonemap_mode = 2
 glow_enabled = true
-fog_enabled = true
 fog_light_color = Color(1, 0.94902, 0.8, 1)
 fog_light_energy = 0.02
 fog_density = 0.1
@@ -47,3 +49,38 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.83982, 0.60072, 0)
 
 [node name="Door" parent="." instance=ExtResource("5_1tcwo")]
 transform = Transform3D(3.95887, 0, 0, 0, 4.89041, 0, 0, 0, 1, -0.143475, 0.108898, 1.97808)
+
+[node name="objects" type="Node3D" parent="."]
+
+[node name="bottle" parent="objects" instance=ExtResource("7_wkwaj")]
+transform = Transform3D(0.31385, 0.404085, -0.010419, -5.68164e-17, -0.0131908, -0.511586, -0.404219, 0.313745, -0.00808967, 35.6546, 0.233025, -2.97126)
+
+[node name="bottle2" parent="objects" instance=ExtResource("7_wkwaj")]
+transform = Transform3D(-0.335243, -0.386532, 0.00996641, 5.8459e-10, -0.0131908, -0.511586, 0.386661, -0.335132, 0.0086411, 16.9159, 0.233025, 3.10965)
+
+[node name="bottle3" parent="objects" instance=ExtResource("7_wkwaj")]
+transform = Transform3D(0.511757, 0, 0, 0, 0.40698, -0.310261, 0, 0.310261, 0.40698, 17.3224, 0.486442, 3.65594)
+
+[node name="rat2" parent="objects" instance=ExtResource("6_lndk2")]
+transform = Transform3D(-0.0612932, 0, -0.100442, 0, 0.117667, 0, 0.100442, 0, -0.0612932, 29.5962, 0.151188, -3.09932)
+
+[node name="rat" parent="objects" instance=ExtResource("6_lndk2")]
+transform = Transform3D(-0.00850504, 0, 0.117359, 0, 0.117667, 0, -0.117359, 0, -0.00850504, 28.2342, 0.151188, -3.09932)
+
+[node name="crate" parent="objects" instance=ExtResource("8_daaoj")]
+transform = Transform3D(0.46846, 7.61518e-06, 2.76898e-06, -7.61518e-06, 0.46846, 1.09149e-06, -2.76898e-06, -1.09149e-06, 0.46846, 11.1161, 0.577309, -2.90398)
+
+[node name="crate2" parent="objects" instance=ExtResource("8_daaoj")]
+transform = Transform3D(0.362552, 5.2024e-06, 0.296665, -7.61518e-06, 0.468459, 1.09149e-06, -0.296665, -5.66722e-06, 0.362552, 9.93625, 0.577309, -2.90398)
+
+[node name="crate3" parent="objects" instance=ExtResource("8_daaoj")]
+transform = Transform3D(-0.460755, -7.68708e-06, 0.0846114, -7.61518e-06, 0.468459, 1.09149e-06, -0.0846114, -3.01932e-07, -0.460755, 18.386, 0.577309, -3.01053)
+
+[node name="crate4" parent="objects" instance=ExtResource("8_daaoj")]
+transform = Transform3D(-0.410174, -6.14046e-06, -0.2263, -7.61518e-06, 0.468459, 1.09149e-06, 0.2263, 4.63435e-06, -0.410174, 19.5464, 0.577309, -2.79743)
+
+[node name="crate5" parent="objects" instance=ExtResource("8_daaoj")]
+transform = Transform3D(-0.460755, -7.68708e-06, 0.0846114, -7.61518e-06, 0.468459, 1.09149e-06, -0.0846114, -3.01932e-07, -0.460755, 25.5347, 0.575253, 2.85206)
+
+[node name="crate6" parent="objects" instance=ExtResource("8_daaoj")]
+transform = Transform3D(-0.410174, -6.14046e-06, -0.2263, -7.61518e-06, 0.468459, 1.09149e-06, 0.2263, 4.63435e-06, -0.410174, 26.6951, 0.575253, 3.06516)

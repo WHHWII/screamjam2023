@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv6uowf7x7023"
-path="res://.godot/imported/floor.png-55f6adbcd3b193915bde47c0e204114d.ctex"
+uid="uid://bm26sdugdgvih"
+path.s3tc="res://.godot/imported/oak_albedo.png-5aeffa4597ac7df1650265e389c424a8.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://textures/raw/floor.png"
-dest_files=["res://.godot/imported/floor.png-55f6adbcd3b193915bde47c0e204114d.ctex"]
+source_file="res://textures/raw/oak_albedo.png"
+dest_files=["res://.godot/imported/oak_albedo.png-5aeffa4597ac7df1650265e389c424a8.s3tc.ctex"]
 
 [params]
 
-compress/mode=3
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpnpkswhje025"]
+
+[ext_resource type="PackedScene" uid="uid://c57een3u13gvw" path="res://models/crate.glb" id="1_nj22o"]
+[ext_resource type="Texture2D" uid="uid://bm26sdugdgvih" path="res://textures/raw/oak_albedo.png" id="2_6c7wg"]
+[ext_resource type="Texture2D" uid="uid://bbbsadin6u8bj" path="res://textures/normal/oak_normal.png" id="3_g4aul"]
+[ext_resource type="Texture2D" uid="uid://ma3ly6qsmkrk" path="res://textures/normal/oak_roughness.png" id="4_o5ugi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wewr0"]
+albedo_texture = ExtResource("2_6c7wg")
+metallic_specular = 0.0
+roughness_texture = ExtResource("4_o5ugi")
+normal_enabled = true
+normal_texture = ExtResource("3_g4aul")
+texture_filter = 0
+texture_repeat = false
+
+[node name="crate" instance=ExtResource("1_nj22o")]
+
+[node name="crate" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_wewr0")

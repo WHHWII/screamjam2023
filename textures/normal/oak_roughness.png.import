@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgt3b7u403jvf"
-path="res://.godot/imported/image.png-7d6bcab0c2319d72376b4ac9b68fad7b.ctex"
+uid="uid://ma3ly6qsmkrk"
+path.s3tc="res://.godot/imported/oak_roughness.png-75a00a1cfe3ee32b2b17aa88a93aa55a.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://textures/raw/image.png"
-dest_files=["res://.godot/imported/image.png-7d6bcab0c2319d72376b4ac9b68fad7b.ctex"]
+source_file="res://textures/normal/oak_roughness.png"
+dest_files=["res://.godot/imported/oak_roughness.png-75a00a1cfe3ee32b2b17aa88a93aa55a.s3tc.ctex"]
 
 [params]
 
-compress/mode=3
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

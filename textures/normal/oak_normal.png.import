@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jkl0p6q2r483"
-path.s3tc="res://.godot/imported/image_n.png-ad56d68cb7869d1353ff4461fdbf4e60.s3tc.ctex"
+uid="uid://bbbsadin6u8bj"
+path.s3tc="res://.godot/imported/oak_normal.png-4e32ce14ea619f45673b7299dab266a0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/normal/image_n.png"
-dest_files=["res://.godot/imported/image_n.png-ad56d68cb7869d1353ff4461fdbf4e60.s3tc.ctex"]
+source_file="res://textures/normal/oak_normal.png"
+dest_files=["res://.godot/imported/oak_normal.png-4e32ce14ea619f45673b7299dab266a0.s3tc.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://textures/normal/image_n.png"
+roughness/src_normal="res://textures/normal/oak_normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
