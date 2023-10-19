@@ -29,6 +29,7 @@ bottom_radius = 58.276
 height = 100.0
 
 [node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("camera", "playerInfo", "interactRay", "flashLight")]
+collision_layer = 9
 script = ExtResource("1_gf5vr")
 camera = NodePath("Camera3D")
 playerInfo = NodePath("PlayerInfoContainer")
