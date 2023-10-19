@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://kta2hfr6bhiu"]
+
+[ext_resource type="Material" uid="uid://cc4lwc0ym0c6u" path="res://shaders/water.tres" id="1_lbhol"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_l6s5d"]
+subdivide_width = 200
+subdivide_depth = 200
+orientation = 1
+
+[node name="water_plane" type="MeshInstance3D"]
+transform = Transform3D(2.64472, 0, 0, 0, 1, 0, 0, 0, 2.28815, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_l6s5d")
+surface_material_override/0 = ExtResource("1_lbhol")
