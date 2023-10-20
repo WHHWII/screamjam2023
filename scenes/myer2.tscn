@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3a1auy1useuw"]
+
+[ext_resource type="PackedScene" uid="uid://htgl3rf7by7i" path="res://models/horror_mask.glb" id="1_q2wkn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjcje"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rkyrq"]
+material = SubResource("StandardMaterial3D_mjcje")
+
+[node name="myer2" type="MeshInstance3D"]
+transform = Transform3D(0.467901, 0, 0, 0, 1.41014, 0, 0, 0, 0.788663, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_rkyrq")
+
+[node name="horror_mask" parent="." instance=ExtResource("1_q2wkn")]
+transform = Transform3D(-0.00607113, -0.0052252, 4.70176, 0.00996124, 4.69888, 0.00523702, -5.72647, 0.00817925, -0.00497567, 0.389495, -0.104006, 0)

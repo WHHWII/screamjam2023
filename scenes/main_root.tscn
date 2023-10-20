@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvjlsytxo0nw0"]
+[gd_scene load_steps=13 format=3 uid="uid://bvjlsytxo0nw0"]
 
 [ext_resource type="PackedScene" uid="uid://b16kygp66s67b" path="res://scenes/character.tscn" id="1_d8ews"]
 [ext_resource type="PackedScene" uid="uid://v1a62jl4wiqy" path="res://scenes/Map.tscn" id="2_31a4d"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dpj6xqq3a4pq0" path="res://models/rat.glb" id="6_lndk2"]
 [ext_resource type="PackedScene" uid="uid://bfducwd40tcqn" path="res://models/bottle.glb" id="7_wkwaj"]
 [ext_resource type="PackedScene" uid="uid://dpnpkswhje025" path="res://scenes/crate.tscn" id="8_daaoj"]
+[ext_resource type="PackedScene" uid="uid://d3a1auy1useuw" path="res://scenes/myer2.tscn" id="9_ubmgq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0egt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -84,3 +85,6 @@ transform = Transform3D(-0.460755, -7.68708e-06, 0.0846114, -7.61518e-06, 0.4684
 
 [node name="crate6" parent="objects" instance=ExtResource("8_daaoj")]
 transform = Transform3D(-0.410174, -6.14046e-06, -0.2263, -7.61518e-06, 0.468459, 1.09149e-06, 0.2263, 4.63435e-06, -0.410174, 26.6951, 0.575253, 3.06516)
+
+[node name="myer2" parent="." instance=ExtResource("9_ubmgq")]
+transform = Transform3D(-0.467661, 0, 0.0252539, 0, 1.41014, 0, -0.0149828, 0, -0.788259, 55.7382, 1.3788, 0)
