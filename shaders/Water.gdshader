@@ -4,6 +4,7 @@ uniform vec3 albedo : source_color;
 uniform vec3 albedo2 : source_color;
 uniform float metallic : hint_range(0.0, 1.0) = 0;
 uniform float roughness : hint_range(0.0, 1.0) = 0.02;
+uniform float specular : hint_range(0.0, 1.0);
 uniform sampler2D wave;
 uniform sampler2D texture_normal;
 uniform sampler2D texture_normal2;
@@ -60,4 +61,5 @@ void fragment() {
 	METALLIC = metallic;
 	ROUGHNESS = roughness;
 	NORMAL_MAP = normal_blend;
+	SPECULAR = specular;
 }
