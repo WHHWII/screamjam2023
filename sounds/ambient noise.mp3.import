@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://djf13o5ucei8e"
+path="res://.godot/imported/ambient noise.mp3-c72bd78f14a58497a2528394eb3a7c93.mp3str"
+
+[deps]
+
+source_file="res://sounds/ambient noise.mp3"
+dest_files=["res://.godot/imported/ambient noise.mp3-c72bd78f14a58497a2528394eb3a7c93.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
