@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3a1auy1useuw"]
+[gd_scene load_steps=7 format=3 uid="uid://bd3rvehok7gcf"]
 
+[ext_resource type="Script" path="res://scripts/Michael.cs" id="1_ejkkk"]
 [ext_resource type="PackedScene" uid="uid://htgl3rf7by7i" path="res://models/horror_mask.glb" id="1_q2wkn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjcje"]
@@ -8,9 +9,58 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_rkyrq"]
 material = SubResource("StandardMaterial3D_mjcje")
 
-[node name="myer2" type="MeshInstance3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_852vb"]
+metallic_specular = 1.0
+emission_enabled = true
+emission_energy_multiplier = 7.98
+
+[sub_resource type="SphereMesh" id="SphereMesh_5gmsy"]
+material = SubResource("StandardMaterial3D_852vb")
+
+[node name="myer2" type="MeshInstance3D" node_paths=PackedStringArray("visibleToPlayerTimer", "playerLOSRay")]
 transform = Transform3D(0.467901, 0, 0, 0, 1.41014, 0, 0, 0, 0.788663, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_rkyrq")
+script = ExtResource("1_ejkkk")
+visibleToPlayerTimer = NodePath("Timer")
+playerLOSRay = NodePath("horror_mask/PlayerLineOfSiteChecker")
 
 [node name="horror_mask" parent="." instance=ExtResource("1_q2wkn")]
-transform = Transform3D(-0.00607113, -0.0052252, 4.70176, 0.00996124, 4.69888, 0.00523702, -5.72647, 0.00817925, -0.00497567, 0.389495, -0.104006, 0)
+transform = Transform3D(-10.7789, 0, -4.11323e-07, 0, 6.38733, 0, 9.42324e-07, 0, -4.70499, 0, 0, -0.589488)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="horror_mask"]
+transform = Transform3D(-0.000185139, 0.000206022, -0.152436, -0.000236651, 0.144338, 0.000323372, 0.212686, 0.000160673, -0.000196474, 0.000128165, 0.135241, -0.10849)
+mesh = SubResource("SphereMesh_5gmsy")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="horror_mask/MeshInstance3D"]
+transform = Transform3D(1.4248, 0, 0, 0, 0.697058, 0, 0, 0, 0.968366, 0.544711, 0, 0.243801)
+omni_range = 0.221445
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="horror_mask/MeshInstance3D"]
+transform = Transform3D(1.42382, 0.00185714, -0.00265826, -1.17979e-09, 0.512795, 0.000633523, 1.04774e-09, 2.61934e-10, 0.514462, 0.834394, -0.592332, 0.0142054)
+omni_range = 0.326629
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="horror_mask/MeshInstance3D"]
+transform = Transform3D(1.42382, 0.00185714, -0.00265826, -1.52903e-09, 0.512795, 0.000633523, 1.04774e-09, 2.61934e-10, 0.514462, 0.735344, -0.542305, 0.1726)
+omni_range = 0.326629
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="horror_mask/MeshInstance3D"]
+transform = Transform3D(1.42382, 0.00185714, -0.00265826, -1.70365e-09, 0.512795, 0.000633523, 1.04774e-09, 2.61934e-10, 0.514462, 0.735659, -0.542638, -0.214111)
+omni_range = 0.326629
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="horror_mask/MeshInstance3D"]
+transform = Transform3D(1.4248, 0, 0, 0, 0.697058, 0, 0, 0, 0.968366, 0.544711, 0, -0.245808)
+omni_range = 0.218902
+
+[node name="PlayerLineOfSiteChecker" type="RayCast3D" parent="horror_mask"]
+transform = Transform3D(-0.0927738, 0, 3.20927e-08, 0, 0.15656, 0, -1.40085e-08, 0, -0.21254, 0.000116972, 0.138133, 0.108858)
+target_position = Vector3(0, 0, -500)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

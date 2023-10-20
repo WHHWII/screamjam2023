@@ -1,36 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://33m5cn8lv1es"]
+[gd_scene load_steps=8 format=3 uid="uid://33m5cn8lv1es"]
 
 [ext_resource type="PackedScene" uid="uid://b16kygp66s67b" path="res://scenes/character.tscn" id="1_qshiq"]
 [ext_resource type="PackedScene" uid="uid://dle6g0sagpqru" path="res://scenes/door.tscn" id="2_gmlk5"]
 [ext_resource type="PackedScene" uid="uid://blrcyniicqvmm" path="res://scenes/battery_pickup.tscn" id="3_kvdum"]
 [ext_resource type="PackedScene" uid="uid://c1prsw4r2cd61" path="res://scenes/myer.tscn" id="4_8feki"]
-[ext_resource type="Script" path="res://scripts/MyerPoint.cs" id="5_t7p2k"]
+[ext_resource type="PackedScene" uid="uid://lq6a8y282g6d" path="res://scenes/myer_point.tscn" id="5_mi1c8"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qkici"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3775e"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4i5ga"]
-transparency = 1
-albedo_color = Color(1, 1, 0.12549, 0.87451)
-metallic = 1.0
-metallic_specular = 1.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_kt136"]
-material = SubResource("StandardMaterial3D_4i5ga")
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_66ynf"]
-radius = 7.51791
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_675b2"]
-transparency = 1
-albedo_color = Color(0.584314, 0, 0, 0.87451)
-metallic = 1.0
-metallic_specular = 1.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_gwqw5"]
-material = SubResource("StandardMaterial3D_675b2")
 
 [node name="WhitScene" type="Node3D"]
 
@@ -57,24 +36,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.916137, 0.896547, 1.97767)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.08016, 0.114129, -13.5902)
 player = NodePath("../Character")
 
-[node name="MyerPoint" type="Node3D" parent="." node_paths=PackedStringArray("spawnPoint", "hidePoint")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.237, -0.0167785, -1.52056)
-script = ExtResource("5_t7p2k")
-spawnPoint = NodePath("SpawnPoint")
-hidePoint = NodePath("HidePoint")
+[node name="MyerPoint" parent="." instance=ExtResource("5_mi1c8")]
 
-[node name="SpawnPoint" type="MeshInstance3D" parent="MyerPoint"]
-mesh = SubResource("SphereMesh_kt136")
-
-[node name="Area3D" type="Area3D" parent="MyerPoint/SpawnPoint"]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MyerPoint/SpawnPoint/Area3D"]
-shape = SubResource("CylinderShape3D_66ynf")
-
-[node name="HidePoint" type="MeshInstance3D" parent="MyerPoint"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10.3525, 0, 0)
-mesh = SubResource("SphereMesh_gwqw5")
-
-[connection signal="body_entered" from="MyerPoint/SpawnPoint/Area3D" to="MyerPoint" method="_on_area_3d_body_entered"]
+[editable path="MyerPoint"]

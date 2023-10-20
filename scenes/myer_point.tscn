@@ -12,7 +12,7 @@ metallic_specular = 1.0
 material = SubResource("StandardMaterial3D_4i5ga")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_66ynf"]
-radius = 7.51791
+radius = 6.39456
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_675b2"]
 transparency = 1
@@ -23,11 +23,12 @@ metallic_specular = 1.0
 [sub_resource type="SphereMesh" id="SphereMesh_gwqw5"]
 material = SubResource("StandardMaterial3D_675b2")
 
-[node name="MyerPoint" type="Node3D" node_paths=PackedStringArray("spawnPoint", "hidePoint")]
+[node name="MyerPoint" type="Node3D" node_paths=PackedStringArray("spawnPoint", "hidePoint", "playerDetectionArea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.237, -0.0167785, -1.52056)
 script = ExtResource("1_0fr2k")
-spawnPoint = NodePath("")
-hidePoint = NodePath("")
+spawnPoint = NodePath("SpawnPoint")
+hidePoint = NodePath("HidePoint")
+playerDetectionArea = NodePath("SpawnPoint/Area3D")
 
 [node name="SpawnPoint" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_kt136")
@@ -36,7 +37,7 @@ mesh = SubResource("SphereMesh_kt136")
 collision_layer = 8
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPoint/Area3D"]
+[node name="PlayerDetectionArea" type="CollisionShape3D" parent="SpawnPoint/Area3D"]
 shape = SubResource("CylinderShape3D_66ynf")
 
 [node name="HidePoint" type="MeshInstance3D" parent="."]

@@ -6,7 +6,9 @@ public partial class MyerPoint : Node3D
 	[Export] public MeshInstance3D spawnPoint;
 	[Export] public MeshInstance3D hidePoint;
 	[Export] public Area3D playerDetectionArea;
-	[Export] public CharacterBody3D myer;
+	[Export] public Michael myer;
+	[Export] public float hideSpeed = 200;
+	[Export] public float stareTime = 1;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -14,22 +16,17 @@ public partial class MyerPoint : Node3D
 		hidePoint.Visible = false;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
-
-
-
-
 	private void _on_area_3d_body_entered(Node3D body)
 	{
-		myer.Position = spawnPoint.Position;
-		// Replace with function body.
-	}
-	private void _on_visible_on_screen_notifier_3d_screen_entered()
-	{
+		myer.GlobalPosition = spawnPoint.GlobalPosition;
+		myer.hidePoint = hidePoint.GlobalPosition;
+		myer.hiding = false;
+		myer.Visible = true;
+		myer.hideSpeed = hideSpeed;
+		myer.visibleToPlayerTimer.WaitTime = stareTime;
+
+
+		GD.Print("Myer has moved");
 		// Replace with function body.
 	}
 }

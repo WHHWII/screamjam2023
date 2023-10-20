@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bvjlsytxo0nw0"]
+[gd_scene load_steps=14 format=3 uid="uid://bvjlsytxo0nw0"]
 
 [ext_resource type="PackedScene" uid="uid://b16kygp66s67b" path="res://scenes/character.tscn" id="1_d8ews"]
 [ext_resource type="PackedScene" uid="uid://v1a62jl4wiqy" path="res://scenes/Map.tscn" id="2_31a4d"]
@@ -8,7 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dpj6xqq3a4pq0" path="res://models/rat.glb" id="6_lndk2"]
 [ext_resource type="PackedScene" uid="uid://bfducwd40tcqn" path="res://models/bottle.glb" id="7_wkwaj"]
 [ext_resource type="PackedScene" uid="uid://dpnpkswhje025" path="res://scenes/crate.tscn" id="8_daaoj"]
-[ext_resource type="PackedScene" uid="uid://d3a1auy1useuw" path="res://scenes/myer2.tscn" id="9_ubmgq"]
+[ext_resource type="PackedScene" uid="uid://bd3rvehok7gcf" path="res://scenes/myer2.tscn" id="9_ubmgq"]
+[ext_resource type="PackedScene" uid="uid://lq6a8y282g6d" path="res://scenes/myer_point.tscn" id="10_v2boh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0egt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -25,6 +26,7 @@ ambient_light_sky_contribution = 0.0
 ambient_light_energy = 0.04
 tonemap_mode = 2
 glow_enabled = true
+fog_enabled = true
 fog_light_color = Color(1, 0.94902, 0.8, 1)
 fog_light_energy = 0.02
 fog_density = 0.1
@@ -86,5 +88,56 @@ transform = Transform3D(-0.460755, -7.68708e-06, 0.0846114, -7.61518e-06, 0.4684
 [node name="crate6" parent="objects" instance=ExtResource("8_daaoj")]
 transform = Transform3D(-0.410174, -6.14046e-06, -0.2263, -7.61518e-06, 0.468459, 1.09149e-06, 0.2263, 4.63435e-06, -0.410174, 26.6951, 0.575253, 3.06516)
 
-[node name="myer2" parent="." instance=ExtResource("9_ubmgq")]
-transform = Transform3D(-0.467661, 0, 0.0252539, 0, 1.41014, 0, -0.0149828, 0, -0.788259, 55.7382, 1.3788, 0)
+[node name="myer2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_ubmgq")]
+transform = Transform3D(-0.999487, 0, 0.0320212, 0, 1, 0, -0.0320212, 0, -0.999487, 54.6074, 0.689481, -57.7404)
+player = NodePath("../CharacterBody3D")
+
+[node name="MyerPoint" parent="." node_paths=PackedStringArray("myer") instance=ExtResource("10_v2boh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.8053, 0.0815064, -2.73805)
+myer = NodePath("../myer2")
+
+[node name="SpawnPoint" parent="MyerPoint" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63767, 0, -0.353167)
+
+[node name="PlayerDetectionArea" parent="MyerPoint/SpawnPoint/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9113, 0, 0)
+
+[node name="HidePoint" parent="MyerPoint" index="1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -29.5655, 0.48288, 7.38632)
+
+[node name="MyerPoint2" parent="." node_paths=PackedStringArray("myer") instance=ExtResource("10_v2boh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.5831, -0.211288, -54.841)
+myer = NodePath("../myer2")
+hideSpeed = 10.0
+stareTime = 2.0
+
+[node name="SpawnPoint" parent="MyerPoint2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.690331, 1.37375, 0)
+
+[node name="PlayerDetectionArea" parent="MyerPoint2/SpawnPoint/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 54.4184)
+
+[node name="HidePoint" parent="MyerPoint2" index="1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9.28813, 1.59001, -4.16554)
+
+[node name="MyerPoint3" parent="." node_paths=PackedStringArray("myer") instance=ExtResource("10_v2boh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.5722, -0.216427, -32.6243)
+myer = NodePath("../myer2")
+hideSpeed = 10.0
+stareTime = 2.0
+
+[node name="SpawnPoint" parent="MyerPoint3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.984729, 0)
+
+[node name="PlayerDetectionArea" parent="MyerPoint3/SpawnPoint/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.404335, 2.48525, 1.28493)
+
+[node name="HidePoint" parent="MyerPoint3" index="1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.65129, 0.867985, 0)
+
+[node name="Battery Pickup3" parent="." instance=ExtResource("5_fvx33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.3558, -0.0917048, -38.9984)
+
+[editable path="MyerPoint"]
+[editable path="MyerPoint2"]
+[editable path="MyerPoint3"]
