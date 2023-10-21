@@ -100,5 +100,7 @@ skeleton = NodePath("../..")
 
 [node name="PlayerInfoContainer" type="Node" parent="." node_paths=PackedStringArray("controller", "lightArr")]
 script = ExtResource("2_cjbdk")
+flashLightEnergy = 25.0
+flashlightDrainRate = 4.0
 controller = NodePath("..")
 lightArr = [NodePath("../Camera3D/flashlight/LongLight"), NodePath("../Camera3D/flashlight/LongLight/MidLight"), NodePath("../Camera3D/flashlight/LongLight/CloseLight")]
