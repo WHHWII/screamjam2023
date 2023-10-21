@@ -57,7 +57,7 @@ size = Vector3(12.501, 1, 15.9471)
 [node name="MainRoot" type="Node3D"]
 
 [node name="Battery Pickup" parent="." instance=ExtResource("5_fvx33")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7697, 0.220502, -2.90936)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89105, 0.220502, -2.90936)
 
 [node name="Battery Pickup2" parent="." instance=ExtResource("5_fvx33")]
 transform = Transform3D(0.349652, 0, -0.93688, 0, 1, 0, 0.93688, 0, 0.349652, 44.1352, 0.217446, -3.72912)
@@ -69,7 +69,7 @@ energy = 10.0
 transform = Transform3D(-0.633556, 0, 0.773697, 0, 1, 0, -0.773697, 0, -0.633556, 45.0785, 0.217446, -3.14545)
 
 [node name="StaticBody3D" parent="Battery Pickup4" index="1"]
-transform = Transform3D(0.3, 0, 1.49012e-08, 0, 0.3, 0, -1.49012e-08, 0, 0.3, 0, 0, 0)
+transform = Transform3D(0.3, 0, 2.98023e-08, 0, 0.3, 0, -2.98023e-08, 0, 0.3, 0, 0, 0)
 energy = 8.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -81,10 +81,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890612, 0)
 [node name="Map" parent="." instance=ExtResource("2_31a4d")]
 
 [node name="key" parent="." instance=ExtResource("3_cgugd")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.83982, 0.60072, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9.73091, 0.60072, 0)
 
 [node name="Door" parent="." instance=ExtResource("5_1tcwo")]
-transform = Transform3D(3.95887, 0, 0, 0, 4.89041, 0, 0, 0, 1, -0.143475, 0.108898, 1.97808)
+transform = Transform3D(3.95887, 0, 0, 0, 4.89041, 0, 0, 0, 1, -10.8736, 0.108898, 1.97808)
 
 [node name="objects" type="Node3D" parent="."]
 
