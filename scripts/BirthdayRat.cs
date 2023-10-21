@@ -17,7 +17,7 @@ public partial class BirthdayRat : Node3D
 	[Export] AudioStreamPlayer3D audioPlayer;
 	[Export] AudioStream wanderSound;
 	[Export] AudioStream hideSound;
-
+	[Export] Timer ratNoiseTimer;
 
 	Vector3 wanderAreaSize;
 	float xWander;
@@ -47,13 +47,13 @@ public partial class BirthdayRat : Node3D
 	public override void _PhysicsProcess(double delta)
 	{
 		if (!Visible) return;
+		if(!isPlayingRatNoise) PlayWanderSound();
 		if (idleWander && !isHiding && canMove)
 		{
 			GlobalPosition = GlobalPosition.MoveToward(targetPos, wanderSpeed * (float)delta);
 			if (GlobalPosition.IsEqualApprox(targetPos))
 			{
 				canMove = false;
-				PlayWanderSound();
 				wanderTimer.Start();
 			}
 
@@ -89,6 +89,7 @@ public partial class BirthdayRat : Node3D
 	}
 	private void _on_wander_zone_body_entered(Node3D body)
 	{
+		if (isHiding) return;
 		if(body.Name == "RatBlaster")
 		{
 			GD.Print($"ratblaster detected");
@@ -101,15 +102,34 @@ public partial class BirthdayRat : Node3D
 		GD.Print($"rat fleeing from {body.Name}");
 		
 		isHiding = true;
+
+		audioPlayer.Stop();
+		audioPlayer.Stream = hideSound;
+		audioPlayer.PitchScale = (float)GD.RandRange(2f, 3f);
+		audioPlayer.VolumeDb += GD.RandRange(15, 20);
+		audioPlayer.Play(GD.Randf() * 0.1f);
 	}
 
-	int clipIndex = 0;
-	
+	int clipIndex = 1;
+	bool isPlayingRatNoise = false;
 	void PlayWanderSound()
 	{
-		audioPlayer.PitchScale = (float)GD.RandRange(.8f, 1.2f);
+		isPlayingRatNoise = true;
+		audioPlayer.PitchScale = (float)GD.RandRange(1.5f, 3f);
 		audioPlayer.Play(clipIndex * 0.3f);
 		clipIndex += GD.RandRange(0, 1);
+		if (clipIndex >= 5) clipIndex = 1;
+		ratNoiseTimer.WaitTime = GD.RandRange(0.3f, 3);
+		ratNoiseTimer.Start();
 	}
 
+	private void _on_rat_noise_timer_timeout()
+	{
+		audioPlayer.Stop();
+		isPlayingRatNoise = false;
+	}
+
+
 }
+
+
