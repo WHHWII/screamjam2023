@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbpr771dv5iit"]
+
+[ext_resource type="PackedScene" uid="uid://dl6jgvvsyh8yi" path="res://models/arm.glb" id="1_7x154"]
+[ext_resource type="Texture2D" uid="uid://rbyfkjp0hkji" path="res://textures/raw/flannel.jpg" id="2_obfi1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2nxd"]
+albedo_texture = ExtResource("2_obfi1")
+
+[node name="arm" instance=ExtResource("1_7x154")]
+
+[node name="Cylinder_001" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_w2nxd")

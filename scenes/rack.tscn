@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://ceecfouebivi5"]
+
+[ext_resource type="PackedScene" uid="uid://bcq2q1512mkyi" path="res://models/rack.glb" id="1_pjkxy"]
+[ext_resource type="Texture2D" uid="uid://ckc7lwnwt66yf" path="res://textures/raw/metal_pipe_texture.png" id="2_5uasy"]
+[ext_resource type="Texture2D" uid="uid://bm26sdugdgvih" path="res://textures/raw/oak_albedo.png" id="3_mu1ub"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ubyr"]
+albedo_texture = ExtResource("2_5uasy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ek0te"]
+albedo_texture = ExtResource("2_5uasy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gfn3j"]
+albedo_texture = ExtResource("2_5uasy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k6qiy"]
+albedo_texture = ExtResource("3_mu1ub")
+
+[node name="rack" instance=ExtResource("1_pjkxy")]
+
+[node name="structure" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_2ubyr")
+
+[node name="sidebars" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_ek0te")
+
+[node name="outside" parent="." index="2"]
+material_override = SubResource("StandardMaterial3D_gfn3j")
+
+[node name="inside" parent="." index="3"]
+material_override = SubResource("StandardMaterial3D_k6qiy")
