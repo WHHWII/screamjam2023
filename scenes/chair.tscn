@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://dve6vooihnluv"]
+
+[ext_resource type="PackedScene" uid="uid://5fptuunskc2q" path="res://models/chair.glb" id="1_mblvg"]
+[ext_resource type="Texture2D" uid="uid://bm26sdugdgvih" path="res://textures/raw/oak_albedo.png" id="2_mw8kq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_748qp"]
+albedo_texture = ExtResource("2_mw8kq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rcdpd"]
+albedo_texture = ExtResource("2_mw8kq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7xnm"]
+albedo_texture = ExtResource("2_mw8kq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n00g5"]
+albedo_texture = ExtResource("2_mw8kq")
+
+[node name="chair" instance=ExtResource("1_mblvg")]
+
+[node name="legs" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_748qp")
+
+[node name="top" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_rcdpd")
+
+[node name="sup-long" parent="." index="2"]
+material_override = SubResource("StandardMaterial3D_a7xnm")
+
+[node name="sup-long_001" parent="." index="3"]
+material_override = SubResource("StandardMaterial3D_n00g5")
