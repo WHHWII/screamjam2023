@@ -20,6 +20,7 @@ public partial class CharacterController : CharacterBody3D
 	[Export] Timer footStepTimer;
 	[Export] AudioStream groundStep;
 	[Export] AudioStream waterStep;
+	[Export] AudioStreamPlayer3D flashLightAudio;
 	public float speed = 5.0f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -94,6 +95,7 @@ public partial class CharacterController : CharacterBody3D
 		{
 			flashLight.Visible = !flashLight.Visible;
 			ratBlaster.Visible = !ratBlaster.Visible;
+			flashLightAudio.Play(0.1f);
 		}
 		
 		

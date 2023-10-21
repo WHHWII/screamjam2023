@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://b16kygp66s67b"]
+[gd_scene load_steps=17 format=3 uid="uid://b16kygp66s67b"]
 
 [ext_resource type="Script" path="res://scripts/CharacterController.cs" id="1_gf5vr"]
 [ext_resource type="PackedScene" uid="uid://cdy6l2dqh34l7" path="res://models/flashlight.glb" id="2_08q8a"]
 [ext_resource type="Script" path="res://scripts/PlayerInfo.cs" id="2_cjbdk"]
 [ext_resource type="AudioStream" uid="uid://cnetjmh7hth7b" path="res://sounds/water-steps.mp3" id="3_4dpor"]
 [ext_resource type="AudioStream" uid="uid://if2v8874h4wo" path="res://sounds/footseps.mp3" id="4_wyc3j"]
+[ext_resource type="AudioStream" uid="uid://bpcmdmgbwyvr6" path="res://sounds/flashlight-toggle.mp3" id="5_qn7p1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ck5hk"]
 
@@ -95,7 +96,7 @@ _data = {
 "head_bob": SubResource("Animation_cervt")
 }
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "playerInfo", "interactRay", "flashLight", "ratBlaster", "animator", "lFootAudio", "rFootAudio", "footStepTimer")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "playerInfo", "interactRay", "flashLight", "ratBlaster", "animator", "lFootAudio", "rFootAudio", "footStepTimer", "flashLightAudio")]
 collision_layer = 9
 script = ExtResource("1_gf5vr")
 camera = NodePath("Camera3D")
@@ -109,6 +110,7 @@ rFootAudio = NodePath("Node3D/RFootStepPlayer")
 footStepTimer = NodePath("Node3D/FootStepTimer")
 groundStep = ExtResource("4_wyc3j")
 waterStep = ExtResource("3_4dpor")
+flashLightAudio = NodePath("Camera3D/flashlight/FlashLightAudio")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_ck5hk")
@@ -174,11 +176,19 @@ skeleton = NodePath("../..")
 
 [node name="RatBlaster" type="StaticBody3D" parent="Camera3D/flashlight/LongLight/MidMesh"]
 transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 1.24345e-14, 0, -7.10543e-15, 0.999999, -0.0313394, 68.6566, 0.0240486)
+visible = false
 collision_layer = 256
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/flashlight/LongLight/MidMesh/RatBlaster"]
 shape = SubResource("ConcavePolygonShape3D_m5uca")
+
+[node name="FlashLightAudio" type="AudioStreamPlayer3D" parent="Camera3D/flashlight"]
+transform = Transform3D(10, 0, 0, 0, -0.373065, -9.99304, 0, 9.99304, -0.373065, 0, 0, 0)
+stream = ExtResource("5_qn7p1")
+volume_db = -10.0
+emission_angle_enabled = true
+emission_angle_degrees = 14.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D"]
 libraries = {
@@ -212,9 +222,5 @@ stream = ExtResource("4_wyc3j")
 volume_db = -40.0
 max_db = 1.0
 emission_angle_enabled = true
-
-[node name="AudioListener3D" type="AudioListener3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41645, 0)
-current = true
 
 [connection signal="timeout" from="Node3D/FootStepTimer" to="." method="_on_foot_step_timer_timeout"]
