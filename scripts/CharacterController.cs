@@ -14,7 +14,12 @@ public partial class CharacterController : CharacterBody3D
 	[Export] public StaticBody3D ratBlaster;
 	[Export] AnimationPlayer animator;
 
-
+	[ExportGroup("Audio")]
+	[Export] AudioStreamPlayer3D lFootAudio;
+	[Export] AudioStreamPlayer3D rFootAudio;
+	[Export] Timer footStepTimer;
+	[Export] AudioStream groundStep;
+	[Export] AudioStream waterStep;
 	public float speed = 5.0f;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -40,12 +45,15 @@ public partial class CharacterController : CharacterBody3D
 			velocity.X = direction.X * speed;
 			velocity.Z = direction.Z * speed;
 			animator.Play("head_bob");
+			if(!footStepsPlaying)
+			FootStepAudio();
 		}
 		else
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, speed);
 			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, speed);
 			animator.Stop();
+			_on_foot_step_timer_timeout();
 		}
 
 		Velocity = velocity;
@@ -113,4 +121,68 @@ public partial class CharacterController : CharacterBody3D
 		}
 	}
 
+	bool inWater = false;
+	bool isRFoot = true;
+	bool footStepsPlaying;
+	int clipIndex = 0;
+	float clipCount = 6;
+	void FootStepAudio()
+	{
+		footStepsPlaying = true; 
+		if (isRFoot)
+		{
+			PlayFootStep(rFootAudio);
+			isRFoot = false;
+		}
+		else
+		{
+			PlayFootStep(lFootAudio);
+			isRFoot = true;
+		}
+
+
+
+
+	}
+
+	void PlayFootStep(AudioStreamPlayer3D foot)
+	{
+		foot.PitchScale = (float)GD.RandRange(0.7f, 1f);
+		foot.Play(clipIndex * 0.6f);
+		if (clipIndex >= clipCount)
+		{
+			clipIndex = 0;
+		}
+		else
+		{
+			++clipIndex;
+		}
+		footStepTimer.Start();
+	}
+	private void _on_foot_step_timer_timeout()
+	{
+		rFootAudio.Stop();
+		lFootAudio.Stop();
+		footStepsPlaying = false;
+	}
+
+	public void EnteredWater()
+	{
+		clipIndex = 0;
+		clipCount = 3;
+		rFootAudio.Stream = waterStep;
+		lFootAudio.Stream = waterStep;
+		speed = 3;
+	}
+	public void ExitedWater()
+	{
+		clipIndex = 0;
+		clipCount = 6;
+		rFootAudio.Stream = groundStep;
+		lFootAudio.Stream = groundStep;
+		speed = 5;
+	}
 }
+
+
+

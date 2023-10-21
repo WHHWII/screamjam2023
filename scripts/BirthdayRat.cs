@@ -52,9 +52,9 @@ public partial class BirthdayRat : Node3D
 		{
 			GlobalPosition = GlobalPosition.MoveToward(hidePoint.GlobalPosition, wanderSpeed * (float)delta);
 			LookAt(hidePoint.GlobalPosition);
-			if (GlobalPosition.IsEqualApprox(hidePoint.GlobalPosition))
+			if (Visible && GlobalPosition.IsEqualApprox(hidePoint.GlobalPosition))
 			{
-				QueueFree();
+				Visible = false;
 			}
 
 		}

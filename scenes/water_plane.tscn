@@ -1,14 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://kta2hfr6bhiu"]
+[gd_scene load_steps=5 format=3 uid="uid://kta2hfr6bhiu"]
 
 [ext_resource type="Material" uid="uid://cc4lwc0ym0c6u" path="res://shaders/water.tres" id="1_lbhol"]
+[ext_resource type="Script" path="res://scripts/WaterArea.cs" id="2_6o2hh"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_l6s5d"]
 subdivide_width = 200
 subdivide_depth = 200
 orientation = 1
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8uva1"]
+size = Vector3(1, 0.416607, 1)
+
 [node name="water_plane" type="MeshInstance3D"]
 transform = Transform3D(2.64472, 0, 0, 0, 1, 0, 0, 0, 2.28815, 0, 0, 0)
 cast_shadow = 0
 mesh = SubResource("QuadMesh_l6s5d")
 surface_material_override/0 = ExtResource("1_lbhol")
+
+[node name="PlayerDetectionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("2_6o2hh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea"]
+shape = SubResource("BoxShape3D_8uva1")
+
+[connection signal="body_entered" from="PlayerDetectionArea" to="PlayerDetectionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="PlayerDetectionArea" method="_on_body_exited"]

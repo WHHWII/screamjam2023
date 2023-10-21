@@ -179,7 +179,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28009, 0, 0.866319)
 shape = SubResource("CylinderShape3D_f311x")
 
 [node name="SpawnPoint" parent="MyerPoints/MyerPoint4" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.91139)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59174, 1.02393, -1.91139)
 
 [node name="HidePoint" parent="MyerPoints/MyerPoint4" index="3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10.3525, 0, -23.3105)
