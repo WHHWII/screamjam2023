@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvklbjc51g50e"
-path.s3tc="res://.godot/imported/horror_mask_0.png-0a5bb32da882c2ee2a9957d225aeb2c3.s3tc.ctex"
+path.s3tc="res://.godot/imported/horror_mask_0.png-02d04edccc32143e2ac16d80b18c559a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://textures/raw/horror_mask_0.png"
-dest_files=["res://.godot/imported/horror_mask_0.png-0a5bb32da882c2ee2a9957d225aeb2c3.s3tc.ctex"]
+source_file="res://models/horror_mask_0.png"
+dest_files=["res://.godot/imported/horror_mask_0.png-02d04edccc32143e2ac16d80b18c559a.s3tc.ctex"]
 
 [params]
 
