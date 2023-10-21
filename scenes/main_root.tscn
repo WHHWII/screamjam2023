@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bvjlsytxo0nw0"]
+[gd_scene load_steps=21 format=3 uid="uid://bvjlsytxo0nw0"]
 
 [ext_resource type="PackedScene" uid="uid://b16kygp66s67b" path="res://scenes/character.tscn" id="1_d8ews"]
 [ext_resource type="PackedScene" uid="uid://v1a62jl4wiqy" path="res://scenes/Map.tscn" id="2_31a4d"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dpnpkswhje025" path="res://scenes/crate.tscn" id="8_daaoj"]
 [ext_resource type="PackedScene" uid="uid://bd3rvehok7gcf" path="res://scenes/myer2.tscn" id="9_ubmgq"]
 [ext_resource type="PackedScene" uid="uid://lq6a8y282g6d" path="res://scenes/myer_point.tscn" id="10_v2boh"]
+[ext_resource type="PackedScene" uid="uid://cwkkhpndfqjn4" path="res://scenes/birthday_rat.tscn" id="11_e0ekf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0egt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -79,6 +80,7 @@ environment = SubResource("Environment_ybakg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890612, 0)
 
 [node name="Map" parent="." instance=ExtResource("2_31a4d")]
+metadata/_edit_group_ = true
 
 [node name="key" parent="." instance=ExtResource("3_cgugd")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9.73091, 0.60072, 0)
@@ -201,8 +203,47 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.65129, 0.867985, 0)
 [node name="Battery Pickup3" parent="." instance=ExtResource("5_fvx33")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.3558, -0.0917048, -38.9984)
 
+[node name="BirthdayRat" parent="." instance=ExtResource("11_e0ekf")]
+transform = Transform3D(0.973901, 0, 0.226974, 0, 1, 0, -0.226974, 0, 0.973901, 15.8109, 0.161469, -2.27022)
+
+[node name="BirthdayRat2" parent="." instance=ExtResource("11_e0ekf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4482, 0.161469, -2.27022)
+
+[node name="BirthdayRat3" parent="." instance=ExtResource("11_e0ekf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1481, 0.161469, -2.27022)
+
+[node name="BirthdayRat4" parent="." instance=ExtResource("11_e0ekf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8276, 0.161469, -2.27022)
+
+[node name="BirthdayRat5" parent="." instance=ExtResource("11_e0ekf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5121, 0.161469, -2.27022)
+
+[node name="BirthdayRat6" parent="." instance=ExtResource("11_e0ekf")]
+transform = Transform3D(0.996526, 0, -0.0832778, 0, 1, 0, 0.0832778, 0, 0.996526, 14.1518, 0.161469, -2.27022)
+
+[node name="BirthdayRat7" parent="." instance=ExtResource("11_e0ekf")]
+transform = Transform3D(-0.990146, 0, -0.140037, 0, 1, 0, 0.140037, 0, -0.990146, 14.284, 0.161469, 2.08833)
+
+[node name="BirthdayRat8" parent="." instance=ExtResource("11_e0ekf")]
+transform = Transform3D(-0.998874, 0, 0.0474377, 0, 1, 0, -0.0474377, 0, -0.998874, 14.6462, 0.161469, 2.10554)
+
+[node name="BirthdayRat9" parent="." instance=ExtResource("11_e0ekf")]
+transform = Transform3D(-0.998874, 0, 0.0474377, 0, 1, 0, -0.0474377, 0, -0.998874, 14.946, 0.161469, 2.11978)
+
+[node name="BirthdayRat10" parent="." instance=ExtResource("11_e0ekf")]
+transform = Transform3D(-0.998927, 0, 0.0463044, 0, 1, 0, -0.0463044, 0, -0.998927, 15.2661, 0.161469, 2.13498)
+
+[node name="BirthdayRat11" parent="." instance=ExtResource("11_e0ekf")]
+transform = Transform3D(-0.998874, 0, 0.0474377, 0, 1, 0, -0.0474377, 0, -0.998874, 15.5812, 0.161469, 2.14994)
+
+[node name="BirthdayRat12" parent="." instance=ExtResource("11_e0ekf")]
+transform = Transform3D(-0.963514, 0, 0.267659, 0, 1, 0, -0.267659, 0, -0.963514, 15.9412, 0.161469, 2.16704)
+
+[node name="Node3D" type="Node3D" parent="."]
+
 [editable path="Battery Pickup2"]
 [editable path="Battery Pickup4"]
 [editable path="MyerPoint"]
 [editable path="MyerPoint2"]
 [editable path="MyerPoint3"]
+[editable path="BirthdayRat12"]

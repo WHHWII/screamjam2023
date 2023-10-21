@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://3wxundbdomy7"]
+
+[ext_resource type="PackedScene" uid="uid://b16kygp66s67b" path="res://scenes/character.tscn" id="1_mm10o"]
+[ext_resource type="PackedScene" uid="uid://cwkkhpndfqjn4" path="res://scenes/birthday_rat.tscn" id="2_x78rj"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rk1j8"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_85vr3"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tsbbi"]
+transparency = 1
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7ivun"]
+material = SubResource("StandardMaterial3D_tsbbi")
+
+[node name="test" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -0.201433, -0.154405, -0.351358)
+mesh = SubResource("PlaneMesh_rk1j8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_85vr3")
+
+[node name="Player" parent="." instance=ExtResource("1_mm10o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25224, 20.7228)
+
+[node name="BirthdayRat" parent="." instance=ExtResource("2_x78rj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8406, 0, 0)
+
+[node name="HidePoint" parent="BirthdayRat" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 20.6431, 0, -2.78797)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.681114, 0)
+mesh = SubResource("CylinderMesh_7ivun")
+
+[editable path="BirthdayRat"]

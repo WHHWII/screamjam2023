@@ -1,23 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwkkhpndfqjn4"]
+[gd_scene load_steps=6 format=3 uid="uid://cwkkhpndfqjn4"]
 
 [ext_resource type="Script" path="res://scripts/BirthdayRat.cs" id="1_da2tk"]
 [ext_resource type="PackedScene" uid="uid://dpj6xqq3a4pq0" path="res://models/rat.glb" id="2_8ch1p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_snx6l"]
-size = Vector3(19.94, 1, 21.7541)
+size = Vector3(1.30611, 0.200714, 4.54112)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jws6"]
+transparency = 1
+albedo_color = Color(0.670588, 0.882353, 0.278431, 0.211765)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1xo2o"]
+material = SubResource("StandardMaterial3D_3jws6")
 
 [node name="BirthdayRat" type="Node3D"]
+
+[node name="BirthdayRat" type="Node3D" parent="." node_paths=PackedStringArray("hidePoint", "wanderTimer", "wanderArea")]
 script = ExtResource("1_da2tk")
+hidePoint = NodePath("../HidePoint")
+wanderTimer = NodePath("ScuttleTimer")
+wanderArea = NodePath("WanderZone/WanderArea")
 
-[node name="rat" parent="." instance=ExtResource("2_8ch1p")]
+[node name="rat" parent="BirthdayRat" instance=ExtResource("2_8ch1p")]
+transform = Transform3D(-0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, 0, 0, 0)
 
-[node name="Area3D" type="Area3D" parent="."]
-collision_layer = 8
-collision_mask = 8
+[node name="WanderZone" type="Area3D" parent="BirthdayRat"]
+collision_layer = 0
+collision_mask = 264
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="WanderArea" type="CollisionShape3D" parent="BirthdayRat/WanderZone"]
 shape = SubResource("BoxShape3D_snx6l")
 
-[node name="ScuttleTimer" type="Timer" parent="."]
+[node name="ScuttleTimer" type="Timer" parent="BirthdayRat"]
+one_shot = true
+autostart = true
 
-[connection signal="timeout" from="ScuttleTimer" to="." method="_on_scuttle_timer_timeout"]
+[node name="HidePoint" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -2.78797)
+mesh = SubResource("SphereMesh_1xo2o")
+skeleton = NodePath("../BirthdayRat")
+
+[connection signal="body_entered" from="BirthdayRat/WanderZone" to="BirthdayRat" method="_on_wander_zone_body_entered"]
+[connection signal="timeout" from="BirthdayRat/ScuttleTimer" to="BirthdayRat" method="_on_scuttle_timer_timeout"]

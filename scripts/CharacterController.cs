@@ -11,7 +11,9 @@ public partial class CharacterController : CharacterBody3D
 	[Export] private RayCast3D interactRay;
 
 	[Export] public SpotLight3D flashLight;
-	
+	[Export] public StaticBody3D ratBlaster;
+	[Export] AnimationPlayer animator;
+
 
 	public float speed = 5.0f;
 
@@ -37,11 +39,13 @@ public partial class CharacterController : CharacterBody3D
 		{
 			velocity.X = direction.X * speed;
 			velocity.Z = direction.Z * speed;
+			animator.Play("head_bob");
 		}
 		else
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, speed);
 			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, speed);
+			animator.Stop();
 		}
 
 		Velocity = velocity;
@@ -81,6 +85,7 @@ public partial class CharacterController : CharacterBody3D
 		if (Input.IsActionJustPressed("toggle_flashlight") && playerInfo.flashLightEnergy > 0)
 		{
 			flashLight.Visible = !flashLight.Visible;
+			ratBlaster.Visible = !ratBlaster.Visible;
 		}
 		
 		
