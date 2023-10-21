@@ -115,7 +115,7 @@ public partial class BirthdayRat : Node3D
 	void PlayWanderSound()
 	{
 		isPlayingRatNoise = true;
-		audioPlayer.PitchScale = (float)GD.RandRange(1.5f, 3f);
+		audioPlayer.PitchScale = (float)GD.RandRange(1f, 2f);
 		audioPlayer.Play(clipIndex * 0.3f);
 		clipIndex += GD.RandRange(0, 1);
 		if (clipIndex >= 5) clipIndex = 1;
