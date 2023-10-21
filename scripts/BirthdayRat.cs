@@ -11,6 +11,14 @@ public partial class BirthdayRat : Node3D
 	[Export] CollisionShape3D wanderArea;
 	[Export] float wanderSpeed = 4;
 	[Export] float hideSpeed = 50;
+
+
+	[ExportGroup("Audio")]
+	[Export] AudioStreamPlayer3D audioPlayer;
+	[Export] AudioStream wanderSound;
+	[Export] AudioStream hideSound;
+
+
 	Vector3 wanderAreaSize;
 	float xWander;
 	float zWander;
@@ -45,6 +53,7 @@ public partial class BirthdayRat : Node3D
 			if (GlobalPosition.IsEqualApprox(targetPos))
 			{
 				canMove = false;
+				PlayWanderSound();
 				wanderTimer.Start();
 			}
 
@@ -93,4 +102,14 @@ public partial class BirthdayRat : Node3D
 		
 		isHiding = true;
 	}
+
+	int clipIndex = 0;
+	
+	void PlayWanderSound()
+	{
+		audioPlayer.PitchScale = (float)GD.RandRange(.8f, 1.2f);
+		audioPlayer.Play(clipIndex * 0.3f);
+		clipIndex += GD.RandRange(0, 1);
+	}
+
 }
