@@ -22,7 +22,7 @@ public partial class BirthdayRat : Node3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		//hidePoint.Visible = false;
+		hidePoint.Visible = false;
 		spawnPoint = GlobalPosition;
 		BoxShape3D wanderShape = wanderArea.Shape as BoxShape3D;
 		wanderAreaSize = wanderShape.Size;
@@ -54,7 +54,7 @@ public partial class BirthdayRat : Node3D
 			LookAt(hidePoint.GlobalPosition);
 			if (GlobalPosition.IsEqualApprox(hidePoint.GlobalPosition))
 			{
-				GetParent().QueueFree();
+				QueueFree();
 			}
 
 		}

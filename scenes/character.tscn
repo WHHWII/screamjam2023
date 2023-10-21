@@ -166,7 +166,7 @@ mesh = SubResource("CylinderMesh_r0rts")
 skeleton = NodePath("../..")
 
 [node name="RatBlaster" type="StaticBody3D" parent="Camera3D/flashlight/LongLight/MidMesh"]
-transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 8.88178e-15, 0, 0, 0.999999, 0, 37.9699, -3.8147e-06)
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 1.24345e-14, 0, -7.10543e-15, 0.999999, -0.0313394, 68.6566, 0.0240486)
 collision_layer = 256
 collision_mask = 0
 
