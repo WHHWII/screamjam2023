@@ -213,4 +213,8 @@ volume_db = -40.0
 max_db = 1.0
 emission_angle_enabled = true
 
+[node name="AudioListener3D" type="AudioListener3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41645, 0)
+current = true
+
 [connection signal="timeout" from="Node3D/FootStepTimer" to="." method="_on_foot_step_timer_timeout"]
