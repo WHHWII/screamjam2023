@@ -66,7 +66,7 @@ public partial class CharacterController : CharacterBody3D
 
 		if (targetCol != null)
 		{
-			//GD.Print(targetCol);
+			GD.Print(targetCol);
 			targetIsInteractable = targetCol.HasMethod("Interact");
 			//GD.Print(targetIsInteractable);
 		}
@@ -93,6 +93,7 @@ public partial class CharacterController : CharacterBody3D
 
 		if (Input.IsActionJustPressed("toggle_flashlight"))
 		{
+			if (!(flashLight.GetParent() as Node3D).Visible) return;
 			flashLightAudio.Play(0.1f);
 			if (playerInfo.flashLightEnergy > 0)
 			{

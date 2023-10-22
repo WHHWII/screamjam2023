@@ -17,13 +17,13 @@ material = ExtResource("5_je30o")
 bottom_radius = 100.0
 height = 42.09
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_to5yv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6166d"]
 transparency = 1
 blend_mode = 1
 albedo_color = Color(1, 1, 1, 0.00392157)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_r0rts"]
-material = SubResource("StandardMaterial3D_to5yv")
+material = SubResource("StandardMaterial3D_6166d")
 bottom_radius = 58.276
 height = 100.0
 
@@ -127,6 +127,7 @@ collide_with_areas = true
 
 [node name="flashlight" parent="Camera3D" instance=ExtResource("2_08q8a")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.447561, -0.429094, -0.299592)
+visible = false
 
 [node name="LongLight" type="SpotLight3D" parent="Camera3D/flashlight"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -4.02007)

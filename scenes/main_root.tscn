@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://bvjlsytxo0nw0"]
+[gd_scene load_steps=25 format=3 uid="uid://bvjlsytxo0nw0"]
 
 [ext_resource type="PackedScene" uid="uid://b16kygp66s67b" path="res://scenes/character.tscn" id="1_d8ews"]
 [ext_resource type="PackedScene" uid="uid://v1a62jl4wiqy" path="res://scenes/Map.tscn" id="2_31a4d"]
 [ext_resource type="PackedScene" uid="uid://dhco5wbwfv47e" path="res://scenes/key.tscn" id="3_cgugd"]
 [ext_resource type="PackedScene" uid="uid://dle6g0sagpqru" path="res://scenes/door.tscn" id="5_1tcwo"]
 [ext_resource type="PackedScene" uid="uid://blrcyniicqvmm" path="res://scenes/battery_pickup.tscn" id="5_fvx33"]
+[ext_resource type="PackedScene" uid="uid://c724jatgw6btx" path="res://scenes/flashlight_interactable.tscn" id="9_f8rqe"]
 [ext_resource type="PackedScene" uid="uid://bd3rvehok7gcf" path="res://scenes/myer2.tscn" id="9_ubmgq"]
 [ext_resource type="PackedScene" uid="uid://lq6a8y282g6d" path="res://scenes/myer_point.tscn" id="10_v2boh"]
 [ext_resource type="PackedScene" uid="uid://cwkkhpndfqjn4" path="res://scenes/birthday_rat.tscn" id="11_e0ekf"]
@@ -389,6 +390,9 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9.73091, 0.60072, 0)
 
 [node name="Door" parent="." instance=ExtResource("5_1tcwo")]
 transform = Transform3D(3.95887, 0, 0, 0, 4.89041, 0, 0, 0, 1, -10.8736, 0.108898, 1.97808)
+
+[node name="Flashlight Interactable" parent="." instance=ExtResource("9_f8rqe")]
+transform = Transform3D(0.910763, -0.120756, 0.394878, 0.41293, 0.266342, -0.870948, 0, 0.956284, 0.292438, 1.30027, 0.707539, -4.27865)
 
 [editable path="MyerPoints/MyerPoint"]
 [editable path="MyerPoints/MyerPoint2"]
