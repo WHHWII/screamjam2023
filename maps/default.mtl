@@ -1,0 +1,9 @@
+newmtl metal_floor_rusty
+map_Kd textures\metal_floor_rusty.png
+
+newmtl metal_pipe_texture
+map_Kd textures\metal_pipe_texture.png
+
+newmtl metal_walls_rusty
+map_Kd textures\metal_walls_rusty.png
+

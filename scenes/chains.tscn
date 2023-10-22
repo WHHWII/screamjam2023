@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds0qjnb5qu6l5"]
+
+[ext_resource type="PackedScene" uid="uid://c8pa17g4il7m2" path="res://models/chains.glb" id="1_h34t8"]
+[ext_resource type="Texture2D" uid="uid://ckc7lwnwt66yf" path="res://textures/raw/metal_pipe_texture.png" id="2_50g0y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xp1al"]
+albedo_texture = ExtResource("2_50g0y")
+
+[node name="chains" instance=ExtResource("1_h34t8")]
+
+[node name="Cylinder_032" parent="." index="0"]
+transform = Transform3D(0.667414, 0.01124, 0.744602, 0.0168382, -0.999858, 5.63916e-07, 0.744496, 0.0125373, -0.667509, 0, 3.10766, 0)
+material_override = SubResource("StandardMaterial3D_xp1al")

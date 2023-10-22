@@ -3,10 +3,11 @@
 [ext_resource type="Script" path="res://scripts/AudioTrigger.cs" id="1_vmutx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7i07i"]
-size = Vector3(1.52751, 0.606869, 1.58465)
+size = Vector3(5.74952, 2.14072, 4.25486)
 
-[node name="AudioTrigger" type="Node3D"]
+[node name="AudioTrigger" type="Node3D" node_paths=PackedStringArray("audioPlayer")]
 script = ExtResource("1_vmutx")
+audioPlayer = NodePath("AudioStreamPlayer3D")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 0
