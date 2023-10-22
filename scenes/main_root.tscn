@@ -1,13 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://bvjlsytxo0nw0"]
+[gd_scene load_steps=24 format=3 uid="uid://bvjlsytxo0nw0"]
 
 [ext_resource type="PackedScene" uid="uid://b16kygp66s67b" path="res://scenes/character.tscn" id="1_d8ews"]
 [ext_resource type="PackedScene" uid="uid://v1a62jl4wiqy" path="res://scenes/Map.tscn" id="2_31a4d"]
 [ext_resource type="PackedScene" uid="uid://dhco5wbwfv47e" path="res://scenes/key.tscn" id="3_cgugd"]
 [ext_resource type="PackedScene" uid="uid://dle6g0sagpqru" path="res://scenes/door.tscn" id="5_1tcwo"]
 [ext_resource type="PackedScene" uid="uid://blrcyniicqvmm" path="res://scenes/battery_pickup.tscn" id="5_fvx33"]
-[ext_resource type="PackedScene" uid="uid://dpj6xqq3a4pq0" path="res://models/rat.glb" id="6_lndk2"]
-[ext_resource type="PackedScene" uid="uid://bfducwd40tcqn" path="res://models/bottle.glb" id="7_wkwaj"]
-[ext_resource type="PackedScene" uid="uid://dpnpkswhje025" path="res://scenes/crate.tscn" id="8_daaoj"]
 [ext_resource type="PackedScene" uid="uid://bd3rvehok7gcf" path="res://scenes/myer2.tscn" id="9_ubmgq"]
 [ext_resource type="PackedScene" uid="uid://lq6a8y282g6d" path="res://scenes/myer_point.tscn" id="10_v2boh"]
 [ext_resource type="PackedScene" uid="uid://cwkkhpndfqjn4" path="res://scenes/birthday_rat.tscn" id="11_e0ekf"]
@@ -93,41 +90,6 @@ player = NodePath("../CharacterBody3D")
 
 [node name="Map" parent="." instance=ExtResource("2_31a4d")]
 metadata/_edit_group_ = true
-
-[node name="objects" type="Node3D" parent="."]
-
-[node name="bottle" parent="objects" instance=ExtResource("7_wkwaj")]
-transform = Transform3D(0.31385, 0.404085, -0.010419, -5.68164e-17, -0.0131908, -0.511586, -0.404219, 0.313745, -0.00808967, 35.6546, 0.233025, -2.97126)
-
-[node name="bottle2" parent="objects" instance=ExtResource("7_wkwaj")]
-transform = Transform3D(-0.335243, -0.386532, 0.00996641, 5.8459e-10, -0.0131908, -0.511586, 0.386661, -0.335132, 0.0086411, 16.9159, 0.233025, 3.10965)
-
-[node name="bottle3" parent="objects" instance=ExtResource("7_wkwaj")]
-transform = Transform3D(0.511757, 0, 0, 0, 0.40698, -0.310261, 0, 0.310261, 0.40698, 17.3224, 0.486442, 3.65594)
-
-[node name="rat2" parent="objects" instance=ExtResource("6_lndk2")]
-transform = Transform3D(-0.0612932, 0, -0.100442, 0, 0.117667, 0, 0.100442, 0, -0.0612932, 29.5962, 0.151188, -3.09932)
-
-[node name="rat" parent="objects" instance=ExtResource("6_lndk2")]
-transform = Transform3D(-0.00850504, 0, 0.117359, 0, 0.117667, 0, -0.117359, 0, -0.00850504, 28.2342, 0.151188, -3.09932)
-
-[node name="crate" parent="objects" instance=ExtResource("8_daaoj")]
-transform = Transform3D(0.46846, 7.61518e-06, 2.76898e-06, -7.61518e-06, 0.46846, 1.09149e-06, -2.76898e-06, -1.09149e-06, 0.46846, 11.1161, 0.577309, -2.90398)
-
-[node name="crate2" parent="objects" instance=ExtResource("8_daaoj")]
-transform = Transform3D(0.362552, 5.2024e-06, 0.296665, -7.61518e-06, 0.468459, 1.09149e-06, -0.296665, -5.66722e-06, 0.362552, 9.93625, 0.577309, -2.90398)
-
-[node name="crate3" parent="objects" instance=ExtResource("8_daaoj")]
-transform = Transform3D(-0.460755, -7.68708e-06, 0.0846114, -7.61518e-06, 0.468459, 1.09149e-06, -0.0846114, -3.01932e-07, -0.460755, 18.386, 0.577309, -3.01053)
-
-[node name="crate4" parent="objects" instance=ExtResource("8_daaoj")]
-transform = Transform3D(-0.410174, -6.14046e-06, -0.2263, -7.61518e-06, 0.468459, 1.09149e-06, 0.2263, 4.63435e-06, -0.410174, 19.5464, 0.577309, -2.79743)
-
-[node name="crate5" parent="objects" instance=ExtResource("8_daaoj")]
-transform = Transform3D(-0.460755, -7.68708e-06, 0.0846114, -7.61518e-06, 0.468459, 1.09149e-06, -0.0846114, -3.01932e-07, -0.460755, 25.5347, 0.575253, 2.85206)
-
-[node name="crate6" parent="objects" instance=ExtResource("8_daaoj")]
-transform = Transform3D(-0.410174, -6.14046e-06, -0.2263, -7.61518e-06, 0.468459, 1.09149e-06, 0.2263, 4.63435e-06, -0.410174, 26.6951, 0.575253, 3.06516)
 
 [node name="Node3D" type="Node3D" parent="."]
 
@@ -228,6 +190,52 @@ skeleton = NodePath("../../MyerPoint6")
 
 [node name="HidePoint" parent="MyerPoints/MyerPoint6" index="3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 12.2156, 0, 0)
+skeleton = NodePath("../../MyerPoint6")
+
+[node name="MyerPoint7" parent="MyerPoints" node_paths=PackedStringArray("myer") instance=ExtResource("10_v2boh")]
+transform = Transform3D(0.979301, 0, 0.202411, 0, 1, 0, -0.202411, 0, 0.979301, 94.186, 1.41618, -64.3098)
+myer = NodePath("../../myer2")
+hideSpeed = 25.0
+
+[node name="PlayerDetectionArea" parent="MyerPoints/MyerPoint7" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3812, -1.60125, 1.6947)
+
+[node name="PlayerDetectionShape" parent="MyerPoints/MyerPoint7/PlayerDetectionArea" index="0"]
+shape = SubResource("CylinderShape3D_ksfcp")
+
+[node name="MyerFleeShape" parent="MyerPoints/MyerPoint7/MyerFleeArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7751, 0, -6.5688)
+shape = SubResource("CylinderShape3D_k6bnd")
+
+[node name="SpawnPoint" parent="MyerPoints/MyerPoint7" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60996, 0, -0.212711)
+skeleton = NodePath("../../MyerPoint6")
+
+[node name="HidePoint" parent="MyerPoints/MyerPoint7" index="3"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.96434, 0, 6.86069)
+skeleton = NodePath("../../MyerPoint6")
+
+[node name="MyerPoint8" parent="MyerPoints" node_paths=PackedStringArray("myer") instance=ExtResource("10_v2boh")]
+transform = Transform3D(0.979301, 0, 0.202411, 0, 1, 0, -0.202411, 0, 0.979301, 132.067, 1.41618, -62.7785)
+myer = NodePath("../../myer2")
+hideSpeed = 25.0
+
+[node name="PlayerDetectionArea" parent="MyerPoints/MyerPoint8" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.7783, -0.472575, -0.798515)
+
+[node name="PlayerDetectionShape" parent="MyerPoints/MyerPoint8/PlayerDetectionArea" index="0"]
+shape = SubResource("CylinderShape3D_ksfcp")
+
+[node name="MyerFleeShape" parent="MyerPoints/MyerPoint8/MyerFleeArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7751, 0, -6.5688)
+shape = SubResource("CylinderShape3D_k6bnd")
+
+[node name="SpawnPoint" parent="MyerPoints/MyerPoint8" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60996, 0, -0.212711)
+skeleton = NodePath("../../MyerPoint6")
+
+[node name="HidePoint" parent="MyerPoints/MyerPoint8" index="3"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.96434, 0, 6.86069)
 skeleton = NodePath("../../MyerPoint6")
 
 [node name="MyerPoint5" parent="MyerPoints" node_paths=PackedStringArray("myer") instance=ExtResource("10_v2boh")]
@@ -356,6 +364,26 @@ energy = 8.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.3558, -0.0917048, -38.9984)
 skeleton = NodePath("../..")
 
+[node name="Battery Pickup5" parent="Batteries" instance=ExtResource("5_fvx33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.4494, 3.8363, -27.7217)
+skeleton = NodePath("../..")
+
+[node name="Battery Pickup7" parent="Batteries" instance=ExtResource("5_fvx33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.163, 0.873837, -50.6285)
+skeleton = NodePath("../..")
+
+[node name="Battery Pickup8" parent="Batteries" instance=ExtResource("5_fvx33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.903, 0.239525, 4.25103)
+skeleton = NodePath("../..")
+
+[node name="Battery Pickup9" parent="Batteries" instance=ExtResource("5_fvx33")]
+transform = Transform3D(0.817235, 0, 0.576304, 0, 1, 0, -0.576304, 0, 0.817235, 112.009, 4.494, 66.4704)
+skeleton = NodePath("../..")
+
+[node name="Battery Pickup10" parent="Batteries" instance=ExtResource("5_fvx33")]
+transform = Transform3D(0.617462, 0, -0.786601, 0, 1, 0, 0.786601, 0, 0.617462, 110.888, 4.494, 66.4704)
+skeleton = NodePath("../..")
+
 [node name="key" parent="." instance=ExtResource("3_cgugd")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9.73091, 0.60072, 0)
 
@@ -366,6 +394,8 @@ transform = Transform3D(3.95887, 0, 0, 0, 4.89041, 0, 0, 0, 1, -10.8736, 0.10889
 [editable path="MyerPoints/MyerPoint2"]
 [editable path="MyerPoints/MyerPoint3"]
 [editable path="MyerPoints/MyerPoint6"]
+[editable path="MyerPoints/MyerPoint7"]
+[editable path="MyerPoints/MyerPoint8"]
 [editable path="MyerPoints/MyerPoint5"]
 [editable path="MyerPoints/MyerPoint4"]
 [editable path="rats/BirthdayRat12"]
