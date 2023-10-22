@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bvjlsytxo0nw0"]
+[gd_scene load_steps=27 format=3 uid="uid://bvjlsytxo0nw0"]
 
 [ext_resource type="PackedScene" uid="uid://b16kygp66s67b" path="res://scenes/character.tscn" id="1_d8ews"]
 [ext_resource type="PackedScene" uid="uid://v1a62jl4wiqy" path="res://scenes/Map.tscn" id="2_31a4d"]
@@ -77,6 +77,14 @@ radius = 3.96429
 resource_local_to_scene = true
 radius = 4.79865
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ehnny"]
+resource_local_to_scene = true
+radius = 3.96429
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2sqgo"]
+resource_local_to_scene = true
+radius = 3.86422
+
 [node name="MainRoot" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -84,6 +92,8 @@ environment = SubResource("Environment_ybakg")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_d8ews")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890612, 0)
+
+[node name="inside player" type="MeshInstance3D" parent="CharacterBody3D"]
 
 [node name="myer2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_ubmgq")]
 transform = Transform3D(-0.999487, 0, 0.0320212, 0, 1, 0, -0.0320212, 0, -0.999487, 54.6074, 0.689481, -57.7404)
@@ -398,6 +408,32 @@ transform = Transform3D(3.95887, 0, 0, 0, 4.89041, 0, 0, 0, 1, -10.8736, 0.10889
 [node name="Flashlight Interactable" parent="." instance=ExtResource("9_f8rqe")]
 transform = Transform3D(0.910763, -0.120756, 0.394878, 0.307954, 0.835703, -0.454714, -0.275092, 0.53574, 0.798314, 1.17795, 0.248616, -3.92835)
 
+[node name="Key Body" parent="." instance=ExtResource("3_cgugd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 181.619, 5.28582, 59.0275)
+
+[node name="FinalMyerPoint" parent="." node_paths=PackedStringArray("myer") instance=ExtResource("10_v2boh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.41, 5.12337, 58.9281)
+myer = NodePath("../myer2")
+hideSpeed = 10.0
+
+[node name="PlayerDetectionArea" parent="FinalMyerPoint" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3444, 0, 0)
+
+[node name="PlayerDetectionShape" parent="FinalMyerPoint/PlayerDetectionArea" index="0"]
+shape = SubResource("CylinderShape3D_ehnny")
+
+[node name="MyerFleeArea" parent="FinalMyerPoint" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.34339, 0)
+
+[node name="MyerFleeShape" parent="FinalMyerPoint/MyerFleeArea" index="0"]
+shape = SubResource("CylinderShape3D_2sqgo")
+
+[node name="HidePoint" parent="FinalMyerPoint" index="3"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 22.634, 0, 0)
+
+[node name="Battery Pickup" parent="." instance=ExtResource("5_fvx33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.721, 4.48442, 58.9491)
+
 [editable path="MyerPoints/MyerPoint"]
 [editable path="MyerPoints/MyerPoint2"]
 [editable path="MyerPoints/MyerPoint3"]
@@ -409,3 +445,4 @@ transform = Transform3D(0.910763, -0.120756, 0.394878, 0.307954, 0.835703, -0.45
 [editable path="rats/BirthdayRat12"]
 [editable path="Batteries/Battery Pickup2"]
 [editable path="Batteries/Battery Pickup4"]
+[editable path="FinalMyerPoint"]

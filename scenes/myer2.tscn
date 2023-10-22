@@ -31,12 +31,12 @@ playerLOSRay = NodePath("horror_mask/PlayerLineOfSiteChecker")
 footstepAudio = NodePath("AudioStreamPlayer3D")
 footStepTimer = NodePath("AudioStreamPlayer3D/FootStepTimer")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="PlayerDetectionAREa" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 1024
-collision_mask = 0
+collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionAREa"]
 shape = SubResource("CapsuleShape3D_a1wet")
 
 [node name="horror_mask" parent="." instance=ExtResource("1_q2wkn")]
@@ -92,6 +92,7 @@ doppler_tracking = 2
 wait_time = 0.6
 one_shot = true
 
+[connection signal="body_entered" from="PlayerDetectionAREa" to="." method="_on_player_detection_ar_ea_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

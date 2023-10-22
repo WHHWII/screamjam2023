@@ -144,7 +144,14 @@ public partial class Michael : Node3D
 		footstepAudio.Stop();
 		footStepsPlaying = false;
 	}
+	private void _on_player_detection_ar_ea_body_entered(Node3D body)
+	{
+		GetTree().Quit();
+	}
 }
+
+
+
 
 
 
