@@ -40,14 +40,6 @@ radius = 3.96429
 resource_local_to_scene = true
 radius = 3.86422
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_entf8"]
-resource_local_to_scene = true
-radius = 3.96429
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_f311x"]
-resource_local_to_scene = true
-radius = 4.79865
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_q1hyq"]
 resource_local_to_scene = true
 radius = 3.96429
@@ -78,6 +70,14 @@ radius = 3.96429
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0x5l0"]
 resource_local_to_scene = true
 radius = 9.19903
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_entf8"]
+resource_local_to_scene = true
+radius = 3.96429
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_f311x"]
+resource_local_to_scene = true
+radius = 4.79865
 
 [node name="MainRoot" type="Node3D"]
 
@@ -155,34 +155,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63767, 0, -5.66011)
 
 [node name="HidePoint" parent="MyerPoints/MyerPoint" index="3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.15683, 0.48288, -19.9775)
-
-[node name="MyerPoint4" parent="MyerPoints" node_paths=PackedStringArray("myer") instance=ExtResource("10_v2boh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.9839, -0.0167785, -1.52056)
-myer = NodePath("../../myer2")
-hideSpeed = 125.0
-stareTime = 0.2
-approachFromHidePoint = true
-
-[node name="PlayerDetectionArea" parent="MyerPoints/MyerPoint4" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.6879, 0, -4.76492)
-collision_layer = 0
-collision_mask = 264
-
-[node name="PlayerDetectionShape" parent="MyerPoints/MyerPoint4/PlayerDetectionArea" index="0"]
-shape = SubResource("CylinderShape3D_entf8")
-
-[node name="MyerFleeArea" parent="MyerPoints/MyerPoint4" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1164, 0, 0)
-
-[node name="MyerFleeShape" parent="MyerPoints/MyerPoint4/MyerFleeArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28009, 0, 0.866319)
-shape = SubResource("CylinderShape3D_f311x")
-
-[node name="SpawnPoint" parent="MyerPoints/MyerPoint4" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59174, 1.02393, -3.34571)
-
-[node name="HidePoint" parent="MyerPoints/MyerPoint4" index="3"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10.3525, 0, -23.3105)
 
 [node name="MyerPoint2" parent="MyerPoints" node_paths=PackedStringArray("myer") instance=ExtResource("10_v2boh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.5831, -0.211288, -54.841)
@@ -281,6 +253,34 @@ skeleton = NodePath("../../MyerPoint5")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 5.78743, 0, -2.3866)
 skeleton = NodePath("../../MyerPoint5")
 
+[node name="MyerPoint4" parent="MyerPoints" node_paths=PackedStringArray("myer") instance=ExtResource("10_v2boh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.9839, -0.0167785, -1.52056)
+myer = NodePath("../../myer2")
+hideSpeed = 125.0
+stareTime = 0.2
+approachFromHidePoint = true
+
+[node name="PlayerDetectionArea" parent="MyerPoints/MyerPoint4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.6879, 0, -4.76492)
+collision_layer = 0
+collision_mask = 264
+
+[node name="PlayerDetectionShape" parent="MyerPoints/MyerPoint4/PlayerDetectionArea" index="0"]
+shape = SubResource("CylinderShape3D_entf8")
+
+[node name="MyerFleeArea" parent="MyerPoints/MyerPoint4" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1164, 0, 0)
+
+[node name="MyerFleeShape" parent="MyerPoints/MyerPoint4/MyerFleeArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28009, 0, 0.866319)
+shape = SubResource("CylinderShape3D_f311x")
+
+[node name="SpawnPoint" parent="MyerPoints/MyerPoint4" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59174, 1.02393, -3.34571)
+
+[node name="HidePoint" parent="MyerPoints/MyerPoint4" index="3"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10.3525, 0, -23.3105)
+
 [node name="rats" type="Node" parent="."]
 
 [node name="BirthdayRat" parent="rats" instance=ExtResource("11_e0ekf")]
@@ -363,11 +363,11 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9.73091, 0.60072, 0)
 transform = Transform3D(3.95887, 0, 0, 0, 4.89041, 0, 0, 0, 1, -10.8736, 0.108898, 1.97808)
 
 [editable path="MyerPoints/MyerPoint"]
-[editable path="MyerPoints/MyerPoint4"]
 [editable path="MyerPoints/MyerPoint2"]
 [editable path="MyerPoints/MyerPoint3"]
 [editable path="MyerPoints/MyerPoint6"]
 [editable path="MyerPoints/MyerPoint5"]
+[editable path="MyerPoints/MyerPoint4"]
 [editable path="rats/BirthdayRat12"]
 [editable path="Batteries/Battery Pickup2"]
 [editable path="Batteries/Battery Pickup4"]
