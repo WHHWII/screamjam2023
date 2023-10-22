@@ -91,11 +91,15 @@ public partial class CharacterController : CharacterBody3D
 
 		}
 
-		if (Input.IsActionJustPressed("toggle_flashlight") && playerInfo.flashLightEnergy > 0)
+		if (Input.IsActionJustPressed("toggle_flashlight"))
 		{
-			flashLight.Visible = !flashLight.Visible;
-			ratBlaster.Visible = !ratBlaster.Visible;
 			flashLightAudio.Play(0.1f);
+			if (playerInfo.flashLightEnergy > 0)
+			{
+				flashLight.Visible = !flashLight.Visible;
+				ratBlaster.Visible = !ratBlaster.Visible;
+
+			}
 		}
 		
 		
@@ -105,6 +109,7 @@ public partial class CharacterController : CharacterBody3D
 		}
 		if (Input.IsActionJustPressed("dev_energy")){
 			playerInfo.flashLightEnergy += 30;
+			playerInfo.RestoreLightLevels();
 		}
 	}
 

@@ -5,19 +5,15 @@
 [ext_resource type="Script" path="res://scripts/PlayerInfo.cs" id="2_cjbdk"]
 [ext_resource type="AudioStream" uid="uid://cnetjmh7hth7b" path="res://sounds/water-steps.mp3" id="3_4dpor"]
 [ext_resource type="AudioStream" uid="uid://if2v8874h4wo" path="res://sounds/footseps.mp3" id="4_wyc3j"]
+[ext_resource type="Material" uid="uid://bxqu726wld6sb" path="res://scenes/CloseFlashlightCone.tres" id="5_je30o"]
 [ext_resource type="AudioStream" uid="uid://bpcmdmgbwyvr6" path="res://sounds/flashlight-toggle.mp3" id="5_qn7p1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ck5hk"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_f7oui"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0rbh"]
-transparency = 1
-blend_mode = 1
-albedo_color = Color(1, 1, 1, 0.0352941)
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_xnbti"]
-material = SubResource("StandardMaterial3D_u0rbh")
+material = ExtResource("5_je30o")
 bottom_radius = 100.0
 height = 42.09
 
@@ -197,10 +193,11 @@ libraries = {
 
 [node name="PlayerInfoContainer" type="Node" parent="." node_paths=PackedStringArray("controller", "lightArr")]
 script = ExtResource("2_cjbdk")
+controller = NodePath("..")
 flashLightEnergy = 25.0
 flashlightDrainRate = 4.0
-controller = NodePath("..")
 lightArr = [NodePath("../Camera3D/flashlight/LongLight"), NodePath("../Camera3D/flashlight/LongLight/MidLight"), NodePath("../Camera3D/flashlight/LongLight/CloseLight")]
+flashConeMat = ExtResource("5_je30o")
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.698991, 0)
@@ -214,6 +211,7 @@ transform = Transform3D(-4.06913e-08, 0.36525, 0.930909, 1.59656e-08, 0.930909, 
 stream = ExtResource("4_wyc3j")
 volume_db = -40.0
 max_db = 1.0
+panning_strength = 1.5
 emission_angle_enabled = true
 
 [node name="LFootStepPlayer" type="AudioStreamPlayer3D" parent="Node3D"]
@@ -221,6 +219,7 @@ transform = Transform3D(-4.37114e-08, -0.364877, -0.931056, 0, 0.931056, -0.3648
 stream = ExtResource("4_wyc3j")
 volume_db = -40.0
 max_db = 1.0
+panning_strength = 1.5
 emission_angle_enabled = true
 
 [connection signal="timeout" from="Node3D/FootStepTimer" to="." method="_on_foot_step_timer_timeout"]

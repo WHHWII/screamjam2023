@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bd3rvehok7gcf"]
+[gd_scene load_steps=8 format=3 uid="uid://bd3rvehok7gcf"]
 
 [ext_resource type="Script" path="res://scripts/Michael.cs" id="1_ejkkk"]
 [ext_resource type="PackedScene" uid="uid://htgl3rf7by7i" path="res://models/horror_mask.glb" id="1_q2wkn"]
+[ext_resource type="AudioStream" uid="uid://if2v8874h4wo" path="res://sounds/footseps.mp3" id="3_miknx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjcje"]
 albedo_color = Color(0, 0, 0, 1)
@@ -17,12 +18,14 @@ emission_energy_multiplier = 7.98
 [sub_resource type="SphereMesh" id="SphereMesh_5gmsy"]
 material = SubResource("StandardMaterial3D_852vb")
 
-[node name="myer2" type="MeshInstance3D" node_paths=PackedStringArray("visibleToPlayerTimer", "playerLOSRay")]
+[node name="myer2" type="MeshInstance3D" node_paths=PackedStringArray("visibleToPlayerTimer", "playerLOSRay", "footstepAudio", "footStepTimer")]
 transform = Transform3D(0.467901, 0, 0, 0, 1.41014, 0, 0, 0, 0.788663, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_rkyrq")
 script = ExtResource("1_ejkkk")
 visibleToPlayerTimer = NodePath("Timer")
 playerLOSRay = NodePath("horror_mask/PlayerLineOfSiteChecker")
+footstepAudio = NodePath("AudioStreamPlayer3D")
+footStepTimer = NodePath("AudioStreamPlayer3D/FootStepTimer")
 
 [node name="horror_mask" parent="." instance=ExtResource("1_q2wkn")]
 transform = Transform3D(-10.7789, 0, -4.11323e-07, 0, 6.38733, 0, 9.42324e-07, 0, -4.70499, 0, 0, -0.589488)
@@ -61,6 +64,22 @@ one_shot = true
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(2.1372, 0, 0, 0, 0.676709, 0.212031, 0, -0.379115, 1.20997, 0, -0.49737, 0.0247364)
+stream = ExtResource("3_miknx")
+unit_size = 5.0
+pitch_scale = 0.8
+panning_strength = 3.0
+emission_angle_enabled = true
+emission_angle_degrees = 9.0
+attenuation_filter_cutoff_hz = 2000.0
+doppler_tracking = 2
+
+[node name="FootStepTimer" type="Timer" parent="AudioStreamPlayer3D"]
+wait_time = 0.6
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+[connection signal="timeout" from="AudioStreamPlayer3D/FootStepTimer" to="." method="_on_foot_step_timer_timeout"]

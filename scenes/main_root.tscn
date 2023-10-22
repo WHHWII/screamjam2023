@@ -160,7 +160,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.15683, 0.48288, -19.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.9839, -0.0167785, -1.52056)
 myer = NodePath("../../myer2")
 hideSpeed = 125.0
-stareTime = 0.3
+stareTime = 0.2
 approachFromHidePoint = true
 
 [node name="PlayerDetectionArea" parent="MyerPoints/MyerPoint4" index="0"]
@@ -179,7 +179,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28009, 0, 0.866319)
 shape = SubResource("CylinderShape3D_f311x")
 
 [node name="SpawnPoint" parent="MyerPoints/MyerPoint4" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59174, 1.02393, -1.91139)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59174, 1.02393, -3.34571)
 
 [node name="HidePoint" parent="MyerPoints/MyerPoint4" index="3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10.3525, 0, -23.3105)
@@ -203,7 +203,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7216, 0, 21.5964)
 shape = SubResource("CylinderShape3D_1f7oo")
 
 [node name="SpawnPoint" parent="MyerPoints/MyerPoint2" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.690331, 1.37375, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.46843, 1.4545, -20.5039)
 
 [node name="HidePoint" parent="MyerPoints/MyerPoint2" index="3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9.28813, 1.59001, -4.16554)
@@ -229,7 +229,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.61408, 0.834595, -4.75103)
 shape = SubResource("BoxShape3D_q7v1o")
 
 [node name="SpawnPoint" parent="MyerPoints/MyerPoint3" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.984729, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.959839, 0.984729, 0)
 
 [node name="HidePoint" parent="MyerPoints/MyerPoint3" index="3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.65129, 0.867985, 0)

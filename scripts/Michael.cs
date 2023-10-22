@@ -9,15 +9,22 @@ public partial class Michael : Node3D
 	[Export] public Vector3 hidePoint;
 	[Export] public Vector3 showPoint;
 	[Export] public RayCast3D playerLOSRay;
+	
 	public bool hiding = false;
 	public bool aproaching = false;
 	public float hideSpeed;
 
 	bool playerInLOS = false;
 	bool onPlayerScreen = false;
+
+
+	[ExportGroup("Audio")]
+	[Export] public AudioStreamPlayer3D footstepAudio;
+	[Export] Timer footStepTimer;
 	public override void _Ready()
 	{
 		hidePoint = Position;
+		origVolume = footstepAudio.VolumeDb;
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -43,6 +50,9 @@ public partial class Michael : Node3D
 			{
 				playerInLOS = false;
 			}
+
+
+
 		}
 		else
 		{
@@ -50,7 +60,12 @@ public partial class Michael : Node3D
 			if (GlobalPosition.IsEqualApprox(hidePoint))
 			{
 				//Visible = false;
+
 			}
+			if (!footStepsPlaying)
+				PlayFootStep(footstepAudio);
+
+
 		}
 
 		if (playerInLOS && onPlayerScreen)
@@ -93,11 +108,46 @@ public partial class Michael : Node3D
 	}
 	private void _on_timer_timeout()
 	{
+		RunFromPlayer();
+	}
+	public void RunFromPlayer()
+	{
 		GD.Print("Myer is fleeing");
 		hiding = true;
+		footstepAudio.Play();
 		//LookAt(hidePoint);
 	}
+	bool footStepsPlaying;
+	int clipIndex = 0;
+	int clipCount = 6;
+	float origVolume;
+	void PlayFootStep(AudioStreamPlayer3D foot)
+	{
+		foot.PitchScale = (float)GD.RandRange(0.7f, 1f);
+		foot.Play(clipIndex * 0.6f);
+		if (clipIndex >= clipCount)
+		{
+			clipIndex = 0;
+			foot.VolumeDb = origVolume;
+		}
+		else
+		{
+			++clipIndex;
+			foot.VolumeDb -= 4;
+
+		}
+		footStepTimer.Start();
+		footStepsPlaying = true;
+	}
+	private void _on_foot_step_timer_timeout()
+	{
+		footstepAudio.Stop();
+		footStepsPlaying = false;
+	}
 }
+
+
+
 
 
 

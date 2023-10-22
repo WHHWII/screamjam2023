@@ -46,12 +46,13 @@ public partial class MyerPoint : Node3D
 
 		myer.MyerWrapper();
 		GD.Print("Myer has moved");
+		myer.footstepAudio.Play();
 		// Replace with function body.
 
 	}
 	private void _on_myer_flee_area_body_entered(Node3D body)
 	{
-		myer.hiding = true;
+		myer.RunFromPlayer();
 	}
 }
 
