@@ -9,6 +9,7 @@ public partial class CharacterController : CharacterBody3D
 	float lookSensitivity = (float)ProjectSettings.GetSetting("player/look_sensitivity");
 	[Export] public PlayerInfo playerInfo; // TODO change to singleton or smth
 	[Export] private RayCast3D interactRay;
+	[Export] private Light3D interactLight;
 
 	[Export] public SpotLight3D flashLight;
 	[Export] public StaticBody3D ratBlaster;
@@ -73,7 +74,18 @@ public partial class CharacterController : CharacterBody3D
 
 		if (targetIsInteractable)
 		{
-			//display prompt
+			Node3D interNode = ((targetCol as Node).GetParent() as Node3D);
+			if (interNode != null)
+			{
+				interactLight.Visible = true;
+				Vector3 lightPos = interNode.GlobalPosition;
+				interactLight.GlobalPosition = lightPos;
+				
+			}
+		}
+		else
+		{
+			interactLight.Visible = false;
 		}
 
 

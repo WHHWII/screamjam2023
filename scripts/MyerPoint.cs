@@ -21,6 +21,9 @@ public partial class MyerPoint : Node3D
 
 	private void _on_area_3d_body_entered(Node3D body)
 	{
+		CharacterController player = body as CharacterController;
+		player.playerInfo.hasBeenMyered = false;
+		myer.footstepAudio.Stop();
 		if (hasBeenTriggered) return;
 		hasBeenTriggered = true;
 		isActive = true;
@@ -52,6 +55,7 @@ public partial class MyerPoint : Node3D
 	}
 	private void _on_myer_flee_area_body_entered(Node3D body)
 	{
+		if (!hasBeenTriggered) return;
 		myer.RunFromPlayer();
 	}
 }

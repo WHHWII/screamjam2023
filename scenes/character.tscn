@@ -227,12 +227,13 @@ _data = {
 "head_bob": SubResource("Animation_cervt")
 }
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "playerInfo", "interactRay", "flashLight", "ratBlaster", "animator", "lFootAudio", "rFootAudio", "footStepTimer", "flashLightAudio")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "playerInfo", "interactRay", "interactLight", "flashLight", "ratBlaster", "animator", "lFootAudio", "rFootAudio", "footStepTimer", "flashLightAudio")]
 collision_layer = 9
 script = ExtResource("1_gf5vr")
 camera = NodePath("Camera3D")
 playerInfo = NodePath("PlayerInfoContainer")
 interactRay = NodePath("Camera3D/InteractRay")
+interactLight = NodePath("Camera3D/InteractRay/InteractLight")
 flashLight = NodePath("Camera3D/flashlight/LongLight")
 ratBlaster = NodePath("Camera3D/flashlight/LongLight/MidMesh/RatBlaster")
 animator = NodePath("Camera3D/AnimationPlayer")
@@ -259,6 +260,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0612822, -0.216702, -0.540
 target_position = Vector3(0, 0, -2)
 collision_mask = 2
 collide_with_areas = true
+
+[node name="InteractLight" type="OmniLight3D" parent="Camera3D/InteractRay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.792665)
+light_color = Color(0.0392157, 0.729412, 0, 1)
+light_energy = 20.0
+light_indirect_energy = 0.0
+light_specular = 20.0
+omni_range = 0.327096
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D/InteractRay/InteractLight"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.406373, 0)
+light_negative = true
+spot_range = 0.5
+spot_angle = 35.2687
 
 [node name="MyerRay" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -45)

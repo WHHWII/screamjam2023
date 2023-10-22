@@ -58,7 +58,7 @@ public partial class BirthdayRat : Node3D
 			}
 
 		}
-		else if (isHiding)
+		else if (isHiding && Visible)
 		{
 			GlobalPosition = GlobalPosition.MoveToward(hidePoint.GlobalPosition, wanderSpeed * (float)delta);
 			LookAt(hidePoint.GlobalPosition);

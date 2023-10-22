@@ -14,8 +14,8 @@ public partial class Michael : Node3D
 	public bool aproaching = false;
 	public float hideSpeed;
 
-	bool playerInLOS = false;
-	bool onPlayerScreen = false;
+	public bool playerInLOS = false;
+	public bool onPlayerScreen = false;
 
 
 	[ExportGroup("Audio")]
@@ -59,7 +59,7 @@ public partial class Michael : Node3D
 			GlobalPosition = GlobalPosition.MoveToward(hidePoint, hideSpeed * (float)delta);
 			if (GlobalPosition.IsEqualApprox(hidePoint))
 			{
-				//Visible = false;
+				Visible = false;
 
 			}
 			if (!footStepsPlaying)
@@ -119,7 +119,7 @@ public partial class Michael : Node3D
 	}
 	bool footStepsPlaying;
 	int clipIndex = 0;
-	int clipCount = 6;
+	int clipCount = 7;
 	float origVolume;
 	void PlayFootStep(AudioStreamPlayer3D foot)
 	{

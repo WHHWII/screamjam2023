@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Michael.cs" id="1_ejkkk"]
 [ext_resource type="PackedScene" uid="uid://htgl3rf7by7i" path="res://models/horror_mask.glb" id="1_q2wkn"]
-[ext_resource type="AudioStream" uid="uid://if2v8874h4wo" path="res://sounds/footseps.mp3" id="3_miknx"]
+[ext_resource type="AudioStream" uid="uid://ddy3lsljplk3f" path="res://sounds/quiet footsteps.mp3" id="3_5nm1e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjcje"]
 albedo_color = Color(0, 0, 0, 1)
@@ -78,7 +78,8 @@ one_shot = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(2.1372, 0, 0, 0, 0.676709, 0.212031, 0, -0.379115, 1.20997, 0, -0.49737, 0.0247364)
-stream = ExtResource("3_miknx")
+stream = ExtResource("3_5nm1e")
+volume_db = 10.0
 unit_size = 5.0
 pitch_scale = 0.8
 panning_strength = 3.0

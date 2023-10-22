@@ -8,6 +8,7 @@ public partial class PlayerInfo : Node
 
 	[ExportGroup("Myer")]
 	[Export] RayCast3D myerRay;
+	public bool hasBeenMyered;
 	[Export] AudioStreamPlayer3D jumpScareAudio;
 
 	[ExportGroup("Flashlight")]
@@ -24,6 +25,7 @@ public partial class PlayerInfo : Node
 	Color clear = new Color(0, 0, 0, 0);
 	Node3D flashlightParent;
 	bool hasFlickered = false;
+	
 	public override void _Ready()
 	{
 		flashlightParent = controller.flashLight.GetParent() as Node3D;
@@ -66,17 +68,26 @@ public partial class PlayerInfo : Node
 			}
 		}
 
-		var targetMyer = myerRay.GetCollider(); // filtered by col masking
-		if(targetMyer != null)
+		var targetCol = myerRay.GetCollider(); 
+		if(targetCol != null)
 		{
-			var myerBody = targetMyer as Node3D;
-			Michael myerScript = myerBody.GetParent() as Michael;
-			if (myerScript.hiding && !jumpScareAudio.Playing)
+			var colNode = targetCol as Node3D;
+			Michael myerScript = colNode.GetParent() as Michael;
+			bool myerClose = colNode.GlobalPosition.DistanceTo(controller.GlobalPosition) <= 20;
+			if(myerScript != null)
 			{
-				jumpScareAudio.Play();
+				if (myerScript.hiding && !jumpScareAudio.Playing && !hasBeenMyered && (myerClose || (myerScript.onPlayerScreen && myerScript.playerInLOS)))
+				{
+					jumpScareAudio.VolumeDb = (float)GD.RandRange(-5, 5);
+					jumpScareAudio.PitchScale = (float)GD.RandRange(0.8, 1.2);
+					jumpScareAudio.Play();
+					hasBeenMyered = true;
+				}
 			}
+
 		}
 	}
+
 	public void RestoreLightLevels()
 	{
 		hasFlickered = false;

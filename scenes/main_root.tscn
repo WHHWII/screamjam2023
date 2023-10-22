@@ -199,7 +199,7 @@ myer = NodePath("../../myer2")
 hideSpeed = 25.0
 
 [node name="PlayerDetectionArea" parent="MyerPoints/MyerPoint7" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3812, -1.60125, 1.6947)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3812, -1.11763, 1.6947)
 
 [node name="PlayerDetectionShape" parent="MyerPoints/MyerPoint7/PlayerDetectionArea" index="0"]
 shape = SubResource("CylinderShape3D_ksfcp")
@@ -245,7 +245,7 @@ myer = NodePath("../../myer2")
 hideSpeed = 50.0
 
 [node name="PlayerDetectionArea" parent="MyerPoints/MyerPoint5" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7571, 2.91204, 30.3069)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.87468, 2.91204, 30.3069)
 
 [node name="PlayerDetectionShape" parent="MyerPoints/MyerPoint5/PlayerDetectionArea" index="0"]
 shape = SubResource("CylinderShape3D_suk2w")
@@ -383,6 +383,10 @@ skeleton = NodePath("../..")
 
 [node name="Battery Pickup10" parent="Batteries" instance=ExtResource("5_fvx33")]
 transform = Transform3D(0.617462, 0, -0.786601, 0, 1, 0, 0.786601, 0, 0.617462, 110.888, 4.494, 66.4704)
+skeleton = NodePath("../..")
+
+[node name="Battery Pickup6" parent="Batteries" instance=ExtResource("5_fvx33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.285692, 0.210833, -4.1098)
 skeleton = NodePath("../..")
 
 [node name="key" parent="." instance=ExtResource("3_cgugd")]
