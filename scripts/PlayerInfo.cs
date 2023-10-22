@@ -8,6 +8,7 @@ public partial class PlayerInfo : Node
 
 
 	[ExportGroup("Flashlight")]
+	[Export] AnimationPlayer flickerAnim;
 	[Export] public float flashLightEnergy = 100;
 	[Export] private float flashlightDrainRate = 5;
 	[Export] private float flashLightDimThreshold = 33.33f;
@@ -18,6 +19,7 @@ public partial class PlayerInfo : Node
 	BaseMaterial3D wideConeMat;
 	Color baseFlashColor;
 	Color clear = new Color(0, 0, 0, 0);
+	bool hasFlickered = false;
 	public override void _Ready()
 	{
 		flashLightDimRate = controller.flashLight.LightEnergy / flashLightDimThreshold;
@@ -44,21 +46,36 @@ public partial class PlayerInfo : Node
 			}
 			else if (flashLightEnergy < flashLightDimThreshold)
 			{
+				if (!hasFlickered && !(flickerAnim.IsPlaying()))
+				{
+					hasFlickered = true;
+					PlayFlicker();
+				}
 				for(int i=0; i < lightArr.Length; i++)
 				{
 					lightArr[i].LightEnergy = Mathf.Lerp(controller.flashLight.LightEnergy, 0.5f, flashLightDimRate * (float)delta);
 				}
 				wideConeMat.AlbedoColor.Lerp(clear, flashLightDimRate * (float)delta);
-				
+
+
 			}
 		}
 	}
 	public void RestoreLightLevels()
 	{
+		hasFlickered = false;
 		for (int i = 0; i < lightArr.Length; i++)
 		{
 			lightArr[i].LightEnergy = lightEnergyLevels[i];
 		}
 		wideConeMat.AlbedoColor = baseFlashColor;
+	}
+
+	public void PlayFlicker()
+	{
+		flickerAnim.CurrentAnimation = "FlashlightFlicker";
+		flickerAnim.SpeedScale = (float)GD.RandRange(0.8f,1.2f);
+		flickerAnim.Play();
+
 	}
 }

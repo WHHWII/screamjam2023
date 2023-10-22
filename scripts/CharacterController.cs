@@ -66,7 +66,7 @@ public partial class CharacterController : CharacterBody3D
 
 		if (targetCol != null)
 		{
-			GD.Print(targetCol);
+			//GD.Print(targetCol);
 			targetIsInteractable = targetCol.HasMethod("Interact");
 			//GD.Print(targetIsInteractable);
 		}
