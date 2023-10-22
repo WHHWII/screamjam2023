@@ -6,6 +6,9 @@ public partial class PlayerInfo : Node
 	public int keys = 0;
 	[Export] public CharacterController controller;
 
+	[ExportGroup("Myer")]
+	[Export] RayCast3D myerRay;
+	[Export] AudioStreamPlayer3D jumpScareAudio;
 
 	[ExportGroup("Flashlight")]
 	[Export] AnimationPlayer flickerAnim;
@@ -19,9 +22,11 @@ public partial class PlayerInfo : Node
 	BaseMaterial3D wideConeMat;
 	Color baseFlashColor;
 	Color clear = new Color(0, 0, 0, 0);
+	Node3D flashlightParent;
 	bool hasFlickered = false;
 	public override void _Ready()
 	{
+		flashlightParent = controller.flashLight.GetParent() as Node3D;
 		flashLightDimRate = controller.flashLight.LightEnergy / flashLightDimThreshold;
 		lightEnergyLevels = new float[lightArr.Length]; 
 		for(int i = 0; i < lightArr.Length; i++)
@@ -36,7 +41,7 @@ public partial class PlayerInfo : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (controller.flashLight.Visible && flashLightEnergy > 0)
+		if (controller.flashLight.Visible && flashlightParent.Visible && flashLightEnergy > 0)
 		{
 			flashLightEnergy -= flashlightDrainRate * (float)delta;
 
@@ -58,6 +63,17 @@ public partial class PlayerInfo : Node
 				wideConeMat.AlbedoColor.Lerp(clear, flashLightDimRate * (float)delta);
 
 
+			}
+		}
+
+		var targetMyer = myerRay.GetCollider(); // filtered by col masking
+		if(targetMyer != null)
+		{
+			var myerBody = targetMyer as Node3D;
+			Michael myerScript = myerBody.GetParent() as Michael;
+			if (myerScript.hiding && !jumpScareAudio.Playing)
+			{
+				jumpScareAudio.Play();
 			}
 		}
 	}

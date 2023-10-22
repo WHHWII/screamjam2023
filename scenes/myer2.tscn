@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bd3rvehok7gcf"]
+[gd_scene load_steps=9 format=3 uid="uid://bd3rvehok7gcf"]
 
 [ext_resource type="Script" path="res://scripts/Michael.cs" id="1_ejkkk"]
 [ext_resource type="PackedScene" uid="uid://htgl3rf7by7i" path="res://models/horror_mask.glb" id="1_q2wkn"]
@@ -9,6 +9,10 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_rkyrq"]
 material = SubResource("StandardMaterial3D_mjcje")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a1wet"]
+radius = 0.990273
+height = 2.84486
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_852vb"]
 metallic_specular = 1.0
@@ -26,6 +30,14 @@ visibleToPlayerTimer = NodePath("Timer")
 playerLOSRay = NodePath("horror_mask/PlayerLineOfSiteChecker")
 footstepAudio = NodePath("AudioStreamPlayer3D")
 footStepTimer = NodePath("AudioStreamPlayer3D/FootStepTimer")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 1024
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CapsuleShape3D_a1wet")
 
 [node name="horror_mask" parent="." instance=ExtResource("1_q2wkn")]
 transform = Transform3D(-10.7789, 0, -4.11323e-07, 0, 6.38733, 0, 9.42324e-07, 0, -4.70499, 0, 0, -0.589488)

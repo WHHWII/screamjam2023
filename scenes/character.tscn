@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://b16kygp66s67b"]
+[gd_scene load_steps=21 format=3 uid="uid://b16kygp66s67b"]
 
 [ext_resource type="Script" path="res://scripts/CharacterController.cs" id="1_gf5vr"]
 [ext_resource type="PackedScene" uid="uid://cdy6l2dqh34l7" path="res://models/flashlight.glb" id="2_08q8a"]
 [ext_resource type="Script" path="res://scripts/PlayerInfo.cs" id="2_cjbdk"]
 [ext_resource type="AudioStream" uid="uid://cnetjmh7hth7b" path="res://sounds/water-steps.mp3" id="3_4dpor"]
+[ext_resource type="AudioStream" uid="uid://chpsev8v4jn8v" path="res://sounds/jump-scare sound.mp3" id="4_gwor7"]
 [ext_resource type="AudioStream" uid="uid://if2v8874h4wo" path="res://sounds/footseps.mp3" id="4_wyc3j"]
 [ext_resource type="Material" uid="uid://bxqu726wld6sb" path="res://scenes/CloseFlashlightCone.tres" id="5_je30o"]
 [ext_resource type="AudioStream" uid="uid://bpcmdmgbwyvr6" path="res://sounds/flashlight-toggle.mp3" id="5_qn7p1"]
@@ -259,6 +260,13 @@ target_position = Vector3(0, 0, -2)
 collision_mask = 2
 collide_with_areas = true
 
+[node name="MyerRay" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -45)
+collision_mask = 1024
+
+[node name="JumpScareAudio" type="AudioStreamPlayer3D" parent="Camera3D/MyerRay"]
+stream = ExtResource("4_gwor7")
+
 [node name="flashlight" parent="Camera3D" instance=ExtResource("2_08q8a")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.447561, -0.429094, -0.299592)
 visible = false
@@ -331,9 +339,11 @@ libraries = {
 "": SubResource("AnimationLibrary_8q0mh")
 }
 
-[node name="PlayerInfoContainer" type="Node" parent="." node_paths=PackedStringArray("controller", "flickerAnim", "lightArr")]
+[node name="PlayerInfoContainer" type="Node" parent="." node_paths=PackedStringArray("controller", "myerRay", "jumpScareAudio", "flickerAnim", "lightArr")]
 script = ExtResource("2_cjbdk")
 controller = NodePath("..")
+myerRay = NodePath("../Camera3D/MyerRay")
+jumpScareAudio = NodePath("../Camera3D/MyerRay/JumpScareAudio")
 flickerAnim = NodePath("../Camera3D/flashlight/FlickerAnimator")
 flashLightEnergy = 50.0
 flashlightDrainRate = 4.0
