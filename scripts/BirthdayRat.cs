@@ -106,7 +106,7 @@ public partial class BirthdayRat : Node3D
 		audioPlayer.Stop();
 		audioPlayer.Stream = hideSound;
 		audioPlayer.PitchScale = (float)GD.RandRange(2f, 3f);
-		audioPlayer.VolumeDb += GD.RandRange(15, 20);
+		audioPlayer.VolumeDb += GD.RandRange(5, 8);
 		audioPlayer.Play(GD.Randf() * 0.1f);
 	}
 

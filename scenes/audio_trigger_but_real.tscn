@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpq7yqrmi1wwd"]
+
+[ext_resource type="Script" path="res://AudioTriggerButReal.cs" id="1_hnlc3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kpf51"]
+size = Vector3(1, 1, 9.4289)
+
+[node name="AudioTriggerButReal" type="Node3D" node_paths=PackedStringArray("speaker")]
+script = ExtResource("1_hnlc3")
+speaker = NodePath("Speaker")
+speakerSpeed = 5.0
+
+[node name="Trigger" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trigger"]
+shape = SubResource("BoxShape3D_kpf51")
+
+[node name="Speaker" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.59499, 1, 0)
+emission_angle_enabled = true
+
+[node name="SpeakerDestination" type="Node3D" parent="."]
+
+[connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bvjlsytxo0nw0"]
+[gd_scene load_steps=39 format=3 uid="uid://bvjlsytxo0nw0"]
 
 [ext_resource type="PackedScene" uid="uid://b16kygp66s67b" path="res://scenes/character.tscn" id="1_d8ews"]
 [ext_resource type="PackedScene" uid="uid://v1a62jl4wiqy" path="res://scenes/Map.tscn" id="2_31a4d"]
@@ -7,8 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://blrcyniicqvmm" path="res://scenes/battery_pickup.tscn" id="5_fvx33"]
 [ext_resource type="PackedScene" uid="uid://c724jatgw6btx" path="res://scenes/flashlight_interactable.tscn" id="9_f8rqe"]
 [ext_resource type="PackedScene" uid="uid://bd3rvehok7gcf" path="res://scenes/myer2.tscn" id="9_ubmgq"]
+[ext_resource type="PackedScene" uid="uid://cpq7yqrmi1wwd" path="res://scenes/audio_trigger_but_real.tscn" id="10_j657m"]
 [ext_resource type="PackedScene" uid="uid://lq6a8y282g6d" path="res://scenes/myer_point.tscn" id="10_v2boh"]
+[ext_resource type="AudioStream" uid="uid://ddy3lsljplk3f" path="res://sounds/quiet footsteps.mp3" id="11_28x5v"]
 [ext_resource type="PackedScene" uid="uid://cwkkhpndfqjn4" path="res://scenes/birthday_rat.tscn" id="11_e0ekf"]
+[ext_resource type="AudioStream" uid="uid://if2v8874h4wo" path="res://sounds/footseps.mp3" id="12_h1fm7"]
+[ext_resource type="PackedScene" path="res://scenes/chair.tscn" id="13_kf5o5"]
+[ext_resource type="PackedScene" path="res://scenes/jar.tscn" id="14_6tvnq"]
+[ext_resource type="PackedScene" path="res://scenes/arm.tscn" id="15_lxoce"]
+[ext_resource type="PackedScene" uid="uid://bfducwd40tcqn" path="res://models/bottle.glb" id="16_t7ukm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0egt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -57,9 +64,13 @@ size = Vector3(12.501, 1, 15.9471)
 resource_local_to_scene = true
 radius = 3.96429
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qgrjt"]
+resource_local_to_scene = true
+radius = 3.98126
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_k6bnd"]
 resource_local_to_scene = true
-radius = 3.86422
+radius = 6.30266
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_suk2w"]
 resource_local_to_scene = true
@@ -84,6 +95,22 @@ radius = 3.96429
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2sqgo"]
 resource_local_to_scene = true
 radius = 3.86422
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q0pqt"]
+resource_local_to_scene = true
+radius = 6.31023
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_w877e"]
+resource_local_to_scene = true
+radius = 5.69132
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0ddsx"]
+resource_local_to_scene = true
+radius = 3.96429
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sywj1"]
+resource_local_to_scene = true
+radius = 1.03499
 
 [node name="MainRoot" type="Node3D"]
 
@@ -135,6 +162,8 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.15683, 0.48288, -19.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.5831, -0.211288, -54.841)
 myer = NodePath("../../myer2")
 hideSpeed = 30.0
+stareTime = 5.0
+approachFromHidePoint = true
 
 [node name="PlayerDetectionArea" parent="MyerPoints/MyerPoint2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82377, 0, 54.717)
@@ -150,7 +179,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7216, 0, 21.5964)
 shape = SubResource("CylinderShape3D_1f7oo")
 
 [node name="SpawnPoint" parent="MyerPoints/MyerPoint2" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.46843, 1.4545, -20.5039)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.91876, 1.4545, -12.6229)
 
 [node name="HidePoint" parent="MyerPoints/MyerPoint2" index="3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9.28813, 1.59001, -4.16554)
@@ -195,7 +224,7 @@ shape = SubResource("CylinderShape3D_ksfcp")
 
 [node name="MyerFleeShape" parent="MyerPoints/MyerPoint6/MyerFleeArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7751, 0, -6.5688)
-shape = SubResource("CylinderShape3D_k6bnd")
+shape = SubResource("CylinderShape3D_qgrjt")
 
 [node name="SpawnPoint" parent="MyerPoints/MyerPoint6" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.580856, 0, 0)
@@ -216,12 +245,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3812, -1.11763, 1.6947)
 [node name="PlayerDetectionShape" parent="MyerPoints/MyerPoint7/PlayerDetectionArea" index="0"]
 shape = SubResource("CylinderShape3D_ksfcp")
 
+[node name="MyerFleeArea" parent="MyerPoints/MyerPoint7" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04692, 0, -2.31832)
+
 [node name="MyerFleeShape" parent="MyerPoints/MyerPoint7/MyerFleeArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7751, 0, -6.5688)
 shape = SubResource("CylinderShape3D_k6bnd")
 
 [node name="SpawnPoint" parent="MyerPoints/MyerPoint7" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60996, 0, -0.212711)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60995, 0, -0.212708)
 skeleton = NodePath("../../MyerPoint6")
 
 [node name="HidePoint" parent="MyerPoints/MyerPoint7" index="3"]
@@ -443,6 +474,115 @@ layers = 0
 [node name="Battery Pickup" parent="." instance=ExtResource("5_fvx33")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.721, 4.48442, 58.9491)
 
+[node name="AudioTriggerButReal" parent="." node_paths=PackedStringArray("speakerDestination") instance=ExtResource("10_j657m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.1932, 0.0111719, -0.516701)
+speakerDestination = NodePath("SpeakerDestination")
+fade = true
+fadeSpeed = 25.0
+
+[node name="Trigger" parent="AudioTriggerButReal" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78104, 0, -0.0118606)
+
+[node name="Speaker" parent="AudioTriggerButReal" index="1"]
+transform = Transform3D(-0.830761, 0, -0.556629, 0, 1, 0, 0.556629, 0, -0.830761, -0.583145, 0.523347, -5.35037)
+stream = ExtResource("11_28x5v")
+volume_db = 10.0
+pitch_scale = 0.5
+panning_strength = 3.0
+emission_angle_degrees = 40.0
+
+[node name="SpeakerDestination" parent="AudioTriggerButReal" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25842, -2.34222, -104.691)
+
+[node name="AudioTriggerButReal2" parent="." node_paths=PackedStringArray("speakerDestination") instance=ExtResource("10_j657m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.5535, 2.48436, -30.5913)
+speakerDestination = NodePath("../AudioTriggerButReal/SpeakerDestination")
+fade = true
+fadeSpeed = 15.0
+
+[node name="Trigger" parent="AudioTriggerButReal2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78104, 0, -0.0118606)
+
+[node name="Speaker" parent="AudioTriggerButReal2" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.647316, -0.481593, -2.30954)
+stream = ExtResource("12_h1fm7")
+volume_db = 10.0
+panning_strength = 3.0
+emission_angle_degrees = 40.0
+
+[node name="SpeakerDestination" parent="AudioTriggerButReal2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.22796, -0.555793, 14.4123)
+
+[node name="Battery Pickup2" parent="." instance=ExtResource("5_fvx33")]
+transform = Transform3D(0.965521, 0.0445273, -0.25649, -0.259178, 0.071943, -0.963146, -0.0244336, 0.996414, 0.0810029, 95.4783, 0.277422, -42.674)
+
+[node name="Battery Pickup3" parent="." instance=ExtResource("5_fvx33")]
+transform = Transform3D(0.980069, -0.052095, -0.191704, 0.0654938, 0.995784, 0.06423, 0.18755, -0.0755052, 0.979349, 94.4111, 0.277422, -44.2239)
+
+[node name="chair" parent="." instance=ExtResource("13_kf5o5")]
+transform = Transform3D(-0.824364, -0.563659, 0.0520864, -0.004783, 0.0989484, 0.995081, -0.56604, 0.82006, -0.0842654, 95.2441, 0.701106, -46.3846)
+
+[node name="jar" parent="." instance=ExtResource("14_6tvnq")]
+transform = Transform3D(0.764575, 0.557455, 0.323525, -0.398646, 0.0145759, 0.916989, 0.506465, -0.830079, 0.233372, 95.8783, 0.443526, -44.342)
+
+[node name="arm" parent="." instance=ExtResource("15_lxoce")]
+transform = Transform3D(0.179253, 0.333185, -0.12983, 0, 0.145229, 0.372704, 0.357587, -0.167021, 0.065082, 96.9382, -0.60276, -43.7369)
+
+[node name="arm2" parent="." instance=ExtResource("15_lxoce")]
+transform = Transform3D(-0.282044, -0.0952557, 0.0371176, -4.00663e-09, 0.108922, 0.279528, -0.102232, 0.262797, -0.102402, 95.0461, -0.224746, -44.3049)
+
+[node name="bottle" parent="." instance=ExtResource("16_t7ukm")]
+transform = Transform3D(0.699327, 0.714802, 0, -0.714802, 0.699327, 0, 0, 0, 1, 90.5078, -0.0469758, -46.1347)
+
+[node name="MyerPoint" parent="." node_paths=PackedStringArray("myer") instance=ExtResource("10_v2boh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.128, 0.108898, -16.574)
+myer = NodePath("../myer2")
+hideSpeed = 150.0
+stareTime = 0.1
+
+[node name="PlayerDetectionArea" parent="MyerPoint" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.727, 0, 26.3858)
+
+[node name="PlayerDetectionShape" parent="MyerPoint/PlayerDetectionArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.15745)
+shape = SubResource("CylinderShape3D_q0pqt")
+
+[node name="MyerFleeArea" parent="MyerPoint" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7317, 0.710664, 6.85967)
+
+[node name="MyerFleeShape" parent="MyerPoint/MyerFleeArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.58427, 0, 6.63089)
+shape = SubResource("CylinderShape3D_w877e")
+
+[node name="HidePoint" parent="MyerPoint" index="3"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -37.76, 0, 0)
+
+[node name="Battery Pickup4" parent="." instance=ExtResource("5_fvx33")]
+transform = Transform3D(0.999887, 0.0150093, 0, -0.0150093, 0.999887, 0, 0, 0, 1, 144.011, -0.158656, 6.07334)
+
+[node name="Battery Pickup5" parent="." instance=ExtResource("5_fvx33")]
+transform = Transform3D(0.999887, 0.0150093, 0, -0.0150093, 0.999887, 0, 0, 0, 1, 143.497, 0.26493, 2.40807)
+
+[node name="MyerPoint2" parent="." node_paths=PackedStringArray("myer") instance=ExtResource("10_v2boh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.295, 0.108898, -13.0661)
+myer = NodePath("../myer2")
+stareTime = 0.1
+
+[node name="PlayerDetectionArea" parent="MyerPoint2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.40379, 0, 0)
+
+[node name="PlayerDetectionShape" parent="MyerPoint2/PlayerDetectionArea" index="0"]
+shape = SubResource("CylinderShape3D_0ddsx")
+
+[node name="MyerFleeArea" parent="MyerPoint2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.13457, -3.80697)
+
+[node name="MyerFleeShape" parent="MyerPoint2/MyerFleeArea" index="0"]
+shape = SubResource("CylinderShape3D_sywj1")
+
+[node name="HidePoint" parent="MyerPoint2" index="3"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.164673, -3.49821, 0)
+
 [editable path="CharacterBody3D"]
 [editable path="MyerPoints/MyerPoint"]
 [editable path="MyerPoints/MyerPoint2"]
@@ -456,3 +596,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.721, 4.48442, 58.9491)
 [editable path="Batteries/Battery Pickup2"]
 [editable path="Batteries/Battery Pickup4"]
 [editable path="FinalMyerPoint"]
+[editable path="AudioTriggerButReal"]
+[editable path="AudioTriggerButReal2"]
+[editable path="MyerPoint"]
+[editable path="MyerPoint2"]
