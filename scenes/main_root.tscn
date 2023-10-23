@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bvjlsytxo0nw0"]
+[gd_scene load_steps=41 format=3 uid="uid://bvjlsytxo0nw0"]
 
 [ext_resource type="PackedScene" uid="uid://b16kygp66s67b" path="res://scenes/character.tscn" id="1_d8ews"]
 [ext_resource type="PackedScene" uid="uid://v1a62jl4wiqy" path="res://scenes/Map.tscn" id="2_31a4d"]
@@ -12,10 +12,11 @@
 [ext_resource type="AudioStream" uid="uid://ddy3lsljplk3f" path="res://sounds/quiet footsteps.mp3" id="11_28x5v"]
 [ext_resource type="PackedScene" uid="uid://cwkkhpndfqjn4" path="res://scenes/birthday_rat.tscn" id="11_e0ekf"]
 [ext_resource type="AudioStream" uid="uid://if2v8874h4wo" path="res://sounds/footseps.mp3" id="12_h1fm7"]
-[ext_resource type="PackedScene" path="res://scenes/chair.tscn" id="13_kf5o5"]
-[ext_resource type="PackedScene" path="res://scenes/jar.tscn" id="14_6tvnq"]
-[ext_resource type="PackedScene" path="res://scenes/arm.tscn" id="15_lxoce"]
-[ext_resource type="PackedScene" path="res://scenes/bottle.tscn" id="16_lkadw"]
+[ext_resource type="PackedScene" uid="uid://dve6vooihnluv" path="res://scenes/chair.tscn" id="13_kf5o5"]
+[ext_resource type="PackedScene" uid="uid://cc5oa7aomgb3r" path="res://scenes/jar.tscn" id="14_6tvnq"]
+[ext_resource type="PackedScene" uid="uid://bbpr771dv5iit" path="res://scenes/arm.tscn" id="15_lxoce"]
+[ext_resource type="PackedScene" uid="uid://orus8aka67w5" path="res://scenes/bottle.tscn" id="16_lkadw"]
+[ext_resource type="PackedScene" uid="uid://27ar7ttay2w1" path="res://scenes/lock.tscn" id="17_s05of"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0egt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -643,6 +644,9 @@ shape = SubResource("BoxShape3D_l2oh2")
 
 [node name="HidePoint" parent="BirthdayRat2" index="1"]
 transform = Transform3D(0.999998, 0.00109956, 4.80576e-11, 0, -4.37114e-08, 1, 0.00109956, -0.999998, -4.37113e-08, -3.59751, 0.177303, -8.49267)
+
+[node name="lock" parent="." instance=ExtResource("17_s05of")]
+transform = Transform3D(-0.00118333, 0.0399053, 0.184737, 0.000255607, 0.184741, -0.0399045, -0.188998, 0, -0.00121062, 85.129, 3.2376, -16.4892)
 
 [editable path="CharacterBody3D"]
 [editable path="MyerPoints/MyerPoint"]
