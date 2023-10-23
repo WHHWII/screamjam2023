@@ -22,11 +22,10 @@ public partial class MyerPoint : Node3D
 
 	private void _on_area_3d_body_entered(Node3D body)
 	{
-		//playerDetectionArea.QueueFree();
-		CharacterController player = body as CharacterController;
-		player.playerInfo.hasBeenMyered = false;
 		myer.footstepAudio.Stop();
 		if (hasBeenTriggered) return;
+		CharacterController player = body as CharacterController;
+		player.playerInfo.hasBeenMyered = false;
 		hasBeenTriggered = true;
 		isActive = true;
 		myer.hidePoint = hidePoint.GlobalPosition;

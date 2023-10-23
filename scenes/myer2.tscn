@@ -11,8 +11,8 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_mjcje")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a1wet"]
-radius = 0.990273
-height = 2.84486
+radius = 0.858962
+height = 2.37942
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_852vb"]
 metallic_specular = 1.0
@@ -37,7 +37,7 @@ collision_layer = 1024
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionAREa"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.27979)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.236391)
 shape = SubResource("CapsuleShape3D_a1wet")
 
 [node name="horror_mask" parent="." instance=ExtResource("1_q2wkn")]

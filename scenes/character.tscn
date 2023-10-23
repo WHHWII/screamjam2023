@@ -229,6 +229,7 @@ _data = {
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "playerInfo", "interactRay", "interactLight", "flashLight", "ratBlaster", "animator", "lFootAudio", "rFootAudio", "footStepTimer", "flashLightAudio")]
 collision_layer = 9
+collision_mask = 17
 script = ExtResource("1_gf5vr")
 camera = NodePath("Camera3D")
 playerInfo = NodePath("PlayerInfoContainer")

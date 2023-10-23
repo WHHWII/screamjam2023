@@ -91,7 +91,7 @@ radius = 3.86422
 environment = SubResource("Environment_ybakg")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_d8ews")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.492, 6.35374, 59.1835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="inside player" type="MeshInstance3D" parent="CharacterBody3D/Camera3D" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52588e-05, -0.727703, 2.64074)

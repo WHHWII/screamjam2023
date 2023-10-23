@@ -76,12 +76,13 @@ public partial class PlayerInfo : Node
 			bool myerClose = colNode.GlobalPosition.DistanceTo(controller.GlobalPosition) <= 20;
 			if(myerScript != null)
 			{
-				if (myerScript.hiding && !jumpScareAudio.Playing && !hasBeenMyered && (myerClose || (myerScript.onPlayerScreen && myerScript.playerInLOS)))
+				if (!jumpScareAudio.Playing && !hasBeenMyered && (myerScript.onPlayerScreen && myerScript.playerInLOS))
 				{
 					jumpScareAudio.VolumeDb = (float)GD.RandRange(-5, 5);
 					jumpScareAudio.PitchScale = (float)GD.RandRange(0.8, 1.2);
 					jumpScareAudio.Play();
 					hasBeenMyered = true;
+					myerScript.hiding = true;
 				}
 			}
 
