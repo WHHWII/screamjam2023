@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cpq7yqrmi1wwd"]
 
-[ext_resource type="Script" path="res://AudioTriggerButReal.cs" id="1_hnlc3"]
+[ext_resource type="Script" path="res://scripts/AudioTriggerButReal.cs" id="1_hnlc3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kpf51"]
 size = Vector3(1, 1, 9.4289)
