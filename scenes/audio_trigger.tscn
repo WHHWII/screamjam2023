@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bke5fp5brnq7f"]
 
-[ext_resource type="Script" path="res://scripts/AudioTrigger.cs" id="1_vmutx"]
+[ext_resource type="Script" path="res://scripts/DropHead.cs" id="1_vmutx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7i07i"]
 size = Vector3(5.74952, 2.14072, 4.25486)

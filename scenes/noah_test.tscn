@@ -1,3 +1,44 @@
-[gd_scene format=3 uid="uid://cih4reoclvp37"]
+[gd_scene load_steps=9 format=3 uid="uid://cih4reoclvp37"]
+
+[ext_resource type="PackedScene" uid="uid://kta2hfr6bhiu" path="res://scenes/water_plane.tscn" id="1_8yfco"]
+[ext_resource type="Script" path="res://scripts/water.gd" id="2_0pr1e"]
+[ext_resource type="Material" uid="uid://cc4lwc0ym0c6u" path="res://shaders/water.tres" id="2_gr3lt"]
+[ext_resource type="PackedScene" uid="uid://bap3gycf3gw2e" path="res://scenes/head.tscn" id="4_gyxap"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1awqd"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_5be7o"]
+sky_material = SubResource("ProceduralSkyMaterial_1awqd")
+
+[sub_resource type="Environment" id="Environment_24f82"]
+background_mode = 2
+sky = SubResource("Sky_5be7o")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_77dye"]
+material = ExtResource("2_gr3lt")
+subdivide_width = 200
+subdivide_depth = 200
+orientation = 1
 
 [node name="noah_test" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_24f82")
+
+[node name="water_plane" parent="." instance=ExtResource("1_8yfco")]
+transform = Transform3D(18.8812, 0, 0, 0, 1, 0, 0, 0, 18.952, 0.768841, -1.05376, -0.989152)
+mesh = SubResource("QuadMesh_77dye")
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+script = ExtResource("2_0pr1e")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.954152, 0.299324, 0, -0.299324, 0.954152, 0, 1.41196, 4.48615)
+
+[node name="head" parent="." instance=ExtResource("4_gyxap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.129711, 0, 0.239046)
+float_force = 3.0
