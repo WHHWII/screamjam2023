@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://27ar7ttay2w1"]
 
 [ext_resource type="PackedScene" uid="uid://bg31uaicraonp" path="res://models/lock.glb" id="1_jl66x"]
-[ext_resource type="Texture2D" uid="uid://dey67pdugpv8h" path="res://textures/raw/metal_floor_rusty.png" id="2_re2lc"]
+[ext_resource type="Texture2D" uid="uid://bpla4h4yv2nsi" path="res://textures/raw/gold-material.png" id="2_kxlea"]
 [ext_resource type="Texture2D" uid="uid://di7lu1rd4t84h" path="res://textures/raw/metal_walls_rusty.png" id="3_d46ct"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xbm6"]
-albedo_texture = ExtResource("2_re2lc")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjffw"]
+albedo_texture = ExtResource("2_kxlea")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvo7s"]
 albedo_texture = ExtResource("3_d46ct")
@@ -13,7 +13,7 @@ albedo_texture = ExtResource("3_d46ct")
 [node name="lock" instance=ExtResource("1_jl66x")]
 
 [node name="lock2" parent="." index="0"]
-material_override = SubResource("StandardMaterial3D_2xbm6")
+material_override = SubResource("StandardMaterial3D_jjffw")
 
 [node name="chain" parent="." index="1"]
 material_override = SubResource("StandardMaterial3D_fvo7s")
