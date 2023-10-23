@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bvjlsytxo0nw0"]
+[gd_scene load_steps=40 format=3 uid="uid://bvjlsytxo0nw0"]
 
 [ext_resource type="PackedScene" uid="uid://b16kygp66s67b" path="res://scenes/character.tscn" id="1_d8ews"]
 [ext_resource type="PackedScene" uid="uid://v1a62jl4wiqy" path="res://scenes/Map.tscn" id="2_31a4d"]
@@ -111,6 +111,9 @@ radius = 3.96429
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sywj1"]
 resource_local_to_scene = true
 radius = 1.03499
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l2oh2"]
+size = Vector3(1.30611, 0.200714, 4.54112)
 
 [node name="MainRoot" type="Node3D"]
 
@@ -582,6 +585,65 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.164673, -3.49821, 0)
 [node name="bottle2" parent="." instance=ExtResource("16_lkadw")]
 transform = Transform3D(0.577031, 0.637203, -0.510888, -0.741238, 0.671242, 1.76333e-08, 0.34293, 0.37869, 0.859647, 90.2403, 0.106932, -45.0148)
 
+[node name="BirthdayRat" parent="." instance=ExtResource("11_e0ekf")]
+transform = Transform3D(-0.960551, 0, 0.278103, 0, 1, 0, -0.278103, 0, -0.960551, 84.507, 2.3589, -17.849)
+
+[node name="rat" parent="BirthdayRat/BirthdayRat" index="0"]
+transform = Transform3D(-0.0999241, 0, 0.00389632, 0, 0.1, 0, -0.00389632, 0, -0.0999241, 0, 0, 0)
+
+[node name="WanderZone" parent="BirthdayRat/BirthdayRat" index="1"]
+transform = Transform3D(0.977834, 0, 0.20938, 0, 1, 0, -0.20938, 0, 0.977834, 0, 0, 0)
+
+[node name="WanderArea" parent="BirthdayRat/BirthdayRat/WanderZone" index="0"]
+transform = Transform3D(0.998972, 0, 0.0453281, 0, 1, 0, -0.0453281, 0, 0.998972, 0, 0, 0)
+shape = SubResource("BoxShape3D_l2oh2")
+
+[node name="HidePoint" parent="BirthdayRat" index="1"]
+transform = Transform3D(0.999998, 0.00109956, 4.80576e-11, 0, -4.37114e-08, 1, 0.00109956, -0.999998, -4.37113e-08, -3.59751, 0.177303, -8.49267)
+
+[node name="BirthdayRat3" parent="." instance=ExtResource("11_e0ekf")]
+transform = Transform3D(-0.870149, 0, 0.492788, 0, 1, 0, -0.492788, 0, -0.870149, 84.9204, 2.3589, -17.849)
+
+[node name="BirthdayRat" parent="BirthdayRat3" index="0" node_paths=PackedStringArray("hidePoint", "wanderTimer", "wanderArea", "audioPlayer", "ratNoiseTimer")]
+hidePoint = NodePath("../../BirthdayRat/HidePoint")
+wanderTimer = NodePath("../../BirthdayRat/BirthdayRat/ScuttleTimer")
+wanderArea = NodePath("../../BirthdayRat/BirthdayRat/WanderZone/WanderArea")
+audioPlayer = NodePath("../../BirthdayRat/BirthdayRat/RatNoisePlayer")
+ratNoiseTimer = NodePath("../../BirthdayRat/BirthdayRat/RatNoisePlayer/RatNoiseTimer")
+
+[node name="rat" parent="BirthdayRat3/BirthdayRat" index="0"]
+transform = Transform3D(-0.0999241, 0, 0.00389632, 0, 0.1, 0, -0.00389632, 0, -0.0999241, 0, 0, 0)
+
+[node name="WanderZone" parent="BirthdayRat3/BirthdayRat" index="1"]
+transform = Transform3D(0.977834, 0, 0.20938, 0, 1, 0, -0.20938, 0, 0.977834, 0, 0, 0)
+
+[node name="WanderArea" parent="BirthdayRat3/BirthdayRat/WanderZone" index="0"]
+transform = Transform3D(0.998972, 0, 0.0453281, 0, 1, 0, -0.0453281, 0, 0.998972, 0, 0, 0)
+shape = SubResource("BoxShape3D_l2oh2")
+
+[node name="HidePoint" parent="BirthdayRat3" index="1"]
+transform = Transform3D(0.999998, 0.00109956, 4.80505e-11, 0, -4.37114e-08, 1, 0.00109956, -0.999998, -4.37113e-08, -3.5471, 0.177303, -8.52122)
+
+[node name="BirthdayRat2" parent="." instance=ExtResource("11_e0ekf")]
+transform = Transform3D(-0.995924, 0, 0.090198, 0, 1, 0, -0.090198, 0, -0.995924, 84.1405, 2.3589, -17.849)
+
+[node name="BirthdayRat" parent="BirthdayRat2" index="0" node_paths=PackedStringArray("hidePoint", "wanderTimer", "wanderArea", "audioPlayer", "ratNoiseTimer")]
+hidePoint = NodePath("../../BirthdayRat/HidePoint")
+wanderTimer = NodePath("../../BirthdayRat/BirthdayRat/ScuttleTimer")
+wanderArea = NodePath("../../BirthdayRat/BirthdayRat/WanderZone/WanderArea")
+audioPlayer = NodePath("../../BirthdayRat/BirthdayRat/RatNoisePlayer")
+ratNoiseTimer = NodePath("../../BirthdayRat/BirthdayRat/RatNoisePlayer/RatNoiseTimer")
+
+[node name="WanderZone" parent="BirthdayRat2/BirthdayRat" index="1"]
+transform = Transform3D(0.977834, 0, 0.20938, 0, 1, 0, -0.20938, 0, 0.977834, 0, 0, 0)
+
+[node name="WanderArea" parent="BirthdayRat2/BirthdayRat/WanderZone" index="0"]
+transform = Transform3D(0.998972, 0, 0.0453281, 0, 1, 0, -0.0453281, 0, 0.998972, 0, 0, 0)
+shape = SubResource("BoxShape3D_l2oh2")
+
+[node name="HidePoint" parent="BirthdayRat2" index="1"]
+transform = Transform3D(0.999998, 0.00109956, 4.80576e-11, 0, -4.37114e-08, 1, 0.00109956, -0.999998, -4.37113e-08, -3.59751, 0.177303, -8.49267)
+
 [editable path="CharacterBody3D"]
 [editable path="MyerPoints/MyerPoint"]
 [editable path="MyerPoints/MyerPoint2"]
@@ -599,3 +661,6 @@ transform = Transform3D(0.577031, 0.637203, -0.510888, -0.741238, 0.671242, 1.76
 [editable path="AudioTriggerButReal2"]
 [editable path="MyerPoint"]
 [editable path="MyerPoint2"]
+[editable path="BirthdayRat"]
+[editable path="BirthdayRat3"]
+[editable path="BirthdayRat2"]
