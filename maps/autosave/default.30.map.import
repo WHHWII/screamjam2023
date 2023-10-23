@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://whgtyiltopfg"
+path="res://.godot/imported/default.30.map-ee71164bbfd793ed22fd0392347c4904.tres"
+
+[deps]
+
+source_file="res://maps/autosave/default.30.map"
+dest_files=["res://.godot/imported/default.30.map-ee71164bbfd793ed22fd0392347c4904.tres"]
+
+[params]
+
