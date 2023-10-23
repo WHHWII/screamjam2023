@@ -58,5 +58,6 @@ mesh = SubResource("SphereMesh_1xo2o")
 skeleton = NodePath("../BirthdayRat")
 
 [connection signal="body_entered" from="BirthdayRat/WanderZone" to="BirthdayRat" method="_on_wander_zone_body_entered"]
+[connection signal="body_exited" from="BirthdayRat/WanderZone" to="BirthdayRat" method="_on_wander_zone_body_exited"]
 [connection signal="timeout" from="BirthdayRat/ScuttleTimer" to="BirthdayRat" method="_on_scuttle_timer_timeout"]
 [connection signal="timeout" from="BirthdayRat/RatNoisePlayer/RatNoiseTimer" to="BirthdayRat" method="_on_rat_noise_timer_timeout"]

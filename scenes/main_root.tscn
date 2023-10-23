@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" path="res://scenes/chair.tscn" id="13_kf5o5"]
 [ext_resource type="PackedScene" path="res://scenes/jar.tscn" id="14_6tvnq"]
 [ext_resource type="PackedScene" path="res://scenes/arm.tscn" id="15_lxoce"]
-[ext_resource type="PackedScene" uid="uid://bfducwd40tcqn" path="res://models/bottle.glb" id="16_t7ukm"]
+[ext_resource type="PackedScene" path="res://scenes/bottle.tscn" id="16_lkadw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0egt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -129,7 +129,6 @@ transform = Transform3D(-0.999487, 0, 0.0320212, 0, 1, 0, -0.0320212, 0, -0.9994
 player = NodePath("../CharacterBody3D")
 
 [node name="Map" parent="." instance=ExtResource("2_31a4d")]
-metadata/_edit_group_ = true
 
 [node name="Node3D" type="Node3D" parent="."]
 
@@ -501,10 +500,10 @@ fade = true
 fadeSpeed = 15.0
 
 [node name="Trigger" parent="AudioTriggerButReal2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78104, 0, -0.0118606)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78104, 0, -0.0118599)
 
 [node name="Speaker" parent="AudioTriggerButReal2" index="1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.647316, -0.481593, -2.30954)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6.94106, -0.94769, -0.406578)
 stream = ExtResource("12_h1fm7")
 volume_db = 10.0
 panning_strength = 3.0
@@ -530,9 +529,6 @@ transform = Transform3D(0.179253, 0.333185, -0.12983, 0, 0.145229, 0.372704, 0.3
 
 [node name="arm2" parent="." instance=ExtResource("15_lxoce")]
 transform = Transform3D(-0.282044, -0.0952557, 0.0371176, -4.00663e-09, 0.108922, 0.279528, -0.102232, 0.262797, -0.102402, 95.0461, -0.224746, -44.3049)
-
-[node name="bottle" parent="." instance=ExtResource("16_t7ukm")]
-transform = Transform3D(0.699327, 0.714802, 0, -0.714802, 0.699327, 0, 0, 0, 1, 90.5078, -0.0469758, -46.1347)
 
 [node name="MyerPoint" parent="." node_paths=PackedStringArray("myer") instance=ExtResource("10_v2boh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 120.128, 0.108898, -16.574)
@@ -582,6 +578,9 @@ shape = SubResource("CylinderShape3D_sywj1")
 
 [node name="HidePoint" parent="MyerPoint2" index="3"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.164673, -3.49821, 0)
+
+[node name="bottle2" parent="." instance=ExtResource("16_lkadw")]
+transform = Transform3D(0.577031, 0.637203, -0.510888, -0.741238, 0.671242, 1.76333e-08, 0.34293, 0.37869, 0.859647, 90.2403, 0.106932, -45.0148)
 
 [editable path="CharacterBody3D"]
 [editable path="MyerPoints/MyerPoint"]

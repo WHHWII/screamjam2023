@@ -11,6 +11,8 @@ public partial class BirthdayRat : Node3D
 	[Export] CollisionShape3D wanderArea;
 	[Export] float wanderSpeed = 4;
 	[Export] float hideSpeed = 50;
+	bool underRatBlaster = false;
+	Node3D ratBlaster;
 
 
 	[ExportGroup("Audio")]
@@ -47,9 +49,16 @@ public partial class BirthdayRat : Node3D
 	public override void _PhysicsProcess(double delta)
 	{
 		if (!Visible) return;
-		if(!isPlayingRatNoise) PlayWanderSound();
+		if (underRatBlaster && !isHiding)
+		{
+			if (ratBlaster != null && ratBlaster.Visible)
+			{
+				isHiding = true;
+			}
+		}
 		if (idleWander && !isHiding && canMove)
 		{
+			if (!isPlayingRatNoise) PlayWanderSound();
 			GlobalPosition = GlobalPosition.MoveToward(targetPos, wanderSpeed * (float)delta);
 			if (GlobalPosition.IsEqualApprox(targetPos))
 			{
@@ -77,30 +86,29 @@ public partial class BirthdayRat : Node3D
 
 		return new(x, spawnPoint.Y, z);
 	}
-	
+
 	private void _on_scuttle_timer_timeout()
 	{
 		targetPos = GetNextPos();
 		wanderTimer.WaitTime = GD.Randf();
 		float diceRoll = GD.Randf();
-		if (diceRoll < 0.3f) wanderTimer.WaitTime += GD.RandRange(0.5f, 1); 
+		if (diceRoll < 0.3f) wanderTimer.WaitTime += GD.RandRange(0.5f, 1);
 		LookAt(targetPos);
 		canMove = true;
 	}
+
+
 	private void _on_wander_zone_body_entered(Node3D body)
 	{
 		if (isHiding) return;
-		if(body.Name == "RatBlaster")
+		if (body.Name == "RatBlaster")
 		{
-			GD.Print($"ratblaster detected");
-			if (body.Visible == false)
-			{
-				GD.Print($"ratblaster off");
-				return;
-			}
+			underRatBlaster = true;
+			if (ratBlaster == null) ratBlaster = body;
+			return;
 		}
 		GD.Print($"rat fleeing from {body.Name}");
-		
+
 		isHiding = true;
 
 		audioPlayer.Stop();
@@ -128,8 +136,14 @@ public partial class BirthdayRat : Node3D
 		audioPlayer.Stop();
 		isPlayingRatNoise = false;
 	}
-
-
+	
 }
+
+
+
+
+
+
+
 
 
