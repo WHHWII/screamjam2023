@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bvjlsytxo0nw0"]
+[gd_scene load_steps=43 format=3 uid="uid://bvjlsytxo0nw0"]
 
 [ext_resource type="PackedScene" uid="uid://b16kygp66s67b" path="res://scenes/character.tscn" id="1_d8ews"]
 [ext_resource type="PackedScene" uid="uid://v1a62jl4wiqy" path="res://scenes/Map.tscn" id="2_31a4d"]
@@ -12,11 +12,12 @@
 [ext_resource type="AudioStream" uid="uid://ddy3lsljplk3f" path="res://sounds/quiet footsteps.mp3" id="11_28x5v"]
 [ext_resource type="PackedScene" uid="uid://cwkkhpndfqjn4" path="res://scenes/birthday_rat.tscn" id="11_e0ekf"]
 [ext_resource type="AudioStream" uid="uid://if2v8874h4wo" path="res://sounds/footseps.mp3" id="12_h1fm7"]
-[ext_resource type="PackedScene" uid="uid://dve6vooihnluv" path="res://scenes/chair.tscn" id="13_kf5o5"]
-[ext_resource type="PackedScene" uid="uid://cc5oa7aomgb3r" path="res://scenes/jar.tscn" id="14_6tvnq"]
-[ext_resource type="PackedScene" uid="uid://bbpr771dv5iit" path="res://scenes/arm.tscn" id="15_lxoce"]
-[ext_resource type="PackedScene" uid="uid://orus8aka67w5" path="res://scenes/bottle.tscn" id="16_lkadw"]
-[ext_resource type="PackedScene" uid="uid://27ar7ttay2w1" path="res://scenes/lock.tscn" id="17_s05of"]
+[ext_resource type="PackedScene" path="res://scenes/chair.tscn" id="13_kf5o5"]
+[ext_resource type="PackedScene" path="res://scenes/jar.tscn" id="14_6tvnq"]
+[ext_resource type="PackedScene" path="res://scenes/arm.tscn" id="15_lxoce"]
+[ext_resource type="PackedScene" path="res://scenes/bottle.tscn" id="16_lkadw"]
+[ext_resource type="PackedScene" uid="uid://bfducwd40tcqn" path="res://models/bottle.glb" id="16_t7ukm"]
+[ext_resource type="PackedScene" uid="uid://b40w77q852ijd" path="res://scenes/lock.tscn" id="17_s05of"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0egt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -116,6 +117,10 @@ radius = 1.03499
 [sub_resource type="BoxShape3D" id="BoxShape3D_l2oh2"]
 size = Vector3(1.30611, 0.200714, 4.54112)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vd1c2"]
+height = 1.15256
+radius = 0.766967
+
 [node name="MainRoot" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -123,6 +128,9 @@ environment = SubResource("Environment_ybakg")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_d8ews")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Camera3D" parent="CharacterBody3D" index="2"]
+current = false
 
 [node name="inside player" type="MeshInstance3D" parent="CharacterBody3D/Camera3D" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52588e-05, -0.727703, 2.64074)
@@ -651,6 +659,96 @@ transform = Transform3D(-0.00118333, 0.0399053, 0.184737, 0.000255607, 0.184741,
 [node name="lock2" parent="." instance=ExtResource("17_s05of")]
 transform = Transform3D(-0.188229, 0.00385248, 0.0166297, 0.000255607, 0.184741, -0.0399045, -0.0170682, -0.0397189, -0.183991, 109.437, 0.984498, 8.79744)
 
+[node name="Battery Pickup6" parent="." instance=ExtResource("5_fvx33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.047, 0.287171, 10.0791)
+
+[node name="bottle" parent="." instance=ExtResource("16_t7ukm")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 112.504, 0.528998, 10.183)
+
+[node name="Node3D2" type="Node3D" parent="."]
+
+[node name="BirthdayRat4" parent="Node3D2" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(0.0127755, 0, -0.999918, 0, 1, 0, 0.999918, 0, 0.0127755, 107.355, 0.108898, 9.15763)
+
+[node name="BirthdayRat5" parent="Node3D2" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(-0.0705051, 0, -0.997511, 0, 1, 0, 0.997511, 0, -0.0705051, 107.355, 0.108898, 9.18612)
+
+[node name="BirthdayRat6" parent="Node3D2" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(0.073099, 0, -0.997325, 0, 1, 0, 0.997325, 0, 0.073099, 107.355, 0.108898, 9.38524)
+
+[node name="BirthdayRat7" parent="Node3D2" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(0.0127755, 0, -0.999918, 0, 1, 0, 0.999918, 0, 0.0127755, 107.355, 0.108898, 9.63)
+
+[node name="BirthdayRat8" parent="Node3D2" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(-0.0876599, 0, -0.99615, 0, 1, 0, 0.99615, 0, -0.0876599, 107.355, 0.108898, 9.68276)
+
+[node name="BirthdayRat9" parent="Node3D2" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(0.0933786, 0, -0.995631, 0, 1, 0, 0.995631, 0, 0.0933786, 107.355, 0.108898, 9.77591)
+
+[node name="BirthdayRat10" parent="Node3D2" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(-0.0838691, 0, -0.996477, 0, 1, 0, 0.996477, 0, -0.0838691, 107.355, 0.108898, 9.7032)
+
+[node name="BirthdayRat11" parent="Node3D2" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(0.0254791, 0, -0.999675, 0, 1, 0, 0.999675, 0, 0.0254791, 106.168, 0.108898, 9.17272)
+
+[node name="BirthdayRat12" parent="Node3D2" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(-0.0705051, 0, -0.997511, 0, 1, 0, 0.997511, 0, -0.0705051, 106.168, 0.108898, 9.18612)
+
+[node name="BirthdayRat13" parent="Node3D2" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(-0.00101224, 0, -0.999999, 0, 1, 0, 0.999999, 0, -0.00101224, 106.168, 0.108898, 9.3971)
+
+[node name="BirthdayRat14" parent="Node3D2" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(-0.077241, 0, -0.997012, 0, 1, 0, 0.997012, 0, -0.077241, 106.168, 0.108898, 9.61213)
+
+[node name="BirthdayRat15" parent="Node3D2" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(-0.0876599, 0, -0.99615, 0, 1, 0, 0.99615, 0, -0.0876599, 106.168, 0.108898, 9.68276)
+
+[node name="BirthdayRat16" parent="Node3D2" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(0.125299, 0, -0.992119, 0, 1, 0, 0.992119, 0, 0.125299, 106.168, 0.108898, 9.79739)
+
+[node name="BirthdayRat17" parent="Node3D2" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(-0.10649, 0, -0.994314, 0, 1, 0, 0.994314, 0, -0.10649, 106.168, 0.108898, 9.28589)
+
+[node name="Node3D3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.19736, 0, 0)
+
+[node name="BirthdayRat4" parent="Node3D3" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(0.999993, 0, -0.00385713, 0, 1, 0, 0.00385713, 0, 0.999993, 109.103, 0.108898, 7.67686)
+
+[node name="BirthdayRat5" parent="Node3D3" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(0.996201, 0, -0.0870862, 0, 1, 0, 0.0870862, 0, 0.996201, 109.309, 0.108898, 7.60431)
+
+[node name="BirthdayRat6" parent="Node3D3" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(0.998402, 0, 0.0565012, 0, 1, 0, -0.0565012, 0, 0.998402, 109.224, 0.108898, 7.41865)
+
+[node name="BirthdayRat7" parent="Node3D3" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(0.999993, 0, -0.00385713, 0, 1, 0, 0.00385713, 0, 0.999993, 109.341, 0.108898, 7.22656)
+
+[node name="BirthdayRat11" parent="Node3D3" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(0.523138, 0, -0.852248, 0, 1, 0, 0.852248, 0, 0.523138, 108.173, 0.108898, 8.8191)
+
+[node name="BirthdayRat" parent="Node3D3/BirthdayRat11" index="0" node_paths=PackedStringArray("hidePoint", "wanderTimer", "wanderArea", "audioPlayer", "ratNoiseTimer")]
+hidePoint = NodePath("../../../Node3D2/BirthdayRat4/HidePoint")
+wanderTimer = NodePath("../../../Node3D2/BirthdayRat4/BirthdayRat/ScuttleTimer")
+wanderArea = NodePath("../../../Node3D2/BirthdayRat4/BirthdayRat/WanderZone/WanderArea")
+audioPlayer = NodePath("../../../Node3D2/BirthdayRat4/BirthdayRat/RatNoisePlayer")
+ratNoiseTimer = NodePath("../../../Node3D2/BirthdayRat4/BirthdayRat/RatNoisePlayer/RatNoiseTimer")
+
+[node name="WanderZone" parent="Node3D3/BirthdayRat11/BirthdayRat" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.667648, 0, -0.19445)
+
+[node name="WanderArea" parent="Node3D3/BirthdayRat11/BirthdayRat/WanderZone" index="0"]
+shape = SubResource("CylinderShape3D_vd1c2")
+
+[node name="BirthdayRat8" parent="Node3D3" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(0.994555, 0, -0.104216, 0, 1, 0, 0.104216, 0, 0.994555, 109.521, 0.108898, 7.30596)
+
+[node name="BirthdayRat9" parent="Node3D3" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(0.997046, 0, 0.0768061, 0, 1, 0, -0.0768061, 0, 0.997046, 109.19, 0.108898, 7.36358)
+
+[node name="BirthdayRat10" parent="Node3D3" instance=ExtResource("11_e0ekf")]
+transform = Transform3D(0.994944, 0, -0.100431, 0, 1, 0, 0.100431, 0, 0.994944, 109.542, 0.108898, 7.24928)
+
 [editable path="CharacterBody3D"]
 [editable path="MyerPoints/MyerPoint"]
 [editable path="MyerPoints/MyerPoint2"]
@@ -671,3 +769,4 @@ transform = Transform3D(-0.188229, 0.00385248, 0.0166297, 0.000255607, 0.184741,
 [editable path="BirthdayRat"]
 [editable path="BirthdayRat3"]
 [editable path="BirthdayRat2"]
+[editable path="Node3D3/BirthdayRat11"]

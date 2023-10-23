@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://iv8fa5bthpek" path="res://sounds/rat-squeal.mp3" id="3_np8lm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_snx6l"]
-size = Vector3(1.30611, 0.200714, 4.54112)
+size = Vector3(1.30611, 0.200714, 3.71079)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jws6"]
 transparency = 1

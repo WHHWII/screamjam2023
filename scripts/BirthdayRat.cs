@@ -54,6 +54,7 @@ public partial class BirthdayRat : Node3D
 			if (ratBlaster != null && ratBlaster.Visible)
 			{
 				isHiding = true;
+				GD.Print("Rat Fleeing from ratBlaster");
 			}
 		}
 		if (idleWander && !isHiding && canMove)
@@ -136,8 +137,14 @@ public partial class BirthdayRat : Node3D
 		audioPlayer.Stop();
 		isPlayingRatNoise = false;
 	}
-	
+	private void _on_wander_zone_body_exited(Node3D body)
+	{
+		ratBlaster = null;
+	}
 }
+
+
+
 
 
 

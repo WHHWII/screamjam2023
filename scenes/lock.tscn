@@ -1,11 +1,78 @@
-[gd_scene load_steps=6 format=3 uid="uid://27ar7ttay2w1"]
+[gd_scene load_steps=12 format=3 uid="uid://b40w77q852ijd"]
 
 [ext_resource type="PackedScene" uid="uid://bg31uaicraonp" path="res://models/lock.glb" id="1_jl66x"]
 [ext_resource type="Texture2D" uid="uid://bpla4h4yv2nsi" path="res://textures/raw/gold-material.png" id="2_kxlea"]
 [ext_resource type="Texture2D" uid="uid://di7lu1rd4t84h" path="res://textures/raw/metal_walls_rusty.png" id="3_d46ct"]
+[ext_resource type="Script" path="res://scripts/Lock.cs" id="3_nt5h4"]
+[ext_resource type="AudioStream" uid="uid://xsrvq6ac85m" path="res://sounds/lock-sound.mp3" id="4_2jqgo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjffw"]
 albedo_texture = ExtResource("2_kxlea")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mu2f3"]
+size = Vector3(2.75777, 4.05642, 0.99004)
+
+[sub_resource type="Animation" id="Animation_pm67e"]
+resource_name = "LockRattle"
+length = 0.5
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.175951, 0.297386, 0.495101),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.854752, -0.454801, -0.029312), Vector3(0.854752, -0.424407, -0.029312), Vector3(0.854752, -0.52544, -0.029312), Vector3(0.854752, -0.454801, -0.029312)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0977143, 0.225678, 0.495101),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.340859, 2.31599, -3.09859), Vector3(-0.43137, 2.35118, 3.09131), Vector3(-0.390555, 2.36883, 3.04714), Vector3(-0.340859, 2.31599, -3.09859)]
+}
+
+[sub_resource type="Animation" id="Animation_hw3kg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.854752, -0.454801, -0.029312)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.340859, 2.31599, -3.09859)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jfsel"]
+_data = {
+"LockRattle": SubResource("Animation_pm67e"),
+"RESET": SubResource("Animation_hw3kg")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvo7s"]
 albedo_texture = ExtResource("3_d46ct")
@@ -13,7 +80,27 @@ albedo_texture = ExtResource("3_d46ct")
 [node name="lock" instance=ExtResource("1_jl66x")]
 
 [node name="lock2" parent="." index="0"]
+transform = Transform3D(0.947689, 0.216364, 1.07894, -0.0558009, -0.941803, 0.520716, 0.997938, -0.258132, -0.995494, 0.854752, -0.454801, -0.029312)
 material_override = SubResource("StandardMaterial3D_jjffw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="lock2" index="0" node_paths=PackedStringArray("anim", "aud")]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_nt5h4")
+anim = NodePath("AnimationPlayer")
+aud = NodePath("AudioStreamPlayer3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lock2/StaticBody3D" index="0"]
+transform = Transform3D(0.67972, 0.0790521, 0.729199, -0.324034, 0.924262, 0.201849, -0.658014, -0.373486, 0.653855, -0.704432, -0.0475627, 0.628279)
+shape = SubResource("BoxShape3D_mu2f3")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="lock2/StaticBody3D" index="1"]
+stream = ExtResource("4_2jqgo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="lock2/StaticBody3D" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_jfsel")
+}
 
 [node name="chain" parent="." index="1"]
 material_override = SubResource("StandardMaterial3D_fvo7s")
