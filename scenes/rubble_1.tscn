@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbnieekdiw8n8"]
+
+[ext_resource type="PackedScene" uid="uid://cjlb33l2x8t1d" path="res://models/rubble-1.glb" id="1_3vgcm"]
+[ext_resource type="Texture2D" uid="uid://di7lu1rd4t84h" path="res://textures/raw/metal_walls_rusty.png" id="2_u2w6i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hmfrf"]
+albedo_texture = ExtResource("2_u2w6i")
+
+[node name="rubble-1" instance=ExtResource("1_3vgcm")]
+
+[node name="rubble-1" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_hmfrf")
