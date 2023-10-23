@@ -36,14 +36,14 @@ hidePoint = NodePath("HidePoint")
 playerDetectionArea = NodePath("PlayerDetectionArea")
 
 [node name="PlayerDetectionArea" type="Area3D" parent="."]
-collision_layer = 8
+collision_layer = 0
 collision_mask = 8
 
 [node name="PlayerDetectionShape" type="CollisionShape3D" parent="PlayerDetectionArea"]
 shape = SubResource("CylinderShape3D_66ynf")
 
 [node name="MyerFleeArea" type="Area3D" parent="."]
-collision_layer = 8
+collision_layer = 0
 collision_mask = 8
 
 [node name="MyerFleeShape" type="CollisionShape3D" parent="MyerFleeArea"]

@@ -13,7 +13,7 @@ public partial class Michael : Node3D
 	public bool hiding = false;
 	public bool aproaching = false;
 	public float hideSpeed;
-
+	public bool chasePlayer = false;
 	public bool playerInLOS = false;
 	public bool onPlayerScreen = false;
 
@@ -54,14 +54,19 @@ public partial class Michael : Node3D
 
 
 		}
+		else if (chasePlayer)
+		{
+			GlobalPosition = GlobalPosition.MoveToward(player.GlobalPosition, hideSpeed * (float)delta);
+		}
 		else
 		{
+			
 			GlobalPosition = GlobalPosition.MoveToward(hidePoint, hideSpeed * (float)delta);
-			if (GlobalPosition.IsEqualApprox(hidePoint))
-			{
-				Visible = false;
+			//if (GlobalPosition.IsEqualApprox(hidePoint))
+			//{
+			//	Visible = false;
 
-			}
+			//}
 			if (!footStepsPlaying)
 				PlayFootStep(footstepAudio);
 

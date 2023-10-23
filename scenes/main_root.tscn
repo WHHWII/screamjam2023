@@ -91,9 +91,11 @@ radius = 3.86422
 environment = SubResource("Environment_ybakg")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_d8ews")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.890612, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.492, 6.35374, 59.1835)
 
-[node name="inside player" type="MeshInstance3D" parent="CharacterBody3D"]
+[node name="inside player" type="MeshInstance3D" parent="CharacterBody3D/Camera3D" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52588e-05, -0.727703, 2.64074)
+skeleton = NodePath("../..")
 
 [node name="myer2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_ubmgq")]
 transform = Transform3D(-0.999487, 0, 0.0320212, 0, 1, 0, -0.0320212, 0, -0.999487, 54.6074, 0.689481, -57.7404)
@@ -269,7 +271,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.256126, 0.0604565, 0.55986
 skeleton = NodePath("../../MyerPoint5")
 
 [node name="HidePoint" parent="MyerPoints/MyerPoint5" index="3"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 5.78743, 0, -2.3866)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 30.28, 0, -2.3866)
 skeleton = NodePath("../../MyerPoint5")
 
 [node name="MyerPoint4" parent="MyerPoints" node_paths=PackedStringArray("myer") instance=ExtResource("10_v2boh")]
@@ -281,7 +283,6 @@ approachFromHidePoint = true
 
 [node name="PlayerDetectionArea" parent="MyerPoints/MyerPoint4" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.6879, 0, -4.76492)
-collision_layer = 0
 collision_mask = 264
 
 [node name="PlayerDetectionShape" parent="MyerPoints/MyerPoint4/PlayerDetectionArea" index="0"]
@@ -411,15 +412,19 @@ transform = Transform3D(0.910763, -0.120756, 0.394878, 0.307954, 0.835703, -0.45
 [node name="Key Body" parent="." instance=ExtResource("3_cgugd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 181.619, 5.28582, 59.0275)
 
-[node name="FinalMyerPoint" parent="." node_paths=PackedStringArray("myer") instance=ExtResource("10_v2boh")]
+[node name="FinalMyerPoint" parent="." node_paths=PackedStringArray("hidePoint", "myer") instance=ExtResource("10_v2boh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.41, 5.12337, 58.9281)
+hidePoint = NodePath("../CharacterBody3D/MeshInstance3D")
 myer = NodePath("../myer2")
-hideSpeed = 10.0
+hideSpeed = 100.0
+stareTime = 0.1
+chasePlayer = true
 
 [node name="PlayerDetectionArea" parent="FinalMyerPoint" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3444, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.046, 0, 0)
 
 [node name="PlayerDetectionShape" parent="FinalMyerPoint/PlayerDetectionArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.72586, 2.14187, 0)
 shape = SubResource("CylinderShape3D_ehnny")
 
 [node name="MyerFleeArea" parent="FinalMyerPoint" index="1"]
@@ -428,12 +433,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.34339, 0)
 [node name="MyerFleeShape" parent="FinalMyerPoint/MyerFleeArea" index="0"]
 shape = SubResource("CylinderShape3D_2sqgo")
 
+[node name="SpawnPoint" parent="FinalMyerPoint" index="2"]
+layers = 0
+
 [node name="HidePoint" parent="FinalMyerPoint" index="3"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 22.634, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 17.0629, 0, -0.781563)
+layers = 0
 
 [node name="Battery Pickup" parent="." instance=ExtResource("5_fvx33")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.721, 4.48442, 58.9491)
 
+[editable path="CharacterBody3D"]
 [editable path="MyerPoints/MyerPoint"]
 [editable path="MyerPoints/MyerPoint2"]
 [editable path="MyerPoints/MyerPoint3"]
