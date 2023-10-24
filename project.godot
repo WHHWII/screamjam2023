@@ -10,10 +10,13 @@ config_version=5
 
 [application]
 
-config/name="Screamjam 2023"
+config/name="The Intruder"
 run/main_scene="res://scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
-config/icon="res://textures/icon.svg"
+boot_splash/bg_color=Color(0.337255, 0.141176, 0.141176, 1)
+boot_splash/image="res://textures/decals/glumpis.png"
+config/icon="res://textures/decals/Intruder.png"
+config/windows_native_icon="res://textures/decals/Intruder.ico"
 
 [display]
 
