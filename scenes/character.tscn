@@ -284,7 +284,9 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="JumpScareAudio" type="AudioStreamPlayer3D" parent="Camera3D/MyerRay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.723799, 0, 0)
 stream = ExtResource("4_gwor7")
+max_distance = 1.0
 
 [node name="flashlight" parent="Camera3D" instance=ExtResource("2_08q8a")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.447561, -0.429094, -0.299592)

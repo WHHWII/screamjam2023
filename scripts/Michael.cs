@@ -21,6 +21,7 @@ public partial class Michael : Node3D
 	[ExportGroup("Audio")]
 	[Export] public AudioStreamPlayer3D footstepAudio;
 	[Export] Timer footStepTimer;
+	[Export] AudioStreamPlayer3D scream;
 	public override void _Ready()
 	{
 		hidePoint = Position;
@@ -56,6 +57,7 @@ public partial class Michael : Node3D
 		}
 		else if (chasePlayer)
 		{
+			if (!scream.Playing) scream.Play();
 			GlobalPosition = GlobalPosition.MoveToward(player.GlobalPosition, hideSpeed * (float)delta);
 		}
 		else

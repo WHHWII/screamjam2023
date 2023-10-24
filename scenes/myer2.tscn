@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bd3rvehok7gcf"]
+[gd_scene load_steps=10 format=3 uid="uid://bd3rvehok7gcf"]
 
 [ext_resource type="Script" path="res://scripts/Michael.cs" id="1_ejkkk"]
 [ext_resource type="PackedScene" uid="uid://htgl3rf7by7i" path="res://models/horror_mask.glb" id="1_q2wkn"]
 [ext_resource type="AudioStream" uid="uid://ddy3lsljplk3f" path="res://sounds/quiet footsteps.mp3" id="3_5nm1e"]
+[ext_resource type="AudioStream" uid="uid://chpsev8v4jn8v" path="res://sounds/jump-scare sound.mp3" id="4_5cysn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjcje"]
 albedo_color = Color(0, 0, 0, 1)
@@ -22,7 +23,7 @@ emission_energy_multiplier = 7.98
 [sub_resource type="SphereMesh" id="SphereMesh_5gmsy"]
 material = SubResource("StandardMaterial3D_852vb")
 
-[node name="myer2" type="MeshInstance3D" node_paths=PackedStringArray("visibleToPlayerTimer", "playerLOSRay", "footstepAudio", "footStepTimer")]
+[node name="myer2" type="MeshInstance3D" node_paths=PackedStringArray("visibleToPlayerTimer", "playerLOSRay", "footstepAudio", "footStepTimer", "scream")]
 transform = Transform3D(0.467901, 0, 0, 0, 1.41014, 0, 0, 0, 0.788663, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_rkyrq")
 script = ExtResource("1_ejkkk")
@@ -30,6 +31,7 @@ visibleToPlayerTimer = NodePath("Timer")
 playerLOSRay = NodePath("horror_mask/PlayerLineOfSiteChecker")
 footstepAudio = NodePath("AudioStreamPlayer3D")
 footStepTimer = NodePath("AudioStreamPlayer3D/FootStepTimer")
+scream = NodePath("Scream")
 
 [node name="PlayerDetectionAREa" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.231717)
@@ -92,6 +94,10 @@ doppler_tracking = 2
 [node name="FootStepTimer" type="Timer" parent="AudioStreamPlayer3D"]
 wait_time = 0.6
 one_shot = true
+
+[node name="Scream" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_5cysn")
+volume_db = 10.0
 
 [connection signal="body_entered" from="PlayerDetectionAREa" to="." method="_on_player_detection_ar_ea_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
