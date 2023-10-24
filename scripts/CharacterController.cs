@@ -115,14 +115,8 @@ public partial class CharacterController : CharacterBody3D
 			}
 		}
 		
-		
-		//dev stuff
-		if (Input.IsActionJustPressed("dev_speed")){
-			speed = 20;
-		}
-		if (Input.IsActionJustPressed("dev_energy")){
-			playerInfo.flashLightEnergy += 30;
-			playerInfo.RestoreLightLevels();
+		if(Input.IsActionJustPressed("Quit")){
+			GetTree().Quit();
 		}
 	}
 
