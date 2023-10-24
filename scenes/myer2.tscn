@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/Michael.cs" id="1_ejkkk"]
 [ext_resource type="PackedScene" uid="uid://htgl3rf7by7i" path="res://models/horror_mask.glb" id="1_q2wkn"]
 [ext_resource type="AudioStream" uid="uid://ddy3lsljplk3f" path="res://sounds/quiet footsteps.mp3" id="3_5nm1e"]
-[ext_resource type="AudioStream" uid="uid://chpsev8v4jn8v" path="res://sounds/jump-scare sound.mp3" id="4_5cysn"]
+[ext_resource type="AudioStream" uid="uid://dhmmde05xbpj6" path="res://sounds/scream.mp3" id="4_q63k8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjcje"]
 albedo_color = Color(0, 0, 0, 1)
@@ -96,7 +96,7 @@ wait_time = 0.6
 one_shot = true
 
 [node name="Scream" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("4_5cysn")
+stream = ExtResource("4_q63k8")
 volume_db = 10.0
 
 [connection signal="body_entered" from="PlayerDetectionAREa" to="." method="_on_player_detection_ar_ea_body_entered"]

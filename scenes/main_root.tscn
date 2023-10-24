@@ -12,10 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://ddy3lsljplk3f" path="res://sounds/quiet footsteps.mp3" id="11_28x5v"]
 [ext_resource type="PackedScene" uid="uid://cwkkhpndfqjn4" path="res://scenes/birthday_rat.tscn" id="11_e0ekf"]
 [ext_resource type="AudioStream" uid="uid://if2v8874h4wo" path="res://sounds/footseps.mp3" id="12_h1fm7"]
-[ext_resource type="PackedScene" uid="uid://dve6vooihnluv" path="res://scenes/chair.tscn" id="13_kf5o5"]
-[ext_resource type="PackedScene" uid="uid://cc5oa7aomgb3r" path="res://scenes/jar.tscn" id="14_6tvnq"]
-[ext_resource type="PackedScene" uid="uid://bbpr771dv5iit" path="res://scenes/arm.tscn" id="15_lxoce"]
-[ext_resource type="PackedScene" uid="uid://orus8aka67w5" path="res://scenes/bottle.tscn" id="16_lkadw"]
+[ext_resource type="PackedScene" path="res://scenes/chair.tscn" id="13_kf5o5"]
+[ext_resource type="PackedScene" path="res://scenes/jar.tscn" id="14_6tvnq"]
+[ext_resource type="PackedScene" path="res://scenes/arm.tscn" id="15_lxoce"]
+[ext_resource type="PackedScene" path="res://scenes/bottle.tscn" id="16_lkadw"]
 [ext_resource type="PackedScene" uid="uid://bfducwd40tcqn" path="res://models/bottle.glb" id="16_t7ukm"]
 [ext_resource type="PackedScene" uid="uid://b40w77q852ijd" path="res://scenes/lock.tscn" id="17_s05of"]
 
@@ -135,9 +135,6 @@ environment = SubResource("Environment_ybakg")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_d8ews")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="Camera3D" parent="CharacterBody3D" index="2"]
-current = false
 
 [node name="inside player" type="MeshInstance3D" parent="CharacterBody3D/Camera3D" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52588e-05, -0.727703, 2.64074)

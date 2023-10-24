@@ -8,6 +8,7 @@ public partial class AudioTriggerButReal : Node3D
 	[Export] Node3D speakerDestination;
 	[Export] bool fade;
 	[Export] float fadeSpeed;
+	[Export] float playOffset = 0;
 	bool hasBeenTriggered = false;
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -29,7 +30,7 @@ public partial class AudioTriggerButReal : Node3D
 	{
 		if (hasBeenTriggered) return;
 		hasBeenTriggered = true;
-		speaker.Play();
+		speaker.Play(playOffset);
 	}
 }
 
