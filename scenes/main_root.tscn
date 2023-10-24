@@ -12,10 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://ddy3lsljplk3f" path="res://sounds/quiet footsteps.mp3" id="11_28x5v"]
 [ext_resource type="PackedScene" uid="uid://cwkkhpndfqjn4" path="res://scenes/birthday_rat.tscn" id="11_e0ekf"]
 [ext_resource type="AudioStream" uid="uid://if2v8874h4wo" path="res://sounds/footseps.mp3" id="12_h1fm7"]
-[ext_resource type="PackedScene" uid="uid://dve6vooihnluv" path="res://scenes/chair.tscn" id="13_kf5o5"]
-[ext_resource type="PackedScene" uid="uid://cc5oa7aomgb3r" path="res://scenes/jar.tscn" id="14_6tvnq"]
-[ext_resource type="PackedScene" uid="uid://bbpr771dv5iit" path="res://scenes/arm.tscn" id="15_lxoce"]
-[ext_resource type="PackedScene" uid="uid://orus8aka67w5" path="res://scenes/bottle.tscn" id="16_lkadw"]
+[ext_resource type="PackedScene" path="res://scenes/chair.tscn" id="13_kf5o5"]
+[ext_resource type="PackedScene" path="res://scenes/jar.tscn" id="14_6tvnq"]
+[ext_resource type="PackedScene" path="res://scenes/arm.tscn" id="15_lxoce"]
+[ext_resource type="PackedScene" path="res://scenes/bottle.tscn" id="16_lkadw"]
 [ext_resource type="PackedScene" uid="uid://bfducwd40tcqn" path="res://models/bottle.glb" id="16_t7ukm"]
 [ext_resource type="PackedScene" uid="uid://b40w77q852ijd" path="res://scenes/lock.tscn" id="17_s05of"]
 
@@ -66,9 +66,8 @@ size = Vector3(12.501, 1, 15.9471)
 resource_local_to_scene = true
 radius = 3.96429
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_qgrjt"]
-resource_local_to_scene = true
-radius = 3.98126
+[sub_resource type="BoxShape3D" id="BoxShape3D_x3wde"]
+size = Vector3(1.06545, 1, 8.05546)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_k6bnd"]
 resource_local_to_scene = true
@@ -233,7 +232,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.65129, 0.867985, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.653, 5.62709, 28.684)
 myer = NodePath("../../myer2")
 hideSpeed = 25.0
-stareTime = 0.5
+stareTime = 0.1
 
 [node name="PlayerDetectionArea" parent="MyerPoints/MyerPoint6" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0656, -0.0268354, -12.1924)
@@ -241,9 +240,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0656, -0.0268354, -12.192
 [node name="PlayerDetectionShape" parent="MyerPoints/MyerPoint6/PlayerDetectionArea" index="0"]
 shape = SubResource("CylinderShape3D_ksfcp")
 
+[node name="MyerFleeArea" parent="MyerPoints/MyerPoint6" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.747925, 0, 0)
+
 [node name="MyerFleeShape" parent="MyerPoints/MyerPoint6/MyerFleeArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7751, 0, -6.5688)
-shape = SubResource("CylinderShape3D_qgrjt")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13708, 0, -7.01694)
+shape = SubResource("BoxShape3D_x3wde")
 
 [node name="SpawnPoint" parent="MyerPoints/MyerPoint6" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00518799, 0, 0)
@@ -523,9 +525,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.328, 4.48442, 58.2935)
 [node name="Battery Pickup7" parent="." instance=ExtResource("5_fvx33")]
 transform = Transform3D(0.670815, 0, 0.741625, 0, 1, 0, -0.741625, 0, 0.670815, 183.328, 4.48442, 59.4555)
 
-[node name="AudioTriggerButReal" parent="." node_paths=PackedStringArray("speakerDestination") instance=ExtResource("10_j657m")]
+[node name="AudioTriggerButReal" parent="." instance=ExtResource("10_j657m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.1932, 0.0111719, -0.516701)
-speakerDestination = NodePath("SpeakerDestination")
+speakerSpeed = 20.0
 fade = true
 fadeSpeed = 25.0
 
@@ -535,32 +537,50 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78104, 0, -0.0118606)
 [node name="Speaker" parent="AudioTriggerButReal" index="1"]
 transform = Transform3D(-0.830761, 0, -0.556629, 0, 1, 0, 0.556629, 0, -0.830761, -0.583145, 0.523347, -5.35037)
 stream = ExtResource("11_28x5v")
-volume_db = 10.0
+volume_db = 20.0
 pitch_scale = 0.5
+max_distance = 300.0
 panning_strength = 3.0
 emission_angle_degrees = 40.0
 
 [node name="SpeakerDestination" parent="AudioTriggerButReal" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25842, -2.34222, -104.691)
 
-[node name="AudioTriggerButReal2" parent="." node_paths=PackedStringArray("speakerDestination") instance=ExtResource("10_j657m")]
+[node name="AudioTriggerButReal2" parent="." instance=ExtResource("10_j657m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.5535, 2.48436, -30.5913)
-speakerDestination = NodePath("../AudioTriggerButReal/SpeakerDestination")
+speakerSpeed = 30.0
 fade = true
-fadeSpeed = 15.0
+fadeSpeed = 30.0
 
 [node name="Trigger" parent="AudioTriggerButReal2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78104, 0, -0.0118599)
 
 [node name="Speaker" parent="AudioTriggerButReal2" index="1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6.94106, -0.94769, -0.406578)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6.94106, -2.66091, -0.406578)
 stream = ExtResource("12_h1fm7")
-volume_db = 10.0
+volume_db = 5.0
+max_distance = 15.0
 panning_strength = 3.0
 emission_angle_degrees = 40.0
+doppler_tracking = 2
 
 [node name="SpeakerDestination" parent="AudioTriggerButReal2" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.22796, -0.555793, 14.4123)
+
+[node name="AudioTriggerButReal3" parent="." instance=ExtResource("10_j657m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.202, 4.96027, 31.7661)
+speakerSpeed = 10.0
+fade = true
+fadeSpeed = 10.0
+
+[node name="Speaker" parent="AudioTriggerButReal3" index="1"]
+transform = Transform3D(0.157641, 0, 0.987496, 0, 1, 0, -0.987496, 0, 0.157641, 5.57739, 1, 0)
+volume_db = 20.0
+max_distance = 50.0
+panning_strength = 3.0
+
+[node name="SpeakerDestination" parent="AudioTriggerButReal3" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.8759)
 
 [node name="Battery Pickup2" parent="." instance=ExtResource("5_fvx33")]
 transform = Transform3D(0.965521, 0.0445273, -0.25649, -0.259178, 0.071943, -0.963146, -0.0244336, 0.996414, 0.0810029, 95.4783, 0.277422, -42.674)
@@ -637,6 +657,8 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.164673, -3.49821, 0)
 
 [node name="bottle2" parent="." instance=ExtResource("16_lkadw")]
 transform = Transform3D(0.577031, 0.637203, -0.510888, -0.741238, 0.671242, 1.76333e-08, 0.34293, 0.37869, 0.859647, 90.2403, 0.106932, -45.0148)
+collision_layer = 4096
+collision_mask = 4096
 
 [node name="BirthdayRat" parent="." instance=ExtResource("11_e0ekf")]
 transform = Transform3D(-0.960551, 0, 0.278103, 0, 1, 0, -0.278103, 0, -0.960551, 84.507, 2.3589, -17.849)
@@ -812,6 +834,7 @@ transform = Transform3D(0.994944, 0, -0.100431, 0, 1, 0, 0.100431, 0, 0.994944, 
 [editable path="FinalMyerPoint"]
 [editable path="AudioTriggerButReal"]
 [editable path="AudioTriggerButReal2"]
+[editable path="AudioTriggerButReal3"]
 [editable path="MyerPoint"]
 [editable path="MyerPoint2"]
 [editable path="BirthdayRat"]

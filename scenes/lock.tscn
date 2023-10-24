@@ -80,7 +80,7 @@ albedo_texture = ExtResource("3_d46ct")
 [node name="lock" instance=ExtResource("1_jl66x")]
 
 [node name="lock2" parent="." index="0"]
-transform = Transform3D(0.947689, 0.216364, 1.07894, -0.0558009, -0.941803, 0.520716, 0.997938, -0.258132, -0.995494, 0.854752, -0.454801, -0.029312)
+transform = Transform3D(0.947689, 0.216362, 1.07894, -0.0558053, -0.941803, 0.520716, 0.997938, -0.258134, -0.995494, 0.854752, -0.454801, -0.029312)
 material_override = SubResource("StandardMaterial3D_jjffw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="lock2" index="0" node_paths=PackedStringArray("anim", "aud")]
